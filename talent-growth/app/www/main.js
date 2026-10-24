@@ -685,7 +685,14 @@ function milestoneListHtml() {
     ? allMilestones(state.bandKey).filter(item => `${item.title} ${item.age} ${item.func}`.toLowerCase().includes(keyword))
     : band.domains[state.domainIndex]?.items || [];
   return `<div id="milestone-browser">
-    <div class="search-box"><span aria-hidden="true">⌕</span><input id="milestone-search" value="${escapeHtml(state.query)}" placeholder="搜索能力、关键词或月龄" aria-label="搜索里程碑" maxlength="80" />${state.query ? '<button data-action="clear-search" aria-label="清空搜索">×</button>' : ''}</div>
+    <div class="search-box"><span aria-hidden="true">⌕</span><input id="milestone-search" value="${escapeHtml(state.query)}" placeholder="搜索能力、关键词或月龄" aria-label="搜索里程碑" maxlength="80" /><button data-action="clear-search" aria-label="清空搜索" ${state.query ? '' : 'hidden'}>×</button></div>
+    ${milestoneResultsHtml(band, profile, keyword, items)}</div>`;
+}
+
+// Everything below the search box. Re-rendered on search input so the
+// input element (focus, caret, IME composition) is never replaced.
+function milestoneResultsHtml(band, profile, keyword, items) {
+  return `<div id="milestone-results">
     <div class="chips">${band.domains.map((domain, index) => `
       <button class="${index === state.domainIndex && !keyword ? 'active' : ''}" data-domain="${index}" aria-pressed="${index === state.domainIndex && !keyword}">${escapeHtml(domain.name)}</button>`).join('')}</div>
     ${items.length ? `<div class="rail-heading"><div><b>挑一张成长卡</b><small>左右滑动，遇见今天的小目标</small></div><span id="milestone-counter">1 / ${items.length}</span></div>
@@ -1448,17 +1455,32 @@ document.addEventListener('keydown', async event => {
   await closeComposer();
 });
 
+// Re-render only the results below the search box so the input keeps
+// focus, caret position and any in-progress IME composition.
+function refreshMilestoneResults(input) {
+  state.query = cleanText(input.value, 80);
+  const results = $('#milestone-results');
+  if (!results) return;
+  const temporary = document.createElement('div');
+  temporary.innerHTML = milestoneListHtml();
+  const next = $('#milestone-results', temporary);
+  if (!next) return;
+  results.replaceWith(next);
+  const clear = $('#milestone-browser [data-action="clear-search"]');
+  if (clear) clear.hidden = !state.query;
+  state.cardIndex = 0;
+  bindMilestoneRail();
+}
+
+appRoot.addEventListener('compositionend', event => {
+  if (event.target.id === 'milestone-search') refreshMilestoneResults(event.target);
+});
+
 appRoot.addEventListener('input', event => {
   if (event.target.id === 'milestone-search') {
-    state.query = cleanText(event.target.value, 80);
-    const browser = $('#milestone-browser');
-    if (browser) {
-      const temporary = document.createElement('div');
-      temporary.innerHTML = milestoneListHtml();
-      browser.replaceWith($('#milestone-browser', temporary));
-      state.cardIndex = 0;
-      bindMilestoneRail();
-    }
+    // Wait for compositionend while typing pinyin etc.
+    if (event.isComposing) return;
+    refreshMilestoneResults(event.target);
   }
   if (event.target.id === 'record-text') state.draftText = event.target.value;
   if (event.target.id === 'record-date') state.draftDate = event.target.value;
