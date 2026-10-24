@@ -9,6 +9,9 @@ import { cultivationEvidence } from '../data/cultivation-evidence.mjs';
 import { domainCultivation, domainSources } from '../data/domain-cultivation.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// Run tests before packaging to catch regressions
+console.log('Running tests before packaging...');
+execFileSync(process.execPath, ['--test', 'app/tests/*.test.mjs'], { cwd: root, stdio: 'inherit' });
 execFileSync(process.execPath, [path.join(root, 'app/scripts/sync-data.mjs')], { stdio: 'inherit' });
 const web = path.join(root, 'app/www');
 const files = ['index.html', 'main.js', 'style.css', 'growth-progress.js', 'data.json', 'app-icon.png', 'talent-mark.svg', 'talent-ui.js', 'talent-store.js', 'talent-insights.js', 'talent-journey.js', 'talent-cloud.js', 'talent.css', 'talent-data.js', 'learning-data.js', 'learning-ui.js', 'cultivation-data.js', 'cultivation-ui.js', 'talent-planets.js', 'talent-planets-ui.js'];
