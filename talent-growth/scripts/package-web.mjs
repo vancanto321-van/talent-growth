@@ -14,7 +14,7 @@ console.log('Running tests before packaging...');
 execFileSync(process.execPath, ['--test', 'app/tests/*.test.mjs'], { cwd: root, stdio: 'inherit' });
 execFileSync(process.execPath, [path.join(root, 'app/scripts/sync-data.mjs')], { stdio: 'inherit' });
 const web = path.join(root, 'app/www');
-const files = ['index.html', 'main.js', 'style.css', 'growth-progress.js', 'data.json', 'app-icon.png', 'talent-mark.svg', 'talent-ui.js', 'talent-store.js', 'talent-insights.js', 'talent-journey.js', 'talent-cloud.js', 'talent.css', 'talent-data.js', 'learning-data.js', 'learning-ui.js', 'cultivation-data.js', 'cultivation-ui.js', 'talent-planets.js', 'talent-planets-ui.js'];
+const files = ['index.html', 'manifest.webmanifest', 'sw.js', 'main.js', 'style.css', 'growth-progress.js', 'data.json', 'app-icon.png', 'talent-mark.svg', 'talent-ui.js', 'talent-store.js', 'talent-insights.js', 'talent-journey.js', 'talent-cloud.js', 'talent.css', 'talent-data.js', 'learning-data.js', 'learning-ui.js', 'cultivation-data.js', 'cultivation-ui.js', 'talent-planets.js', 'talent-planets-ui.js'];
 const hash = crypto.createHash('sha256');
 for (const name of files) {
   if (!fs.statSync(path.join(web, name)).isFile()) throw new Error('Missing static file: ' + name);

@@ -4,7 +4,7 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'../app/www');
 const port=Number(process.env.GROWTH_PREVIEW_PORT||4184);
 const apiPort=Number(process.env.GROWTH_PREVIEW_API_PORT||18139);
-const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'};
+const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript; charset=utf-8','.mjs':'application/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.webmanifest':'application/manifest+json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'};
 http.createServer(async(req,res)=>{
   if(req.url.startsWith('/growth/api/')) {
     const upstream=http.request({hostname:'127.0.0.1',port:apiPort,path:req.url.slice('/growth/api'.length),method:req.method,headers:req.headers},reply=>{res.writeHead(reply.statusCode,reply.headers);reply.pipe(res);});

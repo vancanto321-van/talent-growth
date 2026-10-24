@@ -1,0 +1,15 @@
+{
+  "name": "天赋生长",
+  "short_name": "天赋生长",
+  "description": "从一次真实小实验开始，记录兴趣、作品与变化。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf5",
+  "theme_color": "#E7785E",
+  "icons": [
+    { "src": "app-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
