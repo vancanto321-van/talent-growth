@@ -576,6 +576,8 @@ function dailyRecommendation() {
 }
 
 function renderHome() {
+  talentController?.destroy?.();
+  talentController = null;
   if (needsProfile()) return;
   const baby = activeBaby();
   const level = levelInfo();
@@ -744,6 +746,8 @@ function renderItems() {
 }
 
 function renderBand() {
+  talentController?.destroy?.();
+  talentController = null;
   if (needsProfile()) return;
   const profile = profileOf();
   const band = bandOf(state.bandKey);
@@ -820,6 +824,8 @@ function composerHtml() {
 }
 
 function renderRecord() {
+  talentController?.destroy?.();
+  talentController = null;
   if (needsProfile()) return;
   const profile = profileOf();
   layout(`
@@ -895,6 +901,8 @@ function profileForm(baby) {
 }
 
 function renderProfile() {
+  talentController?.destroy?.();
+  talentController = null;
   const baby = activeBaby();
   const level = baby ? levelInfo() : null;
   layout(`
@@ -910,6 +918,8 @@ function renderProfile() {
 }
 
 function renderPrivacy() {
+  talentController?.destroy?.();
+  talentController = null;
   layout(`
     <button class="back-button" data-action="close-privacy">← 返回我的</button>
     <article class="card detail-card legal-copy">
