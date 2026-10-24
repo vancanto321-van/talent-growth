@@ -11,6 +11,7 @@
 - **看演示脚本**：[3–5 分钟参赛演示流程](talent-growth/docs/参赛演示流程.md)。
 - **看数据边界**：[Web 展示版、备份与隐私说明](talent-growth/docs/Web展示版说明.md)。
 - **看桌面路线**：[Tauri 构建说明](desktop/README.md)。
+- **看 OPC 作品材料**：[作品介绍](talent-growth/docs/OPC参赛作品介绍.md)、[AI 使用说明](talent-growth/docs/AI使用与开发过程说明.md)、[三分钟演示脚本](talent-growth/docs/OPC三分钟演示脚本.md)、[虚构演示案例](talent-growth/docs/OPC虚构演示案例.md)。
 
 ## 当前交付物
 
