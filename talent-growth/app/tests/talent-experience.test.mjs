@@ -17,6 +17,8 @@ const catalog = {
   tasks: [
     { id: 'task-one', directionId: 'expression', ageGroups: ['adult', 'child'], level: 'start', title: '讲清一件小事', summary: '向一个真实的人讲清楚一件小事。', minutes: 10, materials: ['纸笔'], steps: ['写下重点', '讲给对方听'], deliverable: '三分钟讲述', observe: ['对方是否听懂'], transfer: '迁移到一次说明', reflection: ['哪里最顺'], rubric: ['说清过程', '说出感受'] },
     { id: 'task-two', directionId: 'analysis', ageGroups: ['adult', 'child'], level: 'practice', title: '比较两个方案', summary: '列出两个方案的证据和限制。', minutes: 15, materials: ['纸笔'], steps: ['列证据', '请人反馈'], deliverable: '比较表', observe: ['是否补充证据'], transfer: '迁移到一次决定', reflection: ['改变了什么'], rubric: ['列出证据', '说明限制'] }
+,
+    { id: 'task-child', directionId: 'expression', ageGroups: ['child'], level: 'start', title: '给家人讲一个发现', summary: '把今天的一个发现讲给家人听。', minutes: 10, materials: ['纸笔'], steps: ['画下发现', '讲给家人听'], deliverable: '一张发现图', observe: ['家人是否听懂'], transfer: '迁移到班级分享', reflection: ['哪里讲得清楚'], rubric: ['讲出发现', '回应提问'] }
   ], combinations: [{ id: 'combo-test', directionIds: ['expression', 'analysis'], title: '讲清一个判断', uses: ['学习'], firstStep: '先把一个问题讲给朋友听。' }], sources: []
 };
 
@@ -88,7 +90,8 @@ test('家庭档案按年龄筛选且每个人的记录彼此隔离', () => {
   assert.match(root.textContent, /小芽/);
   assert.match(root.textContent, /儿童 7–12 岁/);
   click(window, '[data-talent-view="discover"]');
-  assert.equal(root.querySelectorAll('[data-talent-action="open-task"]').length, 2);
+  // task-one, task-two (adult+child) and task-child (child-only) all match a child profile.
+  assert.equal(root.querySelectorAll('[data-talent-action="open-task"]').length, 3);
   click(window, '[data-talent-view="family"]');
   click(window, '[data-person-id="self"]');
   assert.equal(JSON.parse(window.localStorage.getItem('talent-growth-v1')).activeId, 'self');
@@ -118,10 +121,9 @@ test('尝试表单和电池阶段会保存，且点击阶段不会丢失未提�
   window.close();
 });
 
-test.skip('无效备份不会覆盖当前方向数据，合法备份可以恢复', async () => {
-  // TODO: Fix happy-dom File.text() async behavior or mock file input differently
-  const { window, root, controller } = setup();
-  window.localStorage.setItem('talent-growth-v1', JSON.stringify({ version: 1, people: [{ id: 'self', name: '我', ageGroup: 'adult' }], activeId: 'self', profiles: { self: { progress: {}, attempts: [], plan: null } } }));
+test('无效备份不会覆盖当前方向数据，合法备份可以恢复', async () => {
+  // Seed before mount: writing localStorage after mount trips the cross-window write guard.
+  const { window, root, controller } = setup({ version: 1, people: [{ id: 'self', name: '我', ageGroup: 'adult' }], activeId: 'self', profiles: { self: { progress: {}, attempts: [], plan: null } } });
   click(window, '[data-talent-view="family"]');
   const picker = root.querySelector('#tg-backup-picker');
   const invalid = new window.File(['{"version":1,"people":[]}'], 'bad.json', { type: 'application/json' });
@@ -139,14 +141,16 @@ test.skip('无效备份不会覆盖当前方向数据，合法备份可以恢复
   window.close();
 });
 
-test.skip('浏览儿童年龄时不会把电量写入成人档案，切换匹配档案后才允许保存', () => {
-  // TODO: Update to match new age selection UI
+test('浏览儿童年龄时不会把电量写入成人档案，切换匹配档案后才允许保存', () => {
   const { window, root, controller } = setup();
+  // Age chips only render in the "全部探索" feed.
+  click(window, '[data-talent-action="browse-all"]');
   click(window, '[data-talent-action="choose-age"][data-age-id="child"]');
-  click(window, '[data-talent-action="open-task"]');
+  // task-child is child-only, so the adult profile must be guarded.
+  click(window, '[data-talent-action="open-task"][data-task-id="task-child"]');
   assert.ok(root.querySelector('.tg-age-guard'));
   click(window, '[data-talent-action="set-task-level"]');
-  assert.equal(JSON.parse(window.localStorage.getItem('talent-growth-v1') || '{"profiles":{"self":{"progress":{}}}}').profiles.self.progress['task-one'], undefined);
+  assert.equal(JSON.parse(window.localStorage.getItem('talent-growth-v1') || '{"profiles":{"self":{"progress":{}}}}').profiles.self.progress['task-child'], undefined);
   click(window, '[data-talent-action="create-matching"]');
   root.querySelector('[name="name"]').value = '小芽';
   root.querySelector('[name="ageGroup"]').value = 'child';
