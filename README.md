@@ -1,6 +1,28 @@
 # 天赋生长
 
-面向自己与家人的全年龄探索项目：从小事开始，记录尝试、作品与反馈，持续培养兴趣和能力。
+> **一个不靠分数判断天赋的全年龄探索工具。** 从一次真实小实验开始，记录尝试、作品、反馈和下一步。
+
+[![Web tests](https://img.shields.io/badge/tests-18%20passing-2f855a)](#开发与验证) [![Platform](https://img.shields.io/badge/platform-Web%20%7C%20PWA%20%7C%20macOS%20preview-457b9d)](#当前交付物) [![Privacy](https://img.shields.io/badge/data-local--first-e76f51)](#数据与隐私)
+
+## 给评委的 60 秒入口
+
+- **先看产品定位**：记录真实探索，不生成天赋分数、能力排名或职业预测。
+- **最快体验**：安装 Node.js 22+，在仓库根目录运行 `npm start`，打开 <http://127.0.0.1:4184/growth/>。
+- **看演示脚本**：[3–5 分钟参赛演示流程](talent-growth/docs/参赛演示流程.md)。
+- **看数据边界**：[Web 展示版、备份与隐私说明](talent-growth/docs/Web展示版说明.md)。
+- **看桌面路线**：[Tauri 构建说明](desktop/README.md)。
+
+## 当前交付物
+
+| 交付物 | 当前状态 | 适合用途 |
+| --- | --- | --- |
+| Web 本地版 | 可运行、18 项测试通过 | 评委现场体验和源码审查 |
+| PWA | 可安装；首次在线打开后支持基础离线访问 | 个人试用和演示 |
+| macOS App | Apple Silicon `.app` 已构建 | 本机预览 |
+| macOS DMG | 未签名预览包已生成 | 仅技术评审，不是正式发行版 |
+| Windows 安装包 | 尚未构建 | 需要 Windows Runner 或 CI |
+
+> macOS DMG 未签名、未公证；首次打开可能需要在系统设置中允许。当前不提供正式商业发行承诺。
 
 包含 6 个年龄入口、624 个活动、14 个学习领域，以及能力星球、探索周报和作品记录。星球展示探索记录，不用于天赋测量或能力排名。
 

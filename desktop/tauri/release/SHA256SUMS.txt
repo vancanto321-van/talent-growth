@@ -1,0 +1,1 @@
+b5b188d26ee812b7ace4683e64c6c89604dba0794f366b30a752b3c66c972110  desktop/tauri/release/天赋生长_0.1.0_aarch64_unsigned_preview.dmg
