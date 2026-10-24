@@ -177,14 +177,37 @@ function normalizeDatabase(value, options = {}) {
   };
 }
 
+// When stored data cannot be read, keep the original text and block automatic
+// writes so an empty database never silently replaces a family's records.
+let storageReadFailure = false;
+
+function preserveUnreadableData(key, text) {
+  try {
+    localStorage.setItem(`${key}-unreadable-${Date.now()}`, text);
+  } catch (error) {
+    console.warn('无法另存读取失败的数据', error);
+  }
+}
+
 function loadDatabase() {
   let raw = null;
+  let storedText = null;
   try {
-    raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    storedText = localStorage.getItem(STORAGE_KEY);
+    raw = JSON.parse(storedText || 'null');
   } catch (error) {
     console.warn('本地数据读取失败', error);
+    if (storedText) preserveUnreadableData(STORAGE_KEY, storedText);
+    storageReadFailure = true;
+    return { version: 2, babies: [], activeBabyId: '', profiles: {} };
   }
   if (raw?.version === 2 && Array.isArray(raw.babies) && raw.profiles) return normalizeDatabase(raw);
+  if (storedText !== null) {
+    // Present but in an unexpected shape: keep it rather than overwrite it.
+    preserveUnreadableData(STORAGE_KEY, storedText);
+    storageReadFailure = true;
+    return { version: 2, babies: [], activeBabyId: '', profiles: {} };
+  }
 
   let legacy = null;
   try {
@@ -214,6 +237,10 @@ function loadDatabase() {
 const db = loadDatabase();
 
 function persist() {
+  if (storageReadFailure) {
+    console.warn('读取失败后禁止自动写入，防止覆盖原数据');
+    return false;
+  }
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
     return true;
@@ -1102,17 +1129,29 @@ async function importBackup(file) {
     const restored = normalizeDatabase(value, { includePhotos: false });
     if (restored.babies.length !== value.babies.length) throw new Error('档案字段不正确');
     if (!confirm('恢复备份会覆盖当前档案、进度和记录，确定继续吗？')) return;
-    await mediaStore.clear();
-    db.version = 2;
-    db.babies = restored.babies;
-    db.activeBabyId = restored.activeBabyId;
-    db.profiles = restored.profiles;
-    persist();
+    
+    // Persist first; only clear photos if write succeeded.
+    const writeOk = commit(() => {
+      db.version = 2;
+      db.babies = restored.babies;
+      db.activeBabyId = restored.activeBabyId;
+      db.profiles = restored.profiles;
+    });
+    if (!writeOk) return;
+    
+    try {
+      await mediaStore.clear();
+    } catch (error) {
+      console.warn('清理旧照片失败', error);
+    }
+    
     state.profileMode = 'edit';
     state.bandKey = currentBandKey();
+    storageReadFailure = false; // successful restore clears read-failure flag
     showToast('备份恢复成功');
     renderProfile();
   } catch (error) {
+    console.error('导入备份失败', error);
     showToast('备份文件无效');
   }
 }
