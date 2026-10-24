@@ -50,7 +50,7 @@ test('核心用户流程：建档、浏览、达标、记录与统计', async ()
   await import(`../www/main.js?smoke=${Date.now()}`);
   await tick();
 
-  assert.match(window.document.body.textContent, /陪孩子探索/);
+  assert.match(window.document.body.textContent, /为孩子找到起点/);
   click(window, '[data-action="open-profile"]');
   await tick();
   assert.match(window.document.body.textContent, /创建宝贝档案/);

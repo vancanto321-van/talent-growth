@@ -50,7 +50,7 @@ function click(window, selector) {
 
 test('成人默认进入方向探索，不需要先创建宝宝档案', () => {
   const { window, root, controller } = setup();
-  assert.match(root.textContent, /让喜欢的事，长成你的方向/);
+  assert.match(root.textContent, /陪孩子把一颗种子，照料成自己的花园/);
   assert.match(root.textContent, /18–59 岁/);
   assert.ok(root.querySelector('[data-talent-view="discover"]'));
   controller.destroy();
