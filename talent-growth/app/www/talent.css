@@ -29,7 +29,23 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-path-card h2 { font-family: Georgia, "Songti SC", "STSong", serif; font-size: 30px; font-weight: 500; margin: 12px 0; }
 .tg-path-card p { color: var(--tg-muted); line-height: 1.8; min-height: 58px; }
 .tg-path-card strong { color: var(--tg-coral-dark); display: block; margin-top: 24px; }
-.tg-landing-note { color: var(--tg-muted); font-size: 13px; margin: 28px 0 0; }
+.tg-paywall-backdrop { align-items: center; background: rgba(37,34,31,.38); display: flex; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 100; }
+.tg-paywall { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 28px; box-shadow: 0 30px 100px rgba(37,34,31,.24); max-width: 620px; padding: 34px; position: relative; width: 100%; }
+.tg-paywall h2 { font-family: Georgia, "Songti SC", serif; font-size: 34px; font-weight: 500; margin: 12px 0; }
+.tg-paywall > p { color: var(--tg-muted); line-height: 1.8; }
+.tg-paywall-close { background: transparent; color: var(--tg-muted); font-size: 26px; position: absolute; right: 18px; top: 14px; }
+.tg-paywall-value { background: #f5eee7; border-radius: 16px; display: grid; gap: 5px; margin: 20px 0; padding: 16px; }
+.tg-paywall-value span { color: var(--tg-muted); font-size: 13px; }
+.tg-price-grid { display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); }
+.tg-price-grid button { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 16px; color: var(--tg-ink); min-height: 105px; padding: 14px 10px; position: relative; text-align: left; }
+.tg-price-grid button:hover, .tg-price-grid button.featured { border-color: var(--tg-coral); }
+.tg-price-grid strong, .tg-price-grid small { display: block; }
+.tg-price-grid strong { font-size: 22px; }
+.tg-price-grid small { color: var(--tg-muted); line-height: 1.5; margin-top: 6px; }
+.tg-price-grid em { color: var(--tg-coral-dark); font-size: 11px; font-style: normal; position: absolute; right: 10px; top: 8px; }
+.tg-paywall-note { font-size: 12px; margin-bottom: 0; }
+.tg-path-secondary { color: var(--tg-coral-dark); display: block; font-size: 13px; margin-top: 12px; text-decoration: underline; }
+@media (max-width: 600px) { .tg-price-grid { grid-template-columns: 1fr; } .tg-paywall { padding: 28px 20px; } }
 .tg-landing-family { background: transparent; border: 0; color: var(--tg-coral-dark); font-size: 13px; margin-top: 12px; padding: 0; }
 .tg-landing-shell .tg-footer { border-top: 1px solid var(--tg-line); color: var(--tg-muted); margin-top: 48px; padding-top: 20px; }
 .tg-app { min-height: 100vh; width: min(1160px, calc(100% - 36px)); margin: 0 auto; padding: 26px 0 64px; font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
