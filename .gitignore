@@ -15,3 +15,4 @@ desktop/tauri/Cargo.lock
 
 desktop/tauri/release/*.dmg
 desktop/tauri/release/SHA256SUMS-parent.txt
+desktop/tauri/release/SHA256SUMS-unified.txt
