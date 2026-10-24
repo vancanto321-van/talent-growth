@@ -1529,7 +1529,9 @@ fetch('data.json')
   .then(data => {
     state.data = data;
     if (activeBaby()) unlockForAge(activeBaby().birthday, profileOf());
-    state.bandKey = currentBandKey();
+    // Write back only when the stored data was readable and normalization or
+    // migration actually changed it. Unreadable data is never overwritten.
+    if (!storageReadFailure && JSON.stringify(db) !== localStorage.getItem(STORAGE_KEY)) persist();
     render();
   })
   .catch(error => {
