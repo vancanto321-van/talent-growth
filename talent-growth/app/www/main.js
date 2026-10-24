@@ -22,7 +22,7 @@ const BAND_YEARS = {
 
 const state = {
   data: null,
-  tab: 'talent',
+  tab: localStorage.getItem(STORAGE_KEY) ? 'talent' : 'landing',
   bandKey: 'b0',
   bandSection: 'milestones',
   domainIndex: 0,
@@ -575,12 +575,13 @@ function navigation() {
 }
 
 function layout(content, options = {}) {
+  appRoot.className = 'legacy-growth-shell';
   cleanupObjectUrls();
   const baby = activeBaby();
   appRoot.innerHTML = `
     <header class="app-header">
-      <div><img class="brand-mark talent-mark" src="talent-mark.svg" alt="" /><strong>天赋生长 · 发现并培养自己的方向</strong></div>
-      <div class="header-actions"><button data-action="open-talent" class="text-button">方向探索</button><button data-action="open-profile" class="child-pill">${baby ? `${baby.gender === '女' ? '👧' : '👦'} ${escapeHtml(baby.name)}` : '设置宝贝'}</button></div>
+      <div><img class="brand-mark talent-mark" src="talent-mark.svg" alt="" /><strong>天赋生长 · 家庭成长培养</strong></div>
+      <div class="header-actions"><button data-action="open-talent" class="text-button">全年龄天赋培养</button><button data-action="open-profile" class="child-pill">${baby ? `${baby.gender === '女' ? '👧' : '👦'} ${escapeHtml(baby.name)}` : '创建孩子档案'}</button></div>
     </header>
     <main id="main-content" class="${options.wide ? 'wide' : ''}">${content}</main>
     ${options.hideNav ? '' : navigation()}
@@ -593,10 +594,10 @@ function needsProfile() {
   layout(`
     <section class="onboarding">
       <img src="app-icon.png" alt="孩子成长" />
-      <div class="eyebrow">欢迎来到孩子成长</div>
-      <h1>把陪伴变成看得见的成长</h1>
-      <p>按年龄获得里程碑、陪伴建议和安全提醒，轻松记录每一个小突破。</p>
-      <button class="primary large" data-action="open-profile">创建宝贝档案</button>
+      <div class="eyebrow">儿童成长天赋培养</div>
+      <h1>陪孩子把一颗种子，照料成自己的花园</h1>
+      <p>从年龄与当下状态开始，记录一次舒适的陪伴、孩子愿意继续或想停下的信号。</p>
+      <button class="primary large" data-action="open-profile">创建孩子培养档案</button>
       <small>所有数据默认保存在你的设备上</small>
     </section>`);
   return true;
@@ -995,7 +996,44 @@ async function hydratePhotos() {
   }
 }
 
+function renderLanding() {
+  talentController?.destroy?.();
+  talentController = null;
+  appRoot.className = 'talent-growth-shell';
+  appRoot.innerHTML = `
+    <div class="tg-shell tg-landing-shell">
+      <header class="tg-header tg-landing-header"><a class="tg-brand" href="#">天赋生长 <span>家庭成长培养</span></a></header>
+      <main class="tg-landing-main">
+        <section class="tg-landing-hero">
+          <span class="tg-kicker">每个人都是自己天赋的园丁</span>
+          <h1>为不同的花园，<em>找到合适的照料方式</em></h1>
+          <p>从一次真实的小实验开始，不评分、不比较，让孩子和大人都能在自己的节奏里发现下一步。</p>
+        </section>
+        <section class="tg-path-grid" aria-label="选择培养方向">
+          <button class="tg-path-card tg-path-parent" data-action="open-parent-growth">
+            <span class="tg-path-icon" aria-hidden="true">🌱</span>
+            <span class="tg-kicker">给家长与家庭</span>
+            <h2>儿童成长天赋培养</h2>
+            <p>从孩子的年龄、兴趣线索和当下状态开始，记录愿意继续、想停下和作品变化。</p>
+            <strong>为孩子找到起点 →</strong><span class="tg-path-secondary" data-action="open-profile">创建孩子培养档案</span>
+          </button>
+          <button class="tg-path-card tg-path-all" data-action="open-all-growth">
+            <span class="tg-path-icon" aria-hidden="true">🌿</span>
+            <span class="tg-kicker">给每一个人</span>
+            <h2>全年龄天赋培养</h2>
+            <p>从幼儿、青少年到成人和晚年，选择一件今天能开始的小事，培育自己的方向。</p>
+            <strong>进入全年龄探索 →</strong>
+          </button>
+        </section>
+        <p class="tg-landing-note">天赋没有固定答案，培养也不必一次完成。先选择一个适合当下的入口。</p>
+        <button class="tg-landing-family" data-action="open-family-space">已有家庭档案？进入家庭空间 →</button>
+      </main>
+      <footer class="tg-footer">把一次真实尝试，留给下一步。</footer>
+    </div>`;
+}
+
 function render() {
+  if (state.tab === 'landing') return renderLanding();
   if (state.tab === 'talent') return renderTalent();
   if (!state.data) return;
   if (state.legalPage === 'privacy') return renderPrivacy();
@@ -1008,6 +1046,7 @@ function render() {
 }
 
 function renderTalent() {
+  appRoot.className = 'talent-growth-shell';
   talentController?.destroy?.();
   talentController = mountTalent({
     root: appRoot,
@@ -1377,8 +1416,20 @@ appRoot.addEventListener('click', async event => {
     return;
   }
 
+  const landingTalentView = event.target.closest('[data-talent-view]')?.dataset.talentView;
+  if (landingTalentView === 'family' && state.tab === 'landing') {
+    state.tab = 'talent';
+    renderTalent();
+    appRoot.querySelector('[data-talent-view="family"]')?.click();
+    return;
+  }
+
   const action = event.target.closest('[data-action]')?.dataset.action;
   if (!action) return;
+  if (action === 'open-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
+  if (action === 'open-family-space') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); appRoot.querySelector('[data-talent-action="open-family"]')?.click(); return; }
+  if (action === 'open-parent-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
+  if (action === 'open-all-growth') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); scrollPageTop(); return; }
   if (action === 'open-band') {
     const key = event.target.closest('[data-band-key]')?.dataset.bandKey;
     if (!key) return;
