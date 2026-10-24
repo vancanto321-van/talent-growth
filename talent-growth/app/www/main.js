@@ -1326,9 +1326,16 @@ appRoot.addEventListener('click', async event => {
     if (!confirm('确定删除这条成长记录吗？')) return;
     const profile = profileOf();
     const record = profile.records.find(item => item.id === deleteRecordButton.dataset.deleteRecord);
-    for (const id of record?.photos || []) await mediaStore.remove(id);
-    profile.records = profile.records.filter(item => item.id !== deleteRecordButton.dataset.deleteRecord);
-    persist();
+    const photoIds = record?.photos || [];
+    const writeOk = commit(() => {
+      profile.records = profile.records.filter(item => item.id !== deleteRecordButton.dataset.deleteRecord);
+    });
+    if (!writeOk) return;
+    try {
+      for (const id of photoIds) await mediaStore.remove(id);
+    } catch (error) {
+      console.warn('删除照片失败', error);
+    }
     renderRecord();
     return;
   }
@@ -1410,12 +1417,19 @@ appRoot.addEventListener('click', async event => {
     const baby = activeBaby();
     if (!baby || !confirm(`确定删除 ${baby.name} 的全部档案、进度和记录吗？`)) return;
     const profile = profileOf();
-    for (const record of profile.records) for (const id of record.photos || []) await mediaStore.remove(id);
-    db.babies = db.babies.filter(item => item.id !== baby.id);
-    delete db.profiles[baby.id];
-    db.activeBabyId = db.babies[0]?.id || '';
-    state.bandKey = currentBandKey();
-    persist();
+    const photoIds = profile.records.flatMap(r => r.photos || []);
+    const writeOk = commit(() => {
+      db.babies = db.babies.filter(item => item.id !== baby.id);
+      delete db.profiles[baby.id];
+      db.activeBabyId = db.babies[0]?.id || '';
+      state.bandKey = currentBandKey();
+    });
+    if (!writeOk) return;
+    try {
+      for (const id of photoIds) await mediaStore.remove(id);
+    } catch (error) {
+      console.warn('清理照片失败', error);
+    }
     renderProfile();
   }
 });
