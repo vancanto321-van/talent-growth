@@ -64,6 +64,16 @@ cargo tauri build --bundles appimage  # Linux
 
 当前未完成 Windows 构建：本机是 Apple Silicon macOS，Windows NSIS 需要 Windows Runner 或 CI 构建机。
 
+## 家长服务版预览包
+
+当前已生成面向 OPC 家庭服务演示的 Apple Silicon macOS 预览包：
+
+```text
+天赋花园_0.1.0_macos_aarch64_parent_preview_unsigned.dmg
+```
+
+该包包含家长服务入口文案、孩子档案入口、年龄分层探索和本地记录能力。它是未签名、未公证的技术预览，不是正式商业发行版。
+
 ## 发布前还需要完成
 - Windows 代码签名与 SmartScreen 验证
 - 不同系统的安装、升级、卸载和本地数据保留测试
