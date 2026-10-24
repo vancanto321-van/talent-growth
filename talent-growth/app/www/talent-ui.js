@@ -444,7 +444,9 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
   }
   async function exportBackup() {
     const blob = new Blob([JSON.stringify(store.exportSnapshot(), null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `方向实验室备份-${todayKey()}.json`; link.click(); URL.revokeObjectURL(url);
+    const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `方向实验室备份-${todayKey()}.json`; link.click();
+    // Delay revoke so iOS Safari / WebView can finish the download.
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   async function importBackup(file) {
     try {

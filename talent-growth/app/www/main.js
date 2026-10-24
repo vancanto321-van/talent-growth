@@ -1147,7 +1147,8 @@ async function exportBackup() {
   link.href = url;
   link.download = `孩子成长备份-${today()}.json`;
   link.click();
-  URL.revokeObjectURL(url);
+  // Delay revoke for iOS Safari download to complete
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function validateBackup(value) {
