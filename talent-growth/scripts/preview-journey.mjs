@@ -15,5 +15,5 @@ http.createServer(async(req,res)=>{
   let relative;try{relative=decodeURIComponent(req.url.split('?')[0].replace(/^\/growth\//,''));}catch{res.writeHead(400).end();return;}
   const file=path.resolve(root,relative||'index.html');
   if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
-  try {const body=await fs.readFile(file);res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'}).end(body);}catch{res.writeHead(404).end();}
+  try {let body=await fs.readFile(file);if(path.extname(file)==='.html')body=body.toString('utf8').replace('</head>','<meta name="growth-runtime" content="local" /></head>');res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'}).end(body);}catch{res.writeHead(404).end();}
 }).listen(port,'127.0.0.1',()=>process.stdout.write(`Journey preview: http://127.0.0.1:${port}/growth/\n`));

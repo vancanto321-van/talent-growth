@@ -1,0 +1,12 @@
+{
+  "name": "talent-growth-local",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/start.mjs",
+    "sync:data": "node talent-growth/app/scripts/sync-data.mjs",
+    "build:web": "node talent-growth/scripts/package-web.mjs"
+  }
+}
