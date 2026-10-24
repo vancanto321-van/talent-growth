@@ -52,9 +52,19 @@ cargo tauri build --bundles appimage  # Linux
 
 构建前会运行 `app/scripts/sync-data.mjs`，确保桌面版使用当前 Web 数据。
 
-## 发布前还需要完成
+## 当前本机验证结果
 
-- macOS Developer ID 签名与 notarization
+在 Apple Silicon macOS 上已安装 Rust 1.99.1、Cargo 1.99.1 和 Tauri CLI 2.12.4，并成功完成：
+
+- Tauri Rust 二进制编译
+- macOS `.app` bundle 生成
+- 产物架构检查为 `arm64`
+
+本次 DMG bundler 已生成临时磁盘映像，但在当前环境中未正常结束，因此没有把临时 DMG 当作正式交付物。需要后续在完整 Xcode/稳定磁盘映像环境中重新执行 `cargo tauri build --bundles dmg`。
+
+当前未完成 Windows 构建：本机是 Apple Silicon macOS，Windows NSIS 需要 Windows Runner 或 CI 构建机。
+
+## 发布前还需要完成
 - Windows 代码签名与 SmartScreen 验证
 - 不同系统的安装、升级、卸载和本地数据保留测试
 - 备份文件路径、权限和导入恢复测试

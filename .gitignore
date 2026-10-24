@@ -8,3 +8,7 @@ node_modules/
 __pycache__/
 .venv/
 *.pyc
+desktop/tauri/target/
+desktop/tauri/gen/
+desktop/tauri/icons/
+desktop/tauri/Cargo.lock
