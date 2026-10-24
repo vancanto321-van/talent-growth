@@ -201,7 +201,22 @@ function loadDatabase() {
     storageReadFailure = true;
     return { version: 2, babies: [], activeBabyId: '', profiles: {} };
   }
-  if (raw?.version === 2 && Array.isArray(raw.babies) && raw.profiles) return normalizeDatabase(raw);
+  if (raw?.version === 2 && Array.isArray(raw.babies) && raw.profiles) {
+    const normalized = normalizeDatabase(raw);
+    // If normalization changed the data (e.g., sanitized malicious IDs),
+    // write it back once. This protects against XSS but doesn't overwrite
+    // on read failure or empty state.
+    const before = JSON.stringify(raw);
+    const after = JSON.stringify(normalized);
+    if (before !== after) {
+      try {
+        localStorage.setItem(STORAGE_KEY, after);
+      } catch (error) {
+        console.warn('规范化后写回失败', error);
+      }
+    }
+    return normalized;
+  }
   if (storedText !== null) {
     // Present but in an unexpected shape: keep it rather than overwrite it.
     preserveUnreadableData(STORAGE_KEY, storedText);
