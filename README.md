@@ -20,6 +20,8 @@
 
 展示版与参赛准备：见 [`talent-growth/docs/Web展示版说明.md`](talent-growth/docs/Web展示版说明.md) 和 [`talent-growth/docs/参赛演示流程.md`](talent-growth/docs/参赛演示流程.md)。网页支持安装为 PWA；首次在线打开并缓存后，基础页面可离线使用。当前阶段不提供 DMG 或 Windows 安装包。
 
+桌面版已开始准备，采用 Tauri 2 复用 Web 前端；构建配置和平台发布前检查见 [`desktop/README.md`](desktop/README.md)。当前不签名、不公证、不发布桌面安装包。
+
 也可以双击根目录的 `start.bat`（Windows）或 `start.command`（macOS）。macOS 若不允许双击脚本，直接使用上面的终端命令。Linux 使用 `npm start`。程序会同时启动网页与本机账号备份服务。
 
 使用时保留终端窗口；按 **Ctrl+C** 停止两个服务。下次运行相同命令即可继续使用。基础活动和记录功能不依赖互联网；外部资料和作品链接需要联网。
