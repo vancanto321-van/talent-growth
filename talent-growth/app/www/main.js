@@ -254,6 +254,7 @@ const db = loadDatabase();
 function persist() {
   if (storageReadFailure) {
     console.warn('读取失败后禁止自动写入，防止覆盖原数据');
+    showToast('本地档案读取异常，已暂停保存以保护原数据，请先恢复备份');
     return false;
   }
   try {
@@ -1153,7 +1154,12 @@ async function exportBackup() {
   const text = JSON.stringify({ ...backup, exportedAt: Date.now(), photosIncluded: false });
   const share = nativePlugin('Share');
   if (window.Capacitor?.isNativePlatform?.() && share) {
-    await share.share({ title: '孩子成长数据备份', text, dialogTitle: '保存或发送备份' });
+    try {
+      await share.share({ title: '孩子成长数据备份', text, dialogTitle: '保存或发送备份' });
+    } catch (error) {
+      // User cancelled the share sheet or the plugin failed; data is unchanged.
+      console.warn('分享备份未完成', error);
+    }
     return;
   }
   const blob = new Blob([text], { type: 'application/json' });
@@ -1366,7 +1372,7 @@ appRoot.addEventListener('click', async event => {
   if (removePhotoButton) {
     const id = removePhotoButton.dataset.removePhoto;
     state.draftPhotoIds = state.draftPhotoIds.filter(item => item !== id);
-    await mediaStore.remove(id);
+    try { await mediaStore.remove(id); } catch (error) { console.warn('移除草稿照片失败', error); }
     renderRecord();
     return;
   }
