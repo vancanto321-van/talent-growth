@@ -12,3 +12,5 @@ desktop/tauri/target/
 desktop/tauri/gen/
 desktop/tauri/icons/
 desktop/tauri/Cargo.lock
+
+desktop/tauri/release/*.dmg
