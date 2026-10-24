@@ -251,6 +251,23 @@ function persist() {
   }
 }
 
+// Modify db in memory and persist; rollback the entire db on failure.
+// Returns true if the change was persisted, false if rolled back.
+function commit(mutator) {
+  const snapshot = JSON.parse(JSON.stringify(db));
+  try {
+    mutator();
+    if (persist()) return true;
+    Object.assign(db, snapshot);
+    return false;
+  } catch (error) {
+    console.error('commit 失败', error);
+    Object.assign(db, snapshot);
+    showToast('保存失败，已回滚');
+    return false;
+  }
+}
+
 function activeBaby() {
   return db.babies.find(baby => baby.id === db.activeBabyId) || null;
 }
@@ -1062,15 +1079,17 @@ async function saveRecord() {
     return;
   }
   const milestone = findMilestone(milestoneId);
-  profileOf().records.unshift({
+  const record = {
     id: uid('record'),
     text,
     date: new Date(`${dateValue}T12:00:00`).getTime(),
     photos: [...state.draftPhotoIds],
     milestoneId,
     milestoneTitle: milestone?.title || ''
-  });
-  persist();
+  };
+  if (!commit(() => profileOf().records.unshift(record))) {
+    return; // keep draft if persist failed
+  }
   state.composerOpen = false;
   state.draftPhotoIds = [];
   state.draftText = '';
@@ -1091,16 +1110,18 @@ function saveProfile() {
   if (state.profileMode === 'new' || !activeBaby()) {
     if (db.babies.length >= MAX_BABIES) return showToast(`最多可创建 ${MAX_BABIES} 个宝宝档案`);
     const id = uid('baby');
-    db.babies.push({ id, name, birthday, gender, createdAt: Date.now() });
-    db.activeBabyId = id;
-    db.profiles[id] = emptyProfile();
+    const writeOk = commit(() => {
+      db.babies.push({ id, name, birthday, gender, createdAt: Date.now() });
+      db.activeBabyId = id;
+      db.profiles[id] = emptyProfile();
+    });
+    if (!writeOk) return;
   } else {
-    Object.assign(activeBaby(), { name, birthday, gender });
+    if (!commit(() => Object.assign(activeBaby(), { name, birthday, gender }))) return;
   }
   unlockForAge(birthday, profileOf());
   state.profileMode = 'edit';
   state.bandKey = currentBandKey();
-  persist();
   showToast('档案已保存');
   renderProfile();
 }
@@ -1203,9 +1224,9 @@ function toggleMilestoneStatus(status) {
     if (progress.achieved >= Math.ceil(progress.total * 0.5)) {
       const next = bands().find(band => band.order === bandOf(item.bandKey).order + 1);
       if (next && !profile.unlocked.includes(next.key)) {
-        profile.unlocked.push(next.key);
-        persist();
-        showToast(`新阶段已解锁：${next.label}`);
+        if (commit(() => profile.unlocked.push(next.key))) {
+          showToast(`新阶段已解锁：${next.label}`);
+        }
       } else showToast('已标记达标 ＋50 经验');
     } else showToast('已标记达标 ＋50 经验');
   } else if (nextStatus === 'observed') showToast('已标记观察 ＋10 经验');
@@ -1292,10 +1313,11 @@ appRoot.addEventListener('click', async event => {
   }
   const babyButton = event.target.closest('[data-baby]');
   if (babyButton) {
-    db.activeBabyId = babyButton.dataset.baby;
-    state.profileMode = 'edit';
-    state.bandKey = currentBandKey();
-    persist();
+    if (!commit(() => {
+      db.activeBabyId = babyButton.dataset.baby;
+      state.profileMode = 'edit';
+      state.bandKey = currentBandKey();
+    })) return;
     renderProfile();
     return;
   }
@@ -1363,9 +1385,9 @@ appRoot.addEventListener('click', async event => {
   if (action === 'checkin') {
     const profile = profileOf();
     if (!profile.checkins.includes(today())) {
-      profile.checkins.push(today());
-      persist();
-      showToast('今日陪伴打卡成功 ＋2 经验');
+      if (commit(() => profile.checkins.push(today()))) {
+        showToast('今日陪伴打卡成功 ＋2 经验');
+      }
     }
     renderHome();
   }
@@ -1450,7 +1472,6 @@ fetch('data.json')
     state.data = data;
     if (activeBaby()) unlockForAge(activeBaby().birthday, profileOf());
     state.bandKey = currentBandKey();
-    persist();
     render();
   })
   .catch(error => {
