@@ -9,7 +9,17 @@ const require = createRequire(import.meta.url);
 const catalog = require('../../data/talent-catalog.js');
 
 test('全龄任务内容和发布数据一致，覆盖每个领域和年龄且有明确成果', () => {
-  assert.deepEqual(generated, catalog);
+  // generated = catalog + learningTasks, so it should be a superset
+  assert.equal(generated.version, catalog.version);
+  assert.deepEqual(generated.ageGroups, catalog.ageGroups);
+  assert.deepEqual(generated.directions, catalog.directions);
+  assert.deepEqual(generated.combinations, catalog.combinations);
+  assert.deepEqual(generated.sources, catalog.sources);
+  assert.ok(generated.tasks.length >= catalog.tasks.length);
+  // All catalog tasks should be in generated
+  for (const task of catalog.tasks) {
+    assert.ok(generated.tasks.some(t => t.id === task.id), `Missing task: ${task.id}`);
+  }
   const directionIds = new Set(catalog.directions.map(item => item.id));
   const ages = catalog.ageGroups.map(item => item.id);
   assert.deepEqual(ages, ['early', 'preschool', 'child', 'teen', 'adult', 'later']);
