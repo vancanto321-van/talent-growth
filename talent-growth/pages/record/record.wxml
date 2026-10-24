@@ -1,0 +1,75 @@
+<view class="page">
+  <view class="topbar row-between">
+    <view class="title">成长记录</view>
+    <view class="row" style="gap:16rpx">
+      <view class="add-btn ghost" bindtap="openCheckin">📅 打卡</view>
+      <view class="add-btn" bindtap="openForm">＋ 随手记</view>
+    </view>
+  </view>
+
+  <view wx:if="{{checkinStreak > 0}}" class="ck-strip">
+    🔥 已连续打卡 {{checkinStreak}} 天<text wx:if="{{todayChecked}}" class="muted"> · 今日已打卡 ✓</text>
+  </view>
+
+  <view wx:if="{{!records.length}}" class="empty">还没有记录，点右上角「随手记」或「打卡」开始吧 📝</view>
+
+  <view class="timeline">
+    <block wx:for="{{groups}}" wx:key="day" wx:for-item="g">
+      <view class="tl-day">{{g.dateText}}<text wx:if="{{g.items.length}}" class="muted"> · {{g.items.length}} 条</text></view>
+      <view wx:for="{{g.items}}" wx:key="id" wx:for-item="item" class="tl-item">
+        <view class="tl-dot">●</view>
+        <view class="card tl-card">
+          <view class="row-between">
+            <text class="tl-date">{{item.timeText}}</text>
+            <text class="tl-del" data-id="{{item.id}}" bindtap="del">删除</text>
+          </view>
+          <view wx:if="{{item.text}}" class="tl-text">{{item.text}}</view>
+          <view wx:if="{{item.photos.length}}" class="tl-photos">
+            <image wx:for="{{item.photos}}" wx:for-item="ph" wx:key="*this" class="tl-photo"
+              src="{{ph}}" data-src="{{ph}}" data-rid="{{item._i}}" bindtap="previewItemPhoto" mode="aspectFill"></image>
+          </view>
+          <view wx:if="{{item.milestoneTitle}}" class="tl-ms">🏅 {{item.milestoneTitle}} <text wx:if="{{item.bandLabel}}" class="muted">· {{item.bandLabel}}</text></view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 每日打卡面板 -->
+  <view wx:if="{{showCheckin}}" class="mask" bindtap="closeCheckin">
+    <view class="form" catchtap="noop">
+      <view class="row-between">
+        <text class="title">今日打卡 · {{checkinDate}}</text>
+        <text class="muted" bindtap="closeCheckin">关闭</text>
+      </view>
+      <view class="ck-tip">勾选今天观察/陪伴到的里程碑（可多选，选中即记入「已观察」）</view>
+      <scroll-view scroll-y class="ck-list">
+        <view wx:for="{{checkinItems}}" wx:key="id" class="ck-item {{checkedMap[item.id]?'on':''}}" data-id="{{item.id}}" bindtap="toggleCheckinItem">
+          <text class="ck-box">{{checkedMap[item.id]?'✓':''}}</text>
+          <text class="ck-title">{{item.title}}</text>
+          <text class="ck-domain muted">{{item.domain}}</text>
+        </view>
+      </scroll-view>
+      <textarea class="form-input" placeholder="今天还想记点什么？(可选)" value="{{checkinNote}}" bindinput="onCheckinNote" auto-height style="margin-top:16rpx"></textarea>
+      <button class="btn-primary" bindtap="saveCheckin" style="margin-top:20rpx">完成打卡</button>
+    </view>
+  </view>
+
+  <!-- 记录表单 -->
+  <view wx:if="{{showForm}}" class="mask" bindtap="closeForm">
+    <view class="form" catchtap="noop">
+      <view class="row-between">
+        <text class="title">随手记一笔</text>
+        <text class="muted" bindtap="closeForm">取消</text>
+      </view>
+      <textarea class="form-input" placeholder="今天宝贝做了什么有趣的事？说了什么可爱的话？" value="{{text}}" bindinput="onTextInput" auto-height></textarea>
+      <view class="form-photos">
+        <view wx:for="{{photos}}" wx:key="*this" class="fp-wrap">
+          <image class="fp" src="{{item}}" data-src="{{item}}" bindtap="previewPhoto" mode="aspectFill"></image>
+          <text class="fp-remove" data-i="{{index}}" bindtap="removePhoto">×</text>
+        </view>
+        <view wx:if="{{photos.length!==9}}" class="fp-add" bindtap="choosePhoto">＋</view>
+      </view>
+      <button class="btn-primary" bindtap="save">保存</button>
+    </view>
+  </view>
+</view>

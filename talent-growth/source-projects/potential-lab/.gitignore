@@ -1,0 +1,27 @@
+# Python
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
+backend/potential_lab.db
+backend/.env
+
+# Node / uni-app
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# macOS
+.DS_Store
+
+# 日志与临时文件
+*.log
+/tmp/
+backend/evaluation/reports/
+
+# 测试产物
+.coverage
+htmlcov/
+
+# 走查驱动（本机工具）
+tools/mpdriver/node_modules/
+tools/mpdriver/shots/

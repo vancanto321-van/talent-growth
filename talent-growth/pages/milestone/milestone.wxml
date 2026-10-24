@@ -1,0 +1,81 @@
+<view class="page" wx:if="{{m}}">
+  <view class="card head">
+    <view class="m-domain">{{m.domain}}</view>
+    <view class="m-title">{{m.title}}</view>
+    <view class="m-age muted">{{m.age}} · {{m.bandLabel}}</view>
+  </view>
+
+  <view class="card battery-card">
+    <view class="battery-head"><view><view class="section-h battery-title">这件小事，充到几格啦？</view><view class="muted">每个方向都可以按自己的节奏点亮</view></view><view class="battery-percent">{{batteryPercent}}%</view></view>
+    <view class="battery-shell"><view class="battery-level" style="width:{{batteryPercent}}%"><view class="battery-shine"></view></view></view>
+    <view class="battery-labels"><text>刚刚开始</text><text>{{batteryText}}</text></view>
+  </view>
+
+  <view class="card directions-card">
+    <view class="section-h">几个可以尝试的方向</view>
+    <view class="direction-item" wx:for="{{directions}}" wx:for-item="direction" wx:key="id">
+      <view class="direction-row"><view class="direction-name">{{index+1}}. {{direction.title}}</view><view class="direction-value">{{direction.percent}}%</view></view>
+      <view class="direction-battery"><view class="direction-battery-fill" style="width:{{direction.percent}}%"></view></view>
+      <view class="direction-stages"><button wx:for="{{directionStages}}" wx:for-item="stage" wx:key="level" class="stage-button {{direction.level===stage.level?'stage-selected':''}}" data-id="{{direction.id}}" data-level="{{stage.level}}" bindtap="setDirectionStage">{{stage.label}}</button></view>
+    </view>
+    <view class="direction-foot">已完成 {{completedDirections}} / {{directions.length}} 个方向。总电量是各方向的平均进度，按孩子的节奏慢慢来。</view>
+  </view>
+
+  <view class="card intro-card">
+    <view class="intro-toggle" bindtap="toggleIntro"><view><view class="section-h">关于这件小事</view><view class="muted">简介、引导方法与活动灵感</view></view><text>{{showIntro?'收起 −':'点开看看 +'}}</text></view>
+    <view wx:if="{{showIntro}}">
+    <view class="section-h">为什么可以试试</view>
+    <view>{{m.func}}</view>
+    <view class="section-h">达成标准</view>
+    <view>{{m.std}}</view>
+    <view class="section-h">怎么引导</view>
+    <view wx:for="{{m.guide}}" wx:key="*this" class="li">{{index+1}}. {{item}}</view>
+    <view class="section-h">做完整</view>
+    <view wx:for="{{m.complete}}" wx:key="*this" class="li">· {{item}}</view>
+
+    <view wx:if="{{m.perf.length}}" class="section-h">孩子可能的表现与解读</view>
+    <view wx:if="{{m.perf.length}}" class="perf-table">
+      <view class="perf-head row">
+        <text class="p1">表现</text><text class="p2">体现什么</text><text class="p3">下一步</text>
+      </view>
+      <view wx:for="{{m.perf}}" wx:key="show" class="perf-row">
+        <text class="p1 b">{{item.show}}</text>
+        <text class="p2">{{item.meaning}}</text>
+        <text class="p3 muted">{{item.next}}</text>
+      </view>
+    </view>
+
+    <view class="section-h">达标标准</view>
+    <view>{{m.passs}}</view>
+    <view class="section-h">多个里程碑达标后的后续方向</view>
+    <view>{{m.nxt}}</view>
+    <view wx:if="{{m.acts.length}}" class="section-h">相关活动推荐</view>
+    <view wx:for="{{m.acts}}" wx:key="*this" class="li">· {{item}}</view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view wx:if="{{showNote}}" class="card">
+    <view class="section-h">观察备注</view>
+    <textarea class="note-input" placeholder="记录这次观察的细节、日期、趣事…" value="{{noteText}}" bindinput="onNoteInput" auto-height></textarea>
+    <button class="btn-primary" bindtap="saveNote" style="margin-top:16rpx">保存备注</button>
+  </view>
+
+  <!-- 操作栏 -->
+  <view class="actions">
+    <view class="act {{status==='observed'?'on-obs':''}}" data-s="observed" bindtap="toggleStatus">
+      <text class="act-emoji">{{status==='observed'?'👁️':'👀'}}</text>
+      <text>{{status==='observed'?'已观察':'标记观察'}}</text>
+    </view>
+    <view class="act {{status==='achieved'?'on-ach':''}}" data-s="achieved" bindtap="toggleStatus">
+      <text class="act-emoji">{{status==='achieved'?'✅':'⭐'}}</text>
+      <text>{{status==='achieved'?'已达标':'标记达标'}}</text>
+    </view>
+    <view class="act" bindtap="openNote">
+      <text class="act-emoji">🗒️</text><text>备注</text>
+    </view>
+    <view class="act" bindtap="recordMoment">
+      <text class="act-emoji">📸</text><text>记录</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+{
+  "name": "child-growth-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync:data": "node scripts/sync-data.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "serve": "npx serve www",
+    "cap:sync": "npx cap sync",
+    "ios:prepare": "npm run sync:data && npm test && npx cap sync ios",
+    "ios:check": "node scripts/check-ios.mjs",
+    "ios:build": "bash scripts/build-ios.sh",
+    "ios": "npx cap open ios",
+    "android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/camera": "^7.0.0",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/ios": "^7.4.0",
+    "@capacitor/share": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.0",
+    "fake-indexeddb": "^6.2.5",
+    "happy-dom": "^20.11.2",
+    "serve": "^14.2.4"
+  }
+}

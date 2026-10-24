@@ -1,0 +1,119 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "天赋实验室 · 今日"
+      }
+    },
+    {
+      "path": "pages/welcome/welcome",
+      "style": {
+        "navigationBarTitleText": "欢迎",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/explore/explore",
+      "style": {
+        "navigationBarTitleText": "天赋实验室 · 探测"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "天赋实验室 · 画像"
+      }
+    },
+    {
+      "path": "pages/plan/plan",
+      "style": {
+        "navigationBarTitleText": "天赋实验室 · 计划"
+      }
+    },
+    {
+      "path": "pages/task/task",
+      "style": {
+        "navigationBarTitleText": "任务详情"
+      }
+    },
+    {
+      "path": "pages/assessment/assessment",
+      "style": {
+        "navigationBarTitleText": "行业潜力测评"
+      }
+    },
+    {
+      "path": "pages/assessment-result/assessment-result",
+      "style": {
+        "navigationBarTitleText": "你的行业潜力画像"
+      }
+    },
+    {
+      "path": "pages/industry/industry",
+      "style": {
+        "navigationBarTitleText": "行业详情"
+      }
+    },
+    {
+      "path": "pages/child-assessment/child-assessment",
+      "style": {
+        "navigationBarTitleText": "儿童潜能观察问卷"
+      }
+    },
+    {
+      "path": "pages/child-result/child-result",
+      "style": {
+        "navigationBarTitleText": "孩子的潜能报告"
+      }
+    },
+    {
+      "path": "pages/cycle-report/cycle-report",
+      "style": {
+        "navigationBarTitleText": "结业报告"
+      }
+    },
+    {
+      "path": "pages/methodology/methodology",
+      "style": {
+        "navigationBarTitleText": "测评方法论"
+      }
+    },
+    {
+      "path": "pages/science-boundary/science-boundary",
+      "style": {
+        "navigationBarTitleText": "科学边界"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "天赋实验室",
+    "navigationBarBackgroundColor": "#FFFDF6",
+    "backgroundColor": "#FFFDF6"
+  },
+  "tabBar": {
+    "color": "#9AA0B4",
+    "selectedColor": "#191B2B",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "今日"
+      },
+      {
+        "pagePath": "pages/explore/explore",
+        "text": "探测"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "画像"
+      },
+      {
+        "pagePath": "pages/plan/plan",
+        "text": "计划"
+      }
+    ]
+  }
+}

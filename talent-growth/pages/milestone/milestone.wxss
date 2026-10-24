@@ -1,0 +1,59 @@
+.page { padding-bottom: 160rpx; }
+.head { text-align: center; }
+.battery-card { background:linear-gradient(145deg,#FFF9F1,#FFFFFF); }
+.battery-head { display:flex; justify-content:space-between; align-items:center; }
+.battery-title { margin:0 0 4rpx; }
+.battery-percent { font-size:38rpx; font-weight:800; color:#E96F50; }
+.battery-shell { height:30rpx; margin-top:22rpx; padding:4rpx; border:3rpx solid #5F5148; border-radius:12rpx; position:relative; background:#F4EEE8; }
+.battery-shell:after { content:''; position:absolute; right:-11rpx; top:7rpx; width:7rpx; height:12rpx; border-radius:0 5rpx 5rpx 0; background:#5F5148; }
+.battery-level { height:100%; border-radius:5rpx; background:linear-gradient(90deg,#F9C86D,#EF7955); transition:width .45s cubic-bezier(.2,.8,.2,1); overflow:hidden; }
+.battery-shine { width:100%; height:100%; background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.42),transparent 70%); }
+.battery-labels { display:flex; justify-content:space-between; margin-top:8rpx; color:#A89B90; font-size:20rpx; }
+.directions-card { padding-bottom:24rpx; }
+.direction-item { padding:20rpx 0; border-bottom:1rpx solid #F4ECE5; }
+.direction-row { display:flex; justify-content:space-between; align-items:center; }
+.direction-name { font-weight:650; font-size:27rpx; }
+.direction-mark { color:#C48668; background:#FFF0E7; padding:7rpx 18rpx; border-radius:24rpx; font-size:21rpx; }
+.direction-mark.direction-on { color:#478066; background:#E8F4E8; }
+.direction-desc { color:#877D75; font-size:23rpx; line-height:1.55; margin-top:8rpx; }
+.direction-track { margin-top:12rpx; height:8rpx; border-radius:8rpx; background:#F1ECE7; overflow:hidden; }
+.direction-track view { height:100%; border-radius:8rpx; background:linear-gradient(90deg,#F9C86D,#EF7955); transition:width .35s; }
+.direction-foot { color:#A69A91; font-size:21rpx; line-height:1.5; padding-top:18rpx; }
+.direction-name { flex:1; padding-right:20rpx; font-weight:600; font-size:25rpx; line-height:1.6; }
+.direction-value { color:#B07857; font-size:24rpx; font-weight:700; flex-shrink:0; }
+.direction-battery { position:relative; height:30rpx; border:2rpx solid #C1ADA0; border-radius:8rpx; padding:4rpx; margin:16rpx 4rpx 18rpx 0; background:#FAF5EF; }
+.direction-battery:after { content:''; width:6rpx; height:12rpx; background:#C1ADA0; position:absolute; right:-7rpx; top:7rpx; border-radius:0 3rpx 3rpx 0; }
+.direction-battery-fill { height:100%; background:linear-gradient(90deg,#F9C86D,#EF7955); border-radius:3rpx; transition:width .4s ease; }
+.direction-stages { display:flex; gap:8rpx; }
+.stage-button { flex:1; margin:0; padding:12rpx 2rpx; background:#FAF4EE; color:#A08777; line-height:1.3; font-size:20rpx; border-radius:12rpx; }
+.stage-button:after { border:none; }
+.stage-selected { color:#FFF; background:#E98365; }
+.intro-toggle { display:flex; align-items:center; justify-content:space-between; }
+.intro-toggle .section-h { margin:0 0 4rpx; }
+.intro-toggle > text { font-size:23rpx; color:#CA795E; }
+.m-domain { font-size: 22rpx; color: #FF7043; background: #FFE8DF; display: inline-block; padding: 4rpx 20rpx; border-radius: 20rpx; }
+.m-title { font-size: 40rpx; font-weight: 700; margin: 16rpx 0 8rpx; }
+.m-age { margin-top: 8rpx; }
+.li { padding: 6rpx 0; line-height: 1.7; }
+
+.perf-table { border: 1rpx solid #F0E6E0; border-radius: 16rpx; overflow: hidden; }
+.perf-head { background: #FFF3E0; }
+.perf-head text, .perf-row text { padding: 14rpx; font-size: 22rpx; }
+.p1 { width: 130rpx; flex-shrink: 0; }
+.p2 { flex: 1; }
+.p3 { width: 180rpx; flex-shrink: 0; }
+.perf-row { border-top: 1rpx solid #F5EDE7; align-items: flex-start; }
+.b { font-weight: 600; }
+
+.note-input { width: 100%; min-height: 120rpx; background: #FFF8F5; border-radius: 16rpx; padding: 20rpx; font-size: 28rpx; }
+
+.actions {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: flex; background: #fff; padding: 16rpx 12rpx; padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.06);
+}
+.act { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 12rpx 0; }
+.act-emoji { font-size: 40rpx; margin-bottom: 6rpx; }
+.act text { font-size: 22rpx; color: #7A7670; }
+.act.on-obs text { color: #FF9800; }
+.act.on-ach text { color: #4CAF50; }

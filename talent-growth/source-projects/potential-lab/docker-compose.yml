@@ -1,0 +1,39 @@
+# 天赋实验室：后端 API + 前端 H5 一键容器化
+# 用法：docker compose up -d --build
+# 访问：http://localhost:8080（H5）；API 经 nginx 同源反代 /api → backend
+#
+# 端口说明：宿主 8000 被其他项目占用，后端映射到宿主 8001；
+# 前端 H5 构建为同源相对路径，浏览器只访问 8080。
+#
+# 生产提示（当前为开发默认）：
+#   ALLOW_MOCK_AUTH=false + ALLOW_MOCK_PAY=false + SECRET_KEY=强随机
+#   需配合真实微信登录/支付联调，见 docs/compliance.md
+
+name: potential-lab
+
+services:
+  backend:
+    build: ./backend
+    container_name: potential-lab-backend
+    environment:
+      DATABASE_URL: sqlite:////data/potential_lab.db
+      AI_PROVIDER: mock
+      ALLOW_MOCK_AUTH: "true"
+      ALLOW_MOCK_PAY: "true"
+    volumes:
+      - backend-data:/data
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    container_name: potential-lab-web
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  backend-data:

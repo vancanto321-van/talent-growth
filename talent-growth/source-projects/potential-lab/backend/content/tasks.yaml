@@ -1,0 +1,687 @@
+# 任务模板库：每方向 入门(intro) → 进阶(advanced) → 迁移(transfer) 三个任务。
+# transfer 任务同时用作"保持性重测"（隔 7 天后再做一次同类新题）。
+# rubric.guide 是给 AI（和用户）的评分口径：1 分与 5 分的典型表现。
+
+tasks:
+  # ---------- 表达与教学 ----------
+  - code: exp_intro_explain
+    direction_code: expression
+    stage: intro
+    title: 把一个概念讲给完全不懂的人
+    description: 选一个你熟悉的概念（工作里的、爱好里的都行），写一段 300 字左右的讲解，目标读者是完全没有背景的新手。讲完后自测：新手能不能只靠这段话就复述出大意？
+    steps:
+      - 选定概念和目标读者（想象一个具体的人）
+      - 写出讲解正文（300 字左右），至少用一个类比或例子
+      - 结尾附上"读者最可能卡住的一处"和你预判的原因
+    est_minutes: 30
+    difficulty: 1
+    rubric:
+      - dimension: 准确性
+        guide: 1 分=有事实或概念错误；5 分=内容准确，边界条件也交代了
+      - dimension: 清晰度
+        guide: 1 分=术语堆砌、需要读者自己补背景；5 分=新手顺读即可复述大意，例子贴切
+      - dimension: 读者意识
+        guide: 1 分=没考虑读者会在哪卡住；5 分=预判了卡点并提前铺垫
+
+  - code: exp_adv_rewrite
+    direction_code: expression
+    stage: advanced
+    title: 根据反馈重写你的讲解
+    description: 找一位真实读者（家人、朋友、同事都行）读你上一讲的稿子，请他指出没看懂的地方，不要解释、只要他标注。然后重写讲解，并说明每一处修改对应哪条反馈。
+    steps:
+      - 请一位真实读者阅读并标注没看懂的句子（截取反馈原文）
+      - 重写讲解正文
+      - 附"修改对照表"：反馈 → 你的修改 → 为什么这样改
+    est_minutes: 45
+    difficulty: 2
+    rubric:
+      - dimension: 反馈吸收
+        guide: 1 分=无视反馈只改措辞；5 分=每条反馈都有对应的结构性修改
+      - dimension: 修改质量
+        guide: 1 分=改后更啰嗦或引入新错误；5 分=改后明显更好懂且没有变水
+      - dimension: 自我诚实
+        guide: 1 分=把问题都归给读者；5 分=能指出自己原来哪里确实没讲好
+
+  - code: exp_transfer_newtopic
+    direction_code: expression
+    stage: transfer
+    title: 陌生主题限时讲解（保持性检验）
+    description: 抛开之前的话题。给你一个陌生概念——"复利效应在注意力管理上的应用"。只允许查资料 20 分钟，然后 25 分钟内写出一段讲给高中生听的讲解。看你的讲解方法能否迁移到全新领域。
+    steps:
+      - 限时 20 分钟查资料、做要点笔记
+      - 限时 25 分钟写完讲解（300 字左右，面向高中生）
+      - 记录：这次哪里顺、哪里卡，和上次比有什么不同
+    est_minutes: 45
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=离开熟悉领域就不会组织讲解；5 分=讲解框架在新领域依然有效
+      - dimension: 准确性
+        guide: 1 分=查资料后仍写错关键概念；5 分=新领域内容准确、来源可靠
+      - dimension: 限时下的清晰度
+        guide: 1 分=时间压力下退化成罗列；5 分=结构依然完整、例子依然贴切
+
+  # ---------- 分析与推理 ----------
+  - code: ana_intro_findflaws
+    direction_code: analysis
+    stage: intro
+    title: 从一段材料里找出问题
+    description: 下面这段商业计划摘要藏着至少 3 个逻辑或事实问题——"我们开发的智能水杯能记住用户饮水习惯，市场规模 10 亿人，只要占据 1% 就是百万级收入。团队虽无硬件经验，但执行力强，预计 3 个月量产。"请指出问题，每个问题附上你的依据和它可能导致的后果。
+    steps:
+      - 通读材料，标出所有让你觉得"不对劲"的地方
+      - 对每个问题写清：问题是什么、依据是什么、会导致什么后果
+      - 按严重程度排序，说明为什么这样排
+    est_minutes: 30
+    difficulty: 1
+    rubric:
+      - dimension: 问题识别
+        guide: 1 分=只挑出措辞毛病；5 分=找出 3 个以上实质问题（含至少一个隐藏假设）
+      - dimension: 证据质量
+        guide: 1 分=只有结论没有依据；5 分=每个判断都指向材料原文或常识事实
+      - dimension: 推理链条
+        guide: 1 分=后果描述跳跃；5 分=因果链完整、按严重性排序有理
+
+  - code: ana_adv_evaluate
+    direction_code: analysis
+    stage: advanced
+    title: 评估一个两难方案
+    description: 你所在的小组要在"周末团建去郊区徒步（成本低但有人体能差异）"和"市区桌游馆（人人能参与但贵且显得没新意）"之间二选一，已知 12 人中有 2 人最近膝盖不适、预算被砍了 30%。给出你的决策和完整推理：你权衡了哪些因素、为什么这个优先、补丁方案是什么。
+    steps:
+      - 列出决策需要考虑的因素及各自权重
+      - 给出结论和完整的推理链
+      - 设计一个"补丁"：如果选了它，怎么照顾被这个选择伤害的一方
+    est_minutes: 40
+    difficulty: 2
+    rubric:
+      - dimension: 因素拆解
+        guide: 1 分=只看单一因素；5 分=因素全面且权重说得清
+      - dimension: 推理链条
+        guide: 1 分=结论先行、理由倒灌；5 分=从因素推出结论，且承认自己判断的局限
+      - dimension: 补丁质量
+        guide: 1 分=没有补救考虑；5 分=补丁具体可执行、成本可承受
+
+  - code: ana_transfer_newdomain
+    direction_code: analysis
+    stage: transfer
+    title: 陌生领域推理挑战（保持性检验）
+    description: 换一个你平时不接触的领域。材料——"某小区流浪猫数量三年间先增后减：第一年投喂者增多，第二年小区做了 TNR（抓捕-绝育-放归），第三年猫变少了但有人说是被赶走的。"请分析：哪些原因能解释猫变少？你怎么设计验证方法区分这些解释？限时 40 分钟。
+    steps:
+      - 列出至少 3 种可能解释
+      - 为每种解释写判断依据（材料内的或需要补充收集的）
+      - 设计一个简单可行的验证方法
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=陌生领域只会复述材料；5 分=能套用"多解释-找证据-验证"框架
+      - dimension: 解释质量
+        guide: 1 分=单一解释、武断归因；5 分=多解释并列且各自指明验证条件
+      - dimension: 验证设计
+        guide: 1 分=无法验证或成本高到不可行；5 分=方法简单、能真正区分不同解释
+
+  # ---------- 设计与创造 ----------
+  - code: des_intro_three
+    direction_code: design
+    stage: intro
+    title: 同一个需求，三个不一样的方案
+    description: 需求——"让合租室友公平分担公共区域家务"。请提出三个设计上明显不同的方案（比如一个靠制度、一个靠产品、一个靠空间设计），每个方案说明核心思路、优点和最可能失败的地方。
+    steps:
+      - 先写下这个需求背后真正的矛盾（1-2 句）
+      - 设计三个方向明显不同的方案
+      - 每个方案附：核心思路、优点、最可能失败点
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 方案差异性
+        guide: 1 分=三个方案本质相同；5 分=三个方案解决矛盾的思路真正不同
+      - dimension: 需求洞察
+        guide: 1 分=直接跳到方案；5 分=先点破矛盾再设计
+      - dimension: 失败预判
+        guide: 1 分=只说优点；5 分=失败点具体、说到人性或执行的难处
+
+  - code: des_adv_iterate
+    direction_code: design
+    stage: advanced
+    title: 挑一个方案，迭代两轮
+    description: 从上一题的三个方案里挑一个，针对你预判的"最可能失败点"做两轮迭代：第一轮解决失败点，第二轮解决第一轮迭代引入的新问题。两轮都要说明"改了什么、为什么、牺牲了什么"。
+    steps:
+      - 第一轮迭代：针对失败点改造方案
+      - 指出第一轮引入的新问题
+      - 第二轮迭代：解决新问题，说明最终方案牺牲了什么
+    est_minutes: 45
+    difficulty: 2
+    rubric:
+      - dimension: 迭代质量
+        guide: 1 分=改了等于没改；5 分=每轮都实质推进且理由清楚
+      - dimension: 约束处理
+        guide: 1 分=假装代价不存在；5 分=明确说出每轮牺牲了什么
+      - dimension: 收敛能力
+        guide: 1 分=越改越复杂；5 分=最终方案比初版更简单可用
+
+  - code: des_transfer_newscene
+    direction_code: design
+    stage: transfer
+    title: 陌生场景设计挑战（保持性检验）
+    description: 换一个领域——"让不会用智能手机的老人独立完成一次视频挂号"。限时 40 分钟，先写你发现的真正障碍（可能不是"不会操作"），再给一个方案，说明为什么它对老人是真的"简单"。
+    steps:
+      - 列出老人在这个流程里真正的障碍（至少 3 个）
+      - 给出一个方案（文字描述即可，会画图更好）
+      - 说明你的"简单"判断标准是什么
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=套用上一题模板却错配场景；5 分=设计思路在新场景依然成立
+      - dimension: 用户洞察
+        guide: 1 分=障碍停留在"不会用"；5 分=障碍分析触及视力、记忆、尊严等真实约束
+      - dimension: 方案可行性
+        guide: 1 分=方案依赖老人学习新技能；5 分=方案迁就老人现有习惯
+
+  # ---------- 编程与自动化 ----------
+  - code: cod_intro_script
+    direction_code: coding
+    stage: intro
+    title: 写一个解决日常小问题的脚本
+    description: 选一个你自己真实的重复性小麻烦（例如：每周手动汇总聊天记录里的接龙、批量重命名下载文件、定时提醒喝水），写一个脚本能直接跑起来解决它。提交代码（或详细伪代码）+ 运行说明 + 你调试过程中卡住的地方。
+    steps:
+      - 描述你要解决的真实麻烦（1-2 句）
+      - 写出脚本代码，附运行说明
+      - 记录：调试时卡在哪里、怎么解决的
+    est_minutes: 45
+    difficulty: 1
+    rubric:
+      - dimension: 功能完成度
+        guide: 1 分=核心功能没跑通；5 分=能跑、处理了基本异常
+      - dimension: 问题真实度
+        guide: 1 分=为了写而写的玩具题；5 分=解决的是自己真实存在的麻烦
+      - dimension: 调试过程
+        guide: 1 分=没记录或全靠别人；5 分=能说清卡点、尝试路径和解决办法
+
+  - code: cod_adv_debug
+    direction_code: coding
+    stage: advanced
+    title: 修复并加固一个有毛病的流程
+    description: >-
+      这个 Python 函数本意是"统计一段文本里每个词出现的次数"，但有三个 bug 和一个隐患——
+      "def count_words(text): words = text.split(' '); d = {}; for w in words: if d[w]: d[w] += 1 else: d[w] = 1; return d"。
+      请找出所有问题、给出修正版，并回答：如果文本里有标点和大小写混合，你的版本怎么处理？
+    steps:
+      - 找出全部 bug，逐个说明错误原因
+      - 给出修正后的完整代码
+      - 回答边界问题（标点、大小写、空文本）
+    est_minutes: 40
+    difficulty: 2
+    rubric:
+      - dimension: 缺陷识别
+        guide: 1 分=只找到 1 个问题；5 分=3 个 bug 和隐患全部找出并说清原因
+      - dimension: 修正质量
+        guide: 1 分=修一个坏一处；5 分=修正版可直接运行且处理了边界
+      - dimension: 边界思维
+        guide: 1 分=只考虑正常输入；5 分=主动讨论异常输入的处理策略
+
+  - code: cod_transfer_newtool
+    direction_code: coding
+    stage: transfer
+    title: 陌生工具实现挑战（保持性检验）
+    description: 换一个你不熟的自动化场景——"把一个文件夹里所有 Markdown 笔记的第一行标题提取出来，生成一个带链接的目录文件"。如果你没用过相关库，允许现查现学。限时 45 分钟，重点记录：你多快能定位"该用什么工具"，以及卡住时怎么自救。
+    steps:
+      - 先写实现思路（用什么库/命令、分几步）
+      - 实现，允许查文档但注明查了什么
+      - 记录自救过程：卡在哪、试了什么、怎么出来的
+    est_minutes: 45
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=离开熟悉语言/工具就寸步难行；5 分=能快速映射已知经验到新工具
+      - dimension: 功能完成度
+        guide: 1 分=核心流程没通；5 分=产出正确且处理了空文件等边界
+      - dimension: 自救能力
+        guide: 1 分=卡住即停；5 分=有清晰的查错路径并真的走通了
+
+  # ---------- 组织与规划 ----------
+  - code: org_intro_breakdown
+    direction_code: organization
+    stage: intro
+    title: 把一个模糊目标拆成能执行的计划
+    description: 目标——"两个月内办一场 30 人的老同学聚会，第一次组织，预算人均 150 以内"。请拆成可执行计划：阶段划分、每阶段的关键动作、哪些事依赖哪些事、最可能出岔子的两个点和预案。
+    steps:
+      - 按时间轴划阶段（准备/召集/执行/收尾）
+      - 标出任务之间的依赖关系（什么必须先定下来）
+      - 指出两个高风险点和对应的预案
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 拆解质量
+        guide: 1 分=只有愿望清单；5 分=任务具体到"谁、何时、做什么"
+      - dimension: 依赖识别
+        guide: 1 分=所有任务并列、无先后；5 分=关键依赖清晰（如先定场地再发通知）
+      - dimension: 风险预案
+        guide: 1 分=没有风险考虑；5 分=风险挑得准、预案可执行
+
+  - code: org_adv_reschedule
+    direction_code: organization
+    stage: advanced
+    title: 变故之后的重新排期
+    description: 沿用上题的聚会计划，现在发生三件事：场地在你不知道的情况下被订走了、预算又砍了 20%、有个关键同学说"再不定时间我就来不了"。请在 30 分钟内给出新计划：哪些决定要立刻做、顺序是什么、你怎么在信息不全时拍板。
+    steps:
+      - 判断三件事的轻重缓急和处理顺序
+      - 给出新排期，标出与原计划的变化
+      - 说明每个"信息不全的决策"你依据什么拍板
+    est_minutes: 30
+    difficulty: 2
+    rubric:
+      - dimension: 优先级判断
+        guide: 1 分=三件事平均用力；5 分=处理顺序有清晰依据
+      - dimension: 应变质量
+        guide: 1 分=推倒重来；5 分=最大程度保留原计划、只动必须动的
+      - dimension: 决策依据
+        guide: 1 分=拍板没有理由；5 分=说明每个不确定决策的判断标准
+
+  - code: org_transfer_forothers
+    direction_code: organization
+    stage: transfer
+    title: 为别人做规划（保持性检验）
+    description: 换个场景——一位想转行做运营的 35 岁会计朋友找你帮忙：只有晚上 2 小时和周末半天可投入，家里孩子 4 岁。请给一份 3 个月转行准备计划，重点：你的计划怎么适配"时间碎片化 + 随时被打断"的现实。
+    steps:
+      - 列出他的真实约束（时间/精力/经济）
+      - 制定 3 个月分阶段计划
+      - 说明计划里哪些设计是专门为了"被打断后还能继续"
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=把给自己的计划硬套给别人；5 分=计划围绕对方的真实约束设计
+      - dimension: 约束适配
+        guide: 1 分=无视时间碎片化；5 分=每个任务都适配碎片时间和中断
+      - dimension: 可持续性
+        guide: 1 分=前两周热血计划；5 分=节奏可持续、有弹性缓冲
+
+  # ---------- 人际协作 ----------
+  - code: inter_intro_group
+    direction_code: interpersonal
+    stage: intro
+    title: 设计一次小型线上协作
+    description: 场景——你要在网上组一个 6 人小队，两周内合作做完一件事（做个小工具、写份攻略、组织一次直播都行），成员互不相识、水平未知、随时可能消失。请写出你的组队和协作方案：怎么筛选、怎么分工、怎么让不熟的人开口说话、有人掉链子怎么办。
+    steps:
+      - 定义这件事的最小目标和验收标准
+      - 写组队方案（在哪找人、怎么筛、怎么分工）
+      - 写协作规则：沟通节奏、开口机制、掉链子预案
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 方案完整性
+        guide: 1 分=只说"好好沟通"；5 分=筛选、分工、节奏、预案都具体
+      - dimension: 人的洞察
+        guide: 1 分=假设所有人都积极靠谱；5 分=针对陌生人协作的真实障碍设计
+      - dimension: 验收意识
+        guide: 1 分=目标模糊；5 分=有明确的最小目标和完成标准
+
+  - code: inter_adv_conflict
+    direction_code: interpersonal
+    stage: advanced
+    title: 复盘一次分歧的处理
+    description: 回忆一次你亲历的分歧或矛盾（家里、学校、工作都行），写复盘：当时各方的真实诉求分别是什么（不是表面立场）、你（或旁观者）做了什么、结果如何、如果重来你会怎么做。要求至少写出你自己这一方的责任，不许写成"我没错"。
+    steps:
+      - 还原事件：表面立场 vs 真实诉求（各方分开写）
+      - 写当时处理过程和结果
+      - 复盘：包括你自己一方的责任；重来一次的做法
+    est_minutes: 40
+    difficulty: 2
+    rubric:
+      - dimension: 诉求洞察
+        guide: 1 分=把立场当诉求；5 分=分开写清各方表面立场与深层诉求
+      - dimension: 自我诚实
+        guide: 1 分=全是别人的错；5 分=明确指出自己一方的问题
+      - dimension: 改进质量
+        guide: 1 分="下次多沟通"式的空话；5 分=给出具体可操作的替代做法
+
+  - code: inter_transfer_newrole
+    direction_code: interpersonal
+    stage: transfer
+    title: 陌生协作情境（保持性检验）
+    description: 换个场景——你是新来的项目负责人，团队里有位老成员业务强但不服你，上次开会当众驳了你的面子。限时 35 分钟写出你的处理方案：第一次单独沟通你说什么、不说什么；之后两周你怎么做；什么情况下你选择升级处理。
+    steps:
+      - 分析老成员"不服"的可能原因（至少 3 种）
+      - 写单独沟通的要点：说什么、明确不说什么
+      - 写两周行动和"升级处理"的触发条件
+    est_minutes: 35
+    difficulty: 3
+    rubric:
+      - dimension: 迁移能力
+        guide: 1 分=只会套"多沟通"公式；5 分=针对权力关系变化给出具体策略
+      - dimension: 分寸感
+        guide: 1 分=要么全忍要么硬压；5 分=沟通要点里有明确的"不说什么"
+      - dimension: 边界清晰
+        guide: 1 分=没有底线考虑；5 分=升级条件具体、客观、可观察
+
+  # ========== 第二批任务（每方向每阶段 2 个变体，避免第二轮周期重复） ==========
+
+  - code: exp_intro_story
+    direction_code: expression
+    stage: intro
+    title: 用三个随机词讲一个完整的故事
+    description: 让家人随机说三个互不相关的词（比如"电梯、橘子、钥匙"），你用 300 字把它们编成一个有开头、转折、结尾的故事。训练的是表达的生成能力——不靠熟悉的内容，靠临场组织。
+    steps:
+      - 请别人随机给你三个词
+      - 写一个 300 字的故事，三个词都必须出现
+      - 结尾用一句话说明故事的"转折点"在哪
+    est_minutes: 25
+    difficulty: 1
+    rubric:
+      - dimension: 完整性
+        guide: 1 分=只有片段；5 分=开头转折结尾齐全
+      - dimension: 三个词的融合度
+        guide: 1 分=生硬塞入；5 分=三个词是情节的关键
+      - dimension: 画面感
+        guide: 1 分=干巴巴叙述；5 分=有场景有细节
+  - code: exp_adv_debate
+    direction_code: expression
+    stage: advanced
+    title: 一个争议观点，正反方都由你来写
+    description: 选一个你有立场的争议话题（如"年轻人该不该躺平"），分别以正反两方写 200 字论证，每方 3 条理由且不许稻草人。练的是多视角表达——讲解能力的高级形态是能替对方把话说清。
+    steps:
+      - 选定争议话题，写下你真实的立场
+      - 写正方 200 字（3 条理由）+ 反方 200 字（3 条理由）
+      - 标注：反方论证里哪一条最动摇你
+    est_minutes: 40
+    difficulty: 2
+    rubric:
+      - dimension: 立场清晰
+        guide: 1 分=两边和稀泥；5 分=两方立场都立得住
+      - dimension: 理由质量
+        guide: 1 分=口号式理由；5 分=每条有事实或逻辑支撑
+      - dimension: 公平性
+        guide: 1 分=反方是稻草人；5 分=反方是该观点最强辩护者会说的话
+  - code: exp_transfer_twoaudiences
+    direction_code: expression
+    stage: transfer
+    title: 同一个概念，讲给 10 岁小孩和 80 岁老人（保持性检验）
+    description: 选一个你专业里的概念（如"利息""缓存"），分别写两版 150 字讲解：一版给聪明的小学生，一版给 80 岁的奶奶。看你的讲解能力能否随听众切换——这是教学能力的核心迁移。
+    steps:
+      - 写"小学生版"：用孩子能懂的世界做类比
+      - 写"奶奶版"：用老人几十年的生活经验做类比
+      - 自查：两版有没有共用同一个不合适的例子
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 听众适配
+        guide: 1 分=两版只换了称呼；5 分=类比体系完全不同且各自贴切
+      - dimension: 准确性
+        guide: 1 分=为了通俗牺牲正确；5 分=通俗且不失真
+      - dimension: 迁移意识
+        guide: 1 分=没意识到听众变了；5 分=主动说明两版策略差异
+
+  - code: ana_intro_decision
+    direction_code: analysis
+    stage: intro
+    title: 三个选项的重大决策分析
+    description: 场景——你手里有三个 offer：A 大公司稳定岗（月薪 1.2 万）、B 初创公司核心岗（8 千+期权）、C 自由职业（不稳定但上月挣了 2 万）。列出你的决策因素、给每个选项打分、给出推荐和"什么情况下这个推荐会反转"。
+    steps:
+      - 列出 5 个决策因素并设权重
+      - 逐一分析三个选项，因素打分要有依据
+      - 给出推荐 + 写清"推荐会反转的条件"
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 因素完整
+        guide: 1 分=只看钱；5 分=含成长/风险/生活方式等隐性因素
+      - dimension: 权衡逻辑
+        guide: 1 分=打分随意；5 分=权重与打分逻辑一致
+      - dimension: 反转条件
+        guide: 1 分=没有；5 分=说清了结论的适用边界
+  - code: ana_adv_data
+    direction_code: analysis
+    stage: advanced
+    title: 从一张小数据表里读出趋势和异常
+    description: 材料——"某奶茶店周一至周日杯数：320、310、305、360、520、610、280；其中周五那天有雨。"请分析：趋势是什么、异常在哪、给出 2 个可验证的假设，并为每个假设设计一个便宜的验证方法。
+    steps:
+      - 描述趋势（工作日 vs 周末）
+      - 指出异常点并给出至少 2 个竞争性解释
+      - 为每个解释设计一个一周内能完成的验证
+    est_minutes: 35
+    difficulty: 2
+    rubric:
+      - dimension: 趋势识别
+        guide: 1 分=只罗列数字；5 分=归纳出结构性规律
+      - dimension: 假设质量
+        guide: 1 分=单一武断解释；5 分=多假设并列且互相竞争
+      - dimension: 可验证性
+        guide: 1 分=无法验证；5 分=验证方法便宜且能区分假设
+  - code: ana_transfer_rootcause
+    direction_code: analysis
+    stage: transfer
+    title: 陌生场景的根因分析（保持性检验）
+    description: 场景——"你连续两周早上 7 点的闹钟响了却总是按掉再睡，迟到三次。"用根因分析法：列出至少 3 层为什么（不要停在"我懒"），设计 2 个针对根因（而非表象）的干预，并说明怎么验证有效。限时 35 分钟。
+    steps:
+      - 连问 3 层为什么，挖到行为背后的真实原因
+      - 设计 2 个针对根因的干预（不是"多定闹钟"）
+      - 说明每个干预怎么算有效、多久见效
+    est_minutes: 35
+    difficulty: 3
+    rubric:
+      - dimension: 根因深度
+        guide: 1 分=停在表象；5 分=挖到动机/环境/生理层
+      - dimension: 干预针对性
+        guide: 1 分=治标不治本；5 分=干预与根因一一对应
+      - dimension: 验证设计
+        guide: 1 分=凭感觉；5 分=有明确的观察指标和时间窗
+
+  - code: des_intro_poster
+    direction_code: design
+    stage: intro
+    title: 同一场活动，两种气质的海报
+    description: 为"社区周末旧书市集"设计海报方案（文字描述版面即可，会画更好）：一版走"信息优先"（把时间地点规则放最大），一版走"情绪优先"（先让人想点进来）。每版说明你的视觉焦点和理由。
+    steps:
+      - 列出海报必须包含的 5 项信息
+      - 信息优先版：说明主视觉层级怎么排
+      - 情绪优先版：说明用什么氛围让人停下脚步
+    est_minutes: 30
+    difficulty: 1
+    rubric:
+      - dimension: 信息层级
+        guide: 1 分=所有信息一样大；5 分=主次分明、视线有动线
+      - dimension: 气质差异
+        guide: 1 分=两版长得一样；5 分=气质明显不同且各自成立
+      - dimension: 意图表达
+        guide: 1 分=说不清为什么；5 分=每个选择有明确理由
+  - code: des_adv_constraint
+    direction_code: design
+    stage: advanced
+    title: 零预算约束下的设计
+    description: 约束——"一家新奶茶店的招牌，预算为零，只能用一张 A4 纸打印，黑白，贴在门口。"在这个约束内做出最有效的设计：说明字体、字号、信息取舍，以及为什么这个设计在"黑白 A4"里依然能抓住路人。
+    steps:
+      - 列出约束下"不能做"的事，避免掉进去
+      - 给出设计方案（文字+布局描述）
+      - 说明：路人 3 秒内会先看到什么
+    est_minutes: 40
+    difficulty: 2
+    rubric:
+      - dimension: 约束利用
+        guide: 1 分=抱怨约束；5 分=把约束变成创意条件
+      - dimension: 信息取舍
+        guide: 1 分=什么都想放；5 分=敢于删掉 90% 的信息
+      - dimension: 三秒测试
+        guide: 1 分=没考虑路人视角；5 分=清晰描述 3 秒视线动线
+  - code: des_transfer_redesign
+    direction_code: design
+    stage: transfer
+    title: 重设计你最近骂过的界面（保持性检验）
+    description: 想一个你最近 7 天里用着最不爽的 App 界面或流程。限时 40 分钟：先写清楚它到底哪里不爽（具体到步骤），给出重设计方案，并说明你会用什么指标验证新设计确实更好。
+    steps:
+      - 还原不爽的具体操作步骤（而不是泛泛说"难用"）
+      - 给出重设计后的流程描述
+      - 定义验证指标：怎么证明新版更好
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 问题洞察
+        guide: 1 分=泛泛吐槽；5 分=定位到具体步骤的摩擦点
+      - dimension: 方案质量
+        guide: 1 分=换个说法而已；5 分=结构性改变且不引入新问题
+      - dimension: 验证意识
+        guide: 1 分=没有；5 分=有明确可量化的验证指标
+
+  - code: cod_intro_calc
+    direction_code: coding
+    stage: intro
+    title: 写一个"时间都去哪了"统计器
+    description: 写一个小工具：输入本周每天花在手机上的分钟数（7 个数字），输出总时长、日均、最多的那天，并给一句评语（超过 30 小时输出"该警惕了"）。提交代码 + 运行示例 + 你自己的真实数据结果。
+    steps:
+      - 写代码：输入 7 个数字，计算并输出统计
+      - 处理边界：输入负数或非数字怎么办
+      - 跑一遍自己的真实数据，附截图或输出
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 功能完成
+        guide: 1 分=算不对；5 分=统计正确且处理了非法输入
+      - dimension: 代码可读
+        guide: 1 分=无函数无命名无注释；5 分=有函数有命名有注释
+      - dimension: 真实使用
+        guide: 1 分=编数据；5 分=用了自己的一周真实数据
+  - code: cod_adv_api
+    direction_code: coding
+    stage: advanced
+    title: 接一个免费公开 API 做个命令行小工具
+    description: 选一个免费无需密钥的公开 API（天气、一言、历史上的今天等），写一个命令行小工具：输入城市或参数，输出友好格式的结果。重点是异常处理——网络失败、返回异常、参数错误都要优雅处理。
+    steps:
+      - 选定 API 并读懂文档，手动请求一次看返回结构
+      - 实现工具：参数解析、请求、格式化输出
+      - 处理三种异常：断网、接口报错、参数非法
+    est_minutes: 45
+    difficulty: 2
+    rubric:
+      - dimension: 集成完成
+        guide: 1 分=跑不通；5 分=正常场景稳定可用
+      - dimension: 异常处理
+        guide: 1 分=崩了；5 分=三类异常都有友好提示
+      - dimension: 输出体验
+        guide: 1 分=裸 JSON；5 分=输出为人设计、格式清晰
+  - code: cod_transfer_refactor
+    direction_code: coding
+    stage: transfer
+    title: 重构你自己的旧代码（保持性检验）
+    description: 翻出你之前写的第一个脚本（本次测评里写的也行），做一次重构：提取函数、改命名、加注释、消除重复。提交"重构前 vs 重构后"两个版本，并逐条说明：改了什么、为什么、怎么确认行为没变。
+    steps:
+      - 贴出旧版代码（允许丑）
+      - 给出重构版，逐条列出改动和理由
+      - 用同样的输入跑两个版本，证明输出一致
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 重构理由
+        guide: 1 分=为了重构而重构；5 分=每处改动有明确动机
+      - dimension: 可读性提升
+        guide: 1 分=更难懂了；5 分=新人 5 分钟能看懂
+      - dimension: 行为一致
+        guide: 1 分=改出 bug；5 分=有对照验证证明未变行为
+
+  - code: org_intro_trip
+    direction_code: organization
+    stage: intro
+    title: 周末两日游的三档方案
+    description: 为一次"周六早 8 点到周日晚 8 点"的周边两日游做三档完整方案：省心档（预算最高）、性价比档、穷游档。每档含交通、住宿、吃饭、游玩的时间表和预算，并指出各自最适合的人群。
+    steps:
+      - 先定三档的总预算和核心差异
+      - 每档排出时间表 + 分项预算
+      - 说明每档适合什么人、最大的坑是什么
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 方案差异
+        guide: 1 分=三档只差价格；5 分=体验设计真的不同
+      - dimension: 预算靠谱
+        guide: 1 分=拍脑袋；5 分=分项加总吻合且有依据
+      - dimension: 时间可行
+        guide: 1 分=时间表穿越；5 分=留了缓冲、路程时间合理
+  - code: org_adv_week
+    direction_code: organization
+    stage: advanced
+    title: 给同一周做"双轨计划"
+    description: 给你自己的下一周做两份计划：常规版（正常执行）和紧凑版（假设周三到周四被临时事务占走一半时间）。紧凑版要说明：砍掉什么、保住什么、怎么补。考验的是计划的弹性设计。
+    steps:
+      - 列出下周全部事项并标注优先级
+      - 做常规版日程
+      - 做紧凑版：明确砍什么、保什么、怎么补救
+    est_minutes: 35
+    difficulty: 2
+    rubric:
+      - dimension: 优先级清晰
+        guide: 1 分=砍得随机；5 分=按重要性砍，理由明确
+      - dimension: 弹性设计
+        guide: 1 分=紧凑版就是熬夜版；5 分=有取舍结构而非堆时间
+      - dimension: 现实性
+        guide: 1 分=把自己当机器；5 分=留了缓冲和休息
+  - code: org_transfer_family
+    direction_code: organization
+    stage: transfer
+    title: 给一个四口之家设计家务轮值表（保持性检验）
+    description: 换个场景——一个四口之家（爸妈上班族、一个初三学生、一个住家老人），设计每周家务轮值表。约束：每人时间节奏不同、有人不会做某项家务、总有人觉得不公平。你的方案必须包含：分工表、公平机制、发生争执时的裁决规则。
+    steps:
+      - 列出家务清单和每人的时间约束
+      - 设计轮值表，说明公平性怎么体现
+      - 写"争议裁决规则"：最常见的三种争执怎么判
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: 公平机制
+        guide: 1 分=平均分就是公平；5 分=考虑了时间/能力/偏好的差异公平
+      - dimension: 可执行性
+        guide: 1 分=忽略真实日程；5 分=贴合每人的时间约束
+      - dimension: 争议处理
+        guide: 1 分=没有；5 分=三种常见争执有明确裁决规则
+
+  - code: inter_intro_icebreak
+    direction_code: interpersonal
+    stage: intro
+    title: 设计 5 个破冰问题并实测
+    description: 为"一群互相不熟的人"设计 5 个破冰问题（标准：好回答、能暴露一点个性、不尴尬），实际找 3 个人测试其中 2 个，记录每个人的反应，并据此改进你的问题。
+    steps:
+      - 设计 5 个候选问题，写清选择理由
+      - 找 3 个真实的人测试其中 2 个
+      - 记录反应，改进 1 个问题并说明改动逻辑
+    est_minutes: 35
+    difficulty: 1
+    rubric:
+      - dimension: 问题设计
+        guide: 1 分=查户口式问题；5 分=好回答且能带出个性
+      - dimension: 真实执行
+        guide: 1 分=纸面谈兵；5 分=真找了人测并记录
+      - dimension: 迭代意识
+        guide: 1 分=测完就完；5 分=基于反应做了具体改进
+  - code: inter_adv_thanks
+    direction_code: interpersonal
+    stage: advanced
+    title: 写一份让对方记很久的感谢
+    description: 想一个真实帮助过你的人，给 TA 写（并发送）一段具体的感谢：TA 做了什么、对你的具体影响、你因此做了什么改变。禁止空话（"谢谢你的一切"），要求细节到场景。
+    steps:
+      - 选定对象，回忆具体帮助场景（时间地点做了什么）
+      - 写感谢：具体帮助 + 具体影响 + 你因此的改变
+      - 真实发送，记录对方的反应
+    est_minutes: 30
+    difficulty: 2
+    rubric:
+      - dimension: 具体度
+        guide: 1 分=空洞客套；5 分=细节到场景和对话
+      - dimension: 影响描述
+        guide: 1 分=只说谢谢；5 分=说清了对你的实际改变
+      - dimension: 真实送达
+        guide: 1 分=只写不发；5 分=真的送达到了对方
+  - code: inter_transfer_feedback
+    direction_code: interpersonal
+    stage: transfer
+    title: 给熟人一条"改进型反馈"（保持性检验）
+    description: 换个高难度场景——给一位关系不错的同学/同事一条改进建议（TA 确实有的、但没人告诉过 TA 的）。用 SBI 法（情境-行为-影响）准备：在什么情境、TA 做了什么行为、对你和结果产生了什么影响。准备好后真的找机会说，记录过程。
+    steps:
+      - 选定对象和事项，按 SBI 写出反馈草稿
+      - 自查：有没有评判人格（只说行为不说人）
+      - 真实说出，记录对方反应和你的感受
+    est_minutes: 40
+    difficulty: 3
+    rubric:
+      - dimension: SBI 使用
+        guide: 1 分=直接评价人；5 分=情境-行为-影响三要素完整
+      - dimension: 分寸感
+        guide: 1 分=伤人或回避；5 分=诚实且照顾了关系
+      - dimension: 真实执行
+        guide: 1 分=只写不做；5 分=真说了并记录了反应

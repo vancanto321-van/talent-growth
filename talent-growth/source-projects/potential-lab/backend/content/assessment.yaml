@@ -1,0 +1,258 @@
+# 行业潜力测评题库：12 项潜力特质 × 4 题 = 48 题（Likert 1-5）。
+# 设计参照成熟问卷的做法（如 IPIP / O*NET Interest Profiler 的结构思路），
+# 题目为自编中文题，正式上线前需按 compliance.md 做小样本信度检验。
+# reverse: true 的题反向计分（得分 = 6 - 原始分），用于抑制一致作答偏差。
+
+traits:
+- code: verbal
+  name: 表达沟通
+  description: 把事情讲清楚、让人听得进去的能力
+  improve:
+  - 每天复述一段读到的内容，录音回听删掉废话
+  - 每周给一个外行讲清一个概念，收集『哪里没懂』
+  - 读一本结构化表达的书（如金字塔原理）并套用 5 次
+- code: logical
+  name: 逻辑分析
+  description: 拆解问题、检查证据、找规律的能力
+  improve:
+  - 遇到结论先写『证据清单』再下判断
+  - 每周做一道逻辑谜题或复盘一个案例
+  - 用 5Why 法追问一个日常问题的根因
+- code: creative
+  name: 审美创造
+  description: 对美感与新颖做法的敏感度
+  improve:
+  - 每天临摹一个喜欢的作品并记录差异
+  - 同一需求强迫自己出三个方案再选
+  - 建立灵感库：每周收藏 10 个『哇』时刻
+- code: technical
+  name: 技术动手
+  description: 折腾工具、软件、机械并解决问题的倾向
+  improve:
+  - 每周把一件重复的事自动化一次
+  - 遇到软件问题先自己查 20 分钟再求助
+  - 学一门入门教程并做出一个能跑的小东西
+- code: physical
+  name: 身体素质
+  description: 体力、耐力与运动恢复能力
+  improve:
+  - 固定每周 3 次有氧+1 次力量，从低量开始
+  - 记录晨脉与睡眠，观察恢复趋势
+  - 尝试 2-3 种运动找到不觉得苦的那一种
+- code: precision
+  name: 精细操作
+  description: 手稳、精确、耐得住细节的能力
+  improve:
+  - 每天 10 分钟精细练习（写字/串珠/模型）
+  - 做需要手稳的小活：穿针、剪纸、拆小件
+  - 玩需要精准操作的游戏（叠叠乐/夹豆）
+- code: empathy
+  name: 共情关怀
+  description: 察觉他人状态、让人信任的能力
+  improve:
+  - 对话时先复述对方的话再回应
+  - 每周记录一次『对方的情绪是什么、我怎么知道的』
+  - 读一本关于倾听的书并演练 2 个技巧
+- code: persuasion
+  name: 说服进取
+  description: 主动争取、不怕拒绝、竞争兴奋度
+  improve:
+  - 每周主动提出一次请求（从小的开始）
+  - 被拒绝后记录一次『下次怎么换说法』
+  - 参加一次需要表态或竞争的活动
+- code: organization
+  name: 统筹组织
+  description: 排优先级、理依赖、让事情落地的能力
+  improve:
+  - 每周日用 30 分钟给下周排优先级
+  - 给重复事务写 SOP 清单
+  - 接手一次多人活动的统筹
+- code: resilience
+  name: 抗压韧性
+  description: 受挫恢复与长期坚持的倾向
+  improve:
+  - 把大目标拆成『跳一跳够得着』的小步
+  - 每次受挫后写一句『下次的替代做法』
+  - 坚持一件小正面事 21 天并打卡
+- code: focus
+  name: 专注耐心
+  description: 长时间投入与重复练习的耐受度
+  improve:
+  - 从 15 分钟无手机专注开始，每周加 5 分钟
+  - 用番茄钟把任务切小并记录完成数
+  - 一次只开一个窗口/任务
+- code: numeric
+  name: 数字敏感
+  description: 对数字、账目、投入产出的敏感度
+  improve:
+  - 记账 30 天，每周做一次小结
+  - 看报表先找三个数字的关系再读文字
+  - 用 Excel/表格做一个自己关心的计算
+items:
+- code: v1
+  trait: verbal
+  text: 我能把复杂的事讲得让别人一听就懂
+- code: v2
+  trait: verbal
+  text: 在小组里，大家常让我来解释或总结
+- code: v3
+  trait: verbal
+  text: 我经常心里明白，但说出来就变了味
+  reverse: true
+- code: v4
+  trait: verbal
+  text: 朋友遇到不懂的事，第一个会来问我
+- code: l1
+  trait: logical
+  text: 我喜欢把一个问题拆开，找到根本原因
+- code: l2
+  trait: logical
+  text: 看到结论时，我会下意识检查证据够不够
+- code: l3
+  trait: logical
+  text: 我常常凭感觉下判断，懒得细想过程
+  reverse: true
+- code: l4
+  trait: logical
+  text: 玩推理或解谜类游戏时，我比多数人快
+- code: c1
+  trait: creative
+  text: 我一眼能看出什么东西"好看"、哪里不协调
+- code: c2
+  trait: creative
+  text: 我总想给老办法换个新做法
+- code: c3
+  trait: creative
+  text: 对颜色、排版、造型这些我没什么感觉
+  reverse: true
+- code: c4
+  trait: creative
+  text: 做同样的事，我总忍不住想加点自己的风格
+- code: t1
+  trait: technical
+  text: 电脑或软件出问题，我喜欢自己捣鼓解决
+- code: t2
+  trait: technical
+  text: 我做过让重复事情自动完成的小工具或技巧
+- code: t3
+  trait: technical
+  text: 新工具的说明书我看两行就想放弃
+  reverse: true
+- code: t4
+  trait: technical
+  text: 拆装东西或改配置，我比身边人自信
+- code: ph1
+  trait: physical
+  text: 长跑、爬楼这类费体力的事，我比同龄人轻松
+- code: ph2
+  trait: physical
+  text: 我运动后恢复得比较快
+- code: ph3
+  trait: physical
+  text: 连续运动半小时对我来说很煎熬
+  reverse: true
+- code: ph4
+  trait: physical
+  text: 我体力充沛，闷一整天反而难受
+- code: pr1
+  trait: precision
+  text: 我手很稳，做精细活（缝、画线、拆小件）不慌
+- code: pr2
+  trait: precision
+  text: 长时间做精确的动作，我不容易累
+- code: pr3
+  trait: precision
+  text: 我做事容易毛手毛脚弄坏东西
+  reverse: true
+- code: pr4
+  trait: precision
+  text: 细节上的小瑕疵，我一眼就能发现
+- code: e1
+  trait: empathy
+  text: 别人情绪不好，我常常第一个察觉
+- code: e2
+  trait: empathy
+  text: 朋友有心事，愿意跟我说
+- code: e3
+  trait: empathy
+  text: 别人向我倾诉时，我其实不太耐烦
+  reverse: true
+- code: e4
+  trait: empathy
+  text: 我能看出对方嘴上说的和心里想的不一样
+- code: pe1
+  trait: persuasion
+  text: 说服别人接受我的方案，我觉得有挑战也兴奋
+- code: pe2
+  trait: persuasion
+  text: 想要的东西我会主动去争取，不怕被拒绝
+- code: pe3
+  trait: persuasion
+  text: 我不好意思跟人讨价还价
+  reverse: true
+- code: pe4
+  trait: persuasion
+  text: 竞争性的场合（比赛、竞标）会让我状态更好
+- code: o1
+  trait: organization
+  text: 组织活动时，我自然而然开始排时间表和分工
+- code: o2
+  trait: organization
+  text: 事情再多，我也能排出先做哪个后做哪个
+- code: o3
+  trait: organization
+  text: 我的计划经常因为漏了环节而卡住
+  reverse: true
+- code: o4
+  trait: organization
+  text: 同学同事出行、聚会，常由我来安排
+- code: r1
+  trait: resilience
+  text: 事情搞砸了，我缓一缓就能重新来
+- code: r2
+  trait: resilience
+  text: 高压截止日期前，我反而更专注
+- code: r3
+  trait: resilience
+  text: 被人当众否定，我会难受好几天
+  reverse: true
+- code: r4
+  trait: resilience
+  text: 长期看不到成果的事，我也能坚持
+- code: f1
+  trait: focus
+  text: 做需要长时间专注的事，我坐得住
+- code: f2
+  trait: focus
+  text: 重复练习同一个动作直到熟练，我不觉得苦
+- code: f3
+  trait: focus
+  text: 我做十分钟就想刷手机
+  reverse: true
+- code: f4
+  trait: focus
+  text: 我能把一件事从头到尾做完才休息
+- code: n1
+  trait: numeric
+  text: 看到一组数字，我会下意识找规律
+- code: n2
+  trait: numeric
+  text: 记账、算账、比价，我算得又快又准
+- code: n3
+  trait: numeric
+  text: 看到报表和图表我就头疼
+  reverse: true
+- code: n4
+  trait: numeric
+  text: 做决定前，我习惯算一算投入产出
+options:
+- value: 1
+  label: 完全不像我
+- value: 2
+  label: 不太像我
+- value: 3
+  label: 说不好
+- value: 4
+  label: 比较像我
+- value: 5
+  label: 非常像我

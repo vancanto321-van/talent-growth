@@ -1,0 +1,94 @@
+# 天赋组合图谱：单点天赋 → 组合成能力 → 有意义的职业/生活路径。
+# directions 里放方向 code（2-3 个），匹配规则：用户活跃线索覆盖组合里的全部方向即命中。
+# 这是回答"天赋怎么组合、往哪培养"的核心内容资产，后续可持续扩充。
+
+combinations:
+  - directions: [expression, analysis]
+    abilities: 把复杂的事研究透，再讲得人人能懂
+    paths: [教师/培训师, 咨询顾问, 知识类博主, 产品讲解/售前]
+    why: 分析保证内容对，表达保证别人接得住——两者缺一，价值都打折。
+    how_to_start: 每周把一个你搞懂的事讲给一个外行听，收集"哪里没懂"，讲三周就能看到变化。
+
+  - directions: [expression, design]
+    abilities: 会说话的内容，加上让人想多看一眼的样子
+    paths: [内容创作者, 品牌传播, 新媒体运营, 出版/编辑设计]
+    why: 表达负责"说得清楚"，设计负责"愿意看"——注意力时代两者天然是一对。
+    how_to_start: 给自己已有的任何一段文字配一版排版或封面，发出去看反馈。
+
+  - directions: [design, coding]
+    abilities: 既能定义"该做什么"，又能亲手把它做出来
+    paths: [产品经理/设计师, 独立开发者, 创意技术师, 创业]
+    why: 设计给你判断力，编程给你实现力——独立做出完整产品的人大多站在这两条线的交点。
+    how_to_start: 选一个只有你自己会遇到的小麻烦，两周内做出一个能用的东西，哪怕很丑。
+
+  - directions: [analysis, coding]
+    abilities: 从数据里找答案，用程序放大你的判断
+    paths: [数据分析, 算法工程, 量化研究, 业务中台]
+    why: 分析告诉你该算什么，编程让计算可重复、可放大。
+    how_to_start: 找一份你关心的公开数据，回答一个你自己想知道的问题，把过程写成可复跑的脚本。
+
+  - directions: [organization, interpersonal]
+    abilities: 让一群人省心地把事做成
+    paths: [项目管理, 运营, 活动主理人, 团队主管]
+    why: 规划让事情有章法，协作让人心不散——做事和聚人是管理的两半。
+    how_to_start: 主动认领一次 3 人以上小活动的统筹，重点记录"人"的问题而不只是事的问题。
+
+  - directions: [expression, interpersonal]
+    abilities: 懂人，也让人听得进去
+    paths: [培训/教练, HR/人才发展, 销售/客户成功, 心理支持方向]
+    why: 理解人而不表达，是体察；表达而不懂人，是口才——合起来才是影响人的能力。
+    how_to_start: 每周做一次"只提问不给建议"的深度对话，练把对方的问题复述到他点头为止。
+
+  - directions: [analysis, organization]
+    abilities: 看得清全局，也排得出步骤
+    paths: [战略/商业分析, 咨询, 流程优化, 中后台管理]
+    why: 分析判断"对不对"，规划保证"做得成"——复杂项目最缺这种组合。
+    how_to_start: 给身边任何一个混乱的小流程画一张"问题-原因-改法-排期"四栏表。
+
+  - directions: [design, analysis]
+    abilities: 用研究支撑审美判断
+    paths: [用户体验研究(UX Research), 服务设计, 设计策略]
+    why: 设计给直觉，分析给证据——能说清"为什么这样设计"的设计师非常稀缺。
+    how_to_start: 挑一个你常用的 App，找出一个你不喜欢的设计，用三个真实用户的反馈验证你的判断。
+
+  - directions: [coding, organization]
+    abilities: 用工程方法管事，用管理思维写代码
+    paths: [技术负责人, 工程效能/DevOps, 独立做产品的小团队核心]
+    why: 一个人走得快靠代码，一群人走得稳靠流程——两者在你身上会互相放大。
+    how_to_start: 给任何一次合作（哪怕两人）写一份简短的协作约定和进度看板，跑完复盘一次。
+
+  - directions: [expression, design, coding]
+    abilities: 从想法到成品的完整闭环
+    paths: [独立开发者/独立创作者, 一人公司, 全栈产品人]
+    why: 自己想清楚（表达）、自己设计（设计）、自己做出来（编程）——这是当下最被低估的个体能力组合。
+    how_to_start: 做一个"一周最小作品"：想一个点子、画一版样子、写一个能跑的版本，每周一个，连做四周。
+
+  - directions: [expression, organization]
+    abilities: 把目标讲清楚，把节奏管起来
+    paths: [团队负责人, 活动主理人, 培训运营, 行政统筹管理]
+    why: 表达让目标人人理解，统筹让执行有条不紊——带团队的基本功这两样就够了。
+    how_to_start: 认领一次小型活动的全程统筹，重点练习"把模糊目标翻译成一句句可执行的话"。
+
+  - directions: [expression, coding]
+    abilities: 会写代码，更会讲清楚代码在干什么
+    paths: [技术布道师/开发者关系, 技术文档工程师, 编程教育, 全栈开发]
+    why: 能做出来的人很多，能讲明白的很少——两者的组合在技术团队里天然稀缺。
+    how_to_start: 给自己写过的任何一个脚本配一篇"新手也能照跑"的教程并发布。
+
+  - directions: [coding, interpersonal]
+    abilities: 既懂技术，也能把人组织起来
+    paths: [技术团队管理, 解决方案工程师, 创业技术合伙人, 开发者社区运营]
+    why: 技术背景赢得信任，人际能力凝聚团队——技术管理岗的标准画像。
+    how_to_start: 组织一次 3 人以上的小项目（哪怕是业余项目），全程用协作工具透明推进。
+
+  - directions: [design, interpersonal]
+    abilities: 懂审美，也懂人心
+    paths: [用户体验设计师, 品牌顾问, 设计团队负责人, 定制服务主理人]
+    why: 设计的下半场是理解人；能跟客户和用户把需求聊透的设计师溢价最高。
+    how_to_start: 给下一次设计任务增加 3 个真实用户访谈，把洞察写进方案说明。
+
+  - directions: [design, organization]
+    abilities: 既能定方案，也能推动方案落地
+    paths: [设计项目经理, 品牌运营, 门店/空间项目统筹, 自有品牌主理人]
+    why: 创意常常死在执行——能自己把控落地节奏的创意者，交付确定性高一倍。
+    how_to_start: 给自己的下一个创意作品排一张"从想法到发布"的时间表并严格执行。

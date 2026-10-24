@@ -1,0 +1,75 @@
+.page { padding-bottom: 40rpx; }
+.setup { text-align: center; }
+.emoji-big { font-size: 80rpx; margin-bottom: 12rpx; }
+.hero {
+  margin: 24rpx; padding: 32rpx; border-radius: 24rpx;
+  background: linear-gradient(135deg, #FF8A65, #FF5722);
+  color: #fff; box-shadow: 0 8rpx 24rpx rgba(255,87,34,0.25);
+}
+.avatar {
+  width: 88rpx; height: 88rpx; border-radius: 50%;
+  background: rgba(255,255,255,0.25); font-size: 52rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-name { font-size: 36rpx; font-weight: 700; }
+.hero-age { font-size: 24rpx; opacity: 0.9; }
+.level-badge { text-align: center; }
+.lv-emoji { display: block; font-size: 44rpx; }
+.lv-title { display: block; font-size: 22rpx; opacity: 0.95; }
+.lv-num { display: block; font-size: 20rpx; opacity: 0.8; }
+.xp-bar { height: 14rpx; background: rgba(255,255,255,0.3); border-radius: 8rpx; margin-top: 20rpx; overflow: hidden; }
+.xp-fill { height: 100%; background: #fff; border-radius: 8rpx; transition: width .3s; }
+.hero .muted { color: rgba(255,255,255,0.85); }
+
+.stage { position: relative; }
+.section-intro { display:flex; align-items:flex-end; justify-content:space-between; margin:34rpx 30rpx 18rpx; }
+.section-title { font-size:34rpx; font-weight:700; color:#2D2A26; }
+.section-sub { font-size:23rpx; color:#9AA0A6; margin-top:4rpx; }
+.all-progress { font-size:22rpx; color:#F06B4F; background:#FFF0E9; padding:8rpx 16rpx; border-radius:24rpx; }
+.age-rail { white-space:nowrap; padding:4rpx 24rpx 20rpx; }
+.age-card { display:inline-flex; flex-direction:column; vertical-align:top; width:258rpx; height:232rpx; margin-right:18rpx; padding:22rpx; white-space:normal; border-radius:24rpx; background:linear-gradient(145deg,#FFFDF9,#FFF1E9); box-shadow:0 8rpx 24rpx rgba(120,75,45,.08); box-sizing:border-box; transition:transform .2s,box-shadow .2s; }
+.age-card:active { transform:scale(.97); }
+.age-card.age-current { background:linear-gradient(145deg,#FFE5D8,#FFD0BC); box-shadow:0 8rpx 22rpx rgba(237,112,73,.18); }
+.age-card.age-locked { opacity:.68; }
+.age-card-top { display:flex; justify-content:space-between; align-items:center; }
+.age-icon { font-size:38rpx; }
+.age-count { font-size:21rpx; color:#967D70; }
+.age-name { font-weight:700; font-size:29rpx; margin-top:9rpx; }
+.age-stage { font-size:22rpx; color:#9A8980; margin-top:1rpx; }
+.age-meter { height:10rpx; border-radius:10rpx; background:rgba(159,116,95,.15); margin-top:18rpx; overflow:hidden; }
+.age-meter view { height:100%; border-radius:10rpx; background:linear-gradient(90deg,#F9A17C,#E9674B); transition:width .5s ease; }
+.age-foot { color:#A18B80; font-size:20rpx; margin-top:8rpx; }
+.domain-grid { display:flex; flex-wrap:wrap; gap:16rpx; margin-top:24rpx; }
+.domain-entry { width:calc(33.33% - 11rpx); background:#FCF6EF; border-radius:20rpx; display:flex; flex-direction:column; align-items:center; padding:18rpx 6rpx; font-size:24rpx; }
+.domain-entry-icon { font-size:34rpx; margin-bottom:4rpx; }
+.domain-entry .muted { font-size:19rpx; margin-top:4rpx; }
+.stage-tag { font-size: 22rpx; color: #FF7043; font-weight: 600; }
+.stage-title { font-size: 36rpx; font-weight: 700; margin-top: 6rpx; }
+.ring {
+  width: 120rpx; height: 120rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 0 0 8rpx #fff;
+}
+.ring-num { font-size: 30rpx; font-weight: 700; color: #FF5722; }
+.stage .xp-bar { background: #FFE8DF; }
+.stage .xp-fill { background: linear-gradient(90deg,#FF8A65,#FF5722); }
+.link { color: #FF5722; font-size: 26rpx; font-weight: 600; }
+
+.next { background: #FFFDFB; border: 2rpx dashed #E8D9CF; }
+.next-tag { font-size: 22rpx; color: #B5AFA8; }
+.next-title { font-size: 32rpx; font-weight: 700; margin: 6rpx 0; }
+.lock-emoji { font-size: 56rpx; }
+
+.quick { margin: 0 24rpx; gap: 24rpx; }
+.quick-item {
+  flex: 1; background: #fff; border-radius: 24rpx; padding: 28rpx 0;
+  display: flex; flex-direction: column; align-items: center;
+  box-shadow: 0 4rpx 16rpx rgba(255,112,67,0.08);
+}
+.quick-emoji { font-size: 44rpx; margin-bottom: 8rpx; }
+.quick-item text { font-size: 26rpx; color: #2D2A26; }
+
+.stats { margin: 24rpx; background: #fff; border-radius: 24rpx; padding: 28rpx 0; }
+.stat { flex: 1; text-align: center; }
+.stat-num { display: block; font-size: 40rpx; font-weight: 700; color: #FF5722; }
+.stat-label { font-size: 22rpx; color: #9AA0A6; }

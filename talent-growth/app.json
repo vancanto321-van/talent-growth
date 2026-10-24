@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/band/band",
+    "pages/milestone/milestone",
+    "pages/record/record",
+    "pages/profile/profile",
+    "pages/stats/stats"
+  ],
+  "window": {
+    "navigationBarTitleText": "孩子成长",
+    "navigationBarBackgroundColor": "#FF7043",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF6F2"
+  },
+  "tabBar": {
+    "color": "#9AA0A6",
+    "selectedColor": "#FF7043",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "闯关" },
+      { "pagePath": "pages/record/record", "text": "记录" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

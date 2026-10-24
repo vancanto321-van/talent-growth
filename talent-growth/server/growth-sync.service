@@ -1,0 +1,36 @@
+[Unit]
+Description=Child Growth optional account and backup service
+After=network.target
+
+[Service]
+Type=simple
+User=child-growth
+Group=child-growth
+WorkingDirectory=/opt/child-growth-sync
+ExecStart=/usr/bin/node /opt/child-growth-sync/server/growth-sync.mjs
+Restart=on-failure
+RestartSec=3
+UMask=0077
+Environment=NODE_ENV=production
+Environment=GROWTH_SYNC_HOST=127.0.0.1
+Environment=GROWTH_SYNC_PORT=18129
+Environment=GROWTH_SYNC_DIR=/opt/child-growth-sync/data
+Environment=GROWTH_SYNC_ORIGIN=https://43.159.60.166
+Environment=COOKIE_SECURE=1
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/child-growth-sync/data
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+MemoryMax=384M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target
+

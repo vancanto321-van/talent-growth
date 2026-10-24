@@ -1,0 +1,4 @@
+{
+  "desc": "孩子成长记录小程序",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

@@ -1,0 +1,54 @@
+.page { padding-bottom: 40rpx; }
+.hero {
+  margin: 24rpx; padding: 40rpx; border-radius: 24rpx; text-align: center;
+  background: linear-gradient(135deg, #FF8A65, #FF5722); color: #fff;
+}
+.lv-emoji { font-size: 72rpx; }
+.lv-title { font-size: 36rpx; font-weight: 700; margin-top: 8rpx; }
+.lv-num { font-size: 24rpx; opacity: 0.9; }
+.xp-bar { height: 14rpx; background: rgba(255,255,255,0.3); border-radius: 8rpx; margin: 20rpx 0 8rpx; overflow: hidden; }
+.xp-fill { height: 100%; background: #fff; }
+.xp-hint { color: rgba(255,255,255,0.85); font-size: 22rpx; }
+
+.form-row { display: flex; align-items: center; padding: 18rpx 0; border-bottom: 1rpx solid #F5EDE7; }
+.lbl { width: 100rpx; color: #7A7670; font-size: 28rpx; }
+.inp { flex: 1; font-size: 30rpx; }
+.ph { color: #C8BEB6; }
+.sex { padding: 10rpx 24rpx; border-radius: 30rpx; background: #FFF1EC; font-size: 26rpx; color: #7A7670; }
+.sex.on { background: #FF5722; color: #fff; }
+
+.ub-item { display: flex; align-items: center; padding: 20rpx 0; border-bottom: 1rpx solid #F5EDE7; }
+.ub-emoji { font-size: 36rpx; margin-right: 16rpx; }
+.ub-title { font-size: 30rpx; font-weight: 600; }
+.ub-arrow { color: #C8BEB6; font-size: 36rpx; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 16rpx; }
+.badge-item { background: #FFF8F5; border-radius: 16rpx; padding: 16rpx 20rpx; text-align: center; width: 200rpx; }
+.badge-emoji { font-size: 40rpx; display: block; }
+.badge-name { font-size: 24rpx; font-weight: 600; display: block; }
+.badge-band { font-size: 20rpx; }
+
+.stats { margin: 24rpx; background: #fff; border-radius: 24rpx; padding: 28rpx 0; }
+.stat { flex: 1; text-align: center; }
+.stat-num { display: block; font-size: 40rpx; font-weight: 700; color: #FF5722; }
+.stat-label { font-size: 22rpx; color: #9AA0A6; }
+.stats-link {
+  position: absolute; right: 24rpx; bottom: 12rpx;
+  font-size: 22rpx; color: #FF7043;
+}
+.about .muted { display: block; margin: 6rpx 0; line-height: 1.7; }
+.backup-actions { gap: 16rpx; margin-top: 16rpx; }
+.backup-btn { flex: 1; font-size: 24rpx; padding: 14rpx 0; }
+
+.baby-add { font-size: 24rpx; color: #FF5722; }
+.baby-row { display: flex; flex-wrap: wrap; gap: 16rpx; margin-top: 20rpx; }
+.baby-chip {
+  display: flex; align-items: center; gap: 8rpx;
+  padding: 14rpx 24rpx; border-radius: 40rpx; background: #FFF1EC;
+  font-size: 26rpx; color: #7A7670;
+}
+.baby-chip.on { background: #FF5722; color: #fff; }
+.baby-emoji { font-size: 30rpx; }
+.baby-name { max-width: 200rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.baby-cur { font-size: 24rpx; }
+.baby-del { display: inline-block; margin-top: 20rpx; font-size: 24rpx; color: #D32F2F; }

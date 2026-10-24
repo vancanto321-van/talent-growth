@@ -1,0 +1,154 @@
+<view class="page" wx:if="{{band}}">
+  <!-- 锁定态 -->
+  <view wx:if="{{!unlocked}}" class="card locked">
+    <text class="lock-big">🔒</text>
+    <view class="title">该关卡尚未解锁</view>
+    <view class="muted">请先完成上一年龄段至少 {{unlockRatio}}% 的里程碑达标</view>
+  </view>
+
+  <block wx:if="{{unlocked}}">
+    <!-- 头部进度 -->
+    <view class="band-head">
+      <view class="row-between">
+        <view class="col">
+          <view class="bh-tag">第 {{band.order + 1}} 关</view>
+          <view class="bh-title">{{band.label}}</view>
+          <view class="bh-stage">{{band.stage}}</view>
+        </view>
+        <view class="ring" style="background: conic-gradient(#FF5722 {{progress.percent}}%, #FFE8DF {{progress.percent}}%)">
+          <text class="ring-num">{{progress.percent}}%</text>
+        </view>
+      </view>
+      <view class="bh-sub">已达标 {{progress.achieved}} / {{progress.total}} 项</view>
+      <view wx:if="{{badges.length}}" class="badges">
+        <text class="muted">领域徽章：</text>
+        <text wx:for="{{badges}}" wx:key="*this" class="badge">🏅{{item}}</text>
+      </view>
+    </view>
+
+    <view class="explore-title"><view class="section-h">挑一张成长卡</view><text class="explore-hint">左右滑动，遇见今天的小目标</text></view>
+
+    <!-- Tab -->
+    <view class="tabs">
+      <view class="tab {{tab===0?'on':''}}" data-t="0" bindtap="switchTab">里程碑</view>
+      <view class="tab {{tab===1?'on':''}}" data-t="1" bindtap="switchTab">陪伴</view>
+      <view class="tab {{tab===2?'on':''}}" data-t="2" bindtap="switchTab">安全</view>
+      <view class="tab {{tab===3?'on':''}}" data-t="3" bindtap="switchTab">物品</view>
+    </view>
+
+    <!-- 里程碑 -->
+    <view wx:if="{{tab===0}}">
+      <view class="ms-search">
+        <input class="ms-search-input" placeholder="🔍 搜索里程碑（名称/年龄段）" value="{{keyword}}"
+          bindinput="onSearchInput" confirm-type="search" />
+        <text wx:if="{{keyword}}" class="ms-search-clear" bindtap="clearSearch">×</text>
+      </view>
+      <scroll-view scroll-x class="domain-bar">
+        <view wx:for="{{domains}}" wx:key="name" class="chip {{activeDomain===index?'on':''}}" data-i="{{index}}" bindtap="pickDomain">{{item.name}}</view>
+      </scroll-view>
+      <swiper class="milestone-deck" current="{{cardIndex}}" previous-margin="48rpx" next-margin="48rpx" duration="420" bindchange="onCardChange" wx:if="{{filteredItems.length}}">
+        <swiper-item wx:for="{{filteredItems}}" wx:key="id">
+        <view class="milestone-card {{cardIndex===index?'is-active':''}} {{item.status==='achieved'?'card-done':''}}" data-id="{{item.id}}" bindtap="openMilestone">
+          <view class="mc-top"><text class="mc-domain">{{item.domain}}</text><text class="mc-status">{{item.status==='achieved'?'已点亮':item.status==='observed'?'观察中':'待探索'}}</text></view>
+          <view class="mc-age">{{item.age}}</view>
+          <view class="mc-title">{{item.title}}</view>
+          <view class="mc-desc">{{item.func}}</view>
+          <view class="mc-charge"><text>探索电量</text><view class="mc-battery"><view style="width:{{item.batteryPercent}}%"></view></view><text>{{item.batteryPercent}}%</text></view>
+          <view class="mc-bottom"><text>打开成长指南</text><text class="mc-arrow">→</text></view>
+          <view class="mc-orb">{{item.status==='achieved'?'✦':'✧'}}</view>
+        </view>
+        </swiper-item>
+      </swiper>
+      <view class="deck-navigation" wx:if="{{filteredItems.length}}"><button class="deck-arrow" disabled="{{cardIndex===0}}" bindtap="previousCard">‹</button><view class="deck-counter">{{cardIndex+1}} / {{filteredItems.length}}<view>左右滑动，慢慢探索</view></view><button class="deck-arrow" disabled="{{cardIndex===filteredItems.length-1}}" bindtap="nextCard">›</button></view>
+      <view wx:if="{{!filteredItems.length}}" class="empty">{{keyword ? '没有匹配的里程碑，换个关键词试试' : '该领域暂无里程碑内容'}}</view>
+    </view>
+
+    <!-- 陪伴指南 -->
+    <view wx:if="{{tab===1}}">
+      <view wx:if="{{!guide}}" class="empty">暂无陪伴指南内容</view>
+      <view wx:if="{{guide}}" class="card">
+      <view class="section-h">本阶段孩子画像</view>
+      <view>{{guide.profile}}</view>
+      <view class="section-h">每日陪伴节奏</view>
+      <view class="rhythm">
+        <view wx:for="{{guide.rhythm}}" wx:key="time" class="rhythm-row">
+          <text class="r-time">{{item.time}}</text>
+          <view class="col" style="flex:1">
+            <text class="r-do">{{item.do}}</text>
+            <text class="r-act muted">{{item.act}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="section-h">高质量陪伴要点</view>
+      <view wx:for="{{guide.points}}" wx:key="*this" class="li">{{index+1}}. {{item}}</view>
+      <view class="section-h">日常场景话术</view>
+      <view class="sc-table">
+        <view class="sc-head row">
+          <text class="c1">场景</text><text class="c2">可以这样</text><text class="c3">避免</text>
+        </view>
+        <view wx:for="{{guide.scenarios}}" wx:key="scene" class="sc-row">
+          <text class="c1 b">{{item.scene}}</text>
+          <text class="c2">{{item.do}}</text>
+          <text class="c3 muted">{{item.avoid}}</text>
+        </view>
+      </view>
+      <view class="section-h">亲子习惯</view>
+      <view wx:for="{{guide.habits}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">家长自我照顾</view>
+      <view wx:for="{{guide.selfcare}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">推荐资源</view>
+      <view wx:for="{{guide.resources}}" wx:key="*this" class="li">· {{item}}</view>
+      </view>
+    </view>
+
+    <!-- 安全事项 -->
+    <view wx:if="{{tab===2}}">
+      <view wx:if="{{!safety}}" class="empty">暂无安全事项内容</view>
+      <view wx:if="{{safety}}" class="card">
+      <view class="section-h">⚠️ 本阶段三大风险</view>
+      <view wx:for="{{safety.risks}}" wx:key="name" class="risk">
+        <text class="risk-name">{{item.name}}</text>
+        <text class="risk-why muted">{{item.why}}</text>
+        <text class="risk-guard">防护：{{item.guard}}</text>
+      </view>
+      <view class="section-h">居家安全清单</view>
+      <view wx:for="{{safety.home}}" wx:key="*this" class="li">☐ {{item}}</view>
+      <view class="section-h">户外与交通</view>
+      <view wx:for="{{safety.outdoor}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">饮食与窒息</view>
+      <view wx:for="{{safety.food}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">玩具与用品</view>
+      <view wx:for="{{safety.toys}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">社交与人身</view>
+      <view wx:for="{{safety.social}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h">急救要点</view>
+      <view wx:for="{{safety.firstaid}}" wx:key="*this" class="li">· {{item}}</view>
+      <view class="section-h warn">🚨 发育警示信号（出现建议就医评估）</view>
+      <view wx:for="{{safety.warning}}" wx:key="*this" class="li warn-li">⚠️ {{item}}</view>
+      <view class="section-h">求助备忘</view>
+      <view class="contacts">{{safety.contacts}}</view>
+      </view>
+    </view>
+
+    <!-- 物品清单 -->
+    <view wx:if="{{tab===3}}">
+      <view wx:if="{{!itemYears.length}}" class="empty">暂无物品清单内容</view>
+      <view wx:for="{{itemYears}}" wx:key="year" class="card">
+        <view class="section-h">{{item.year}}</view>
+        <view class="it-table">
+          <view class="it-head row">
+            <text class="i1">物品</text><text class="i2">年限</text><text class="i3">更新</text>
+          </view>
+          <view wx:for="{{item.items}}" wx:key="name" class="it-row">
+            <view class="col" style="flex:1">
+              <text class="i-name">{{item.name}}</text>
+              <text class="i-tip muted">{{item.tip}}</text>
+            </view>
+            <text class="i2">{{item.life}}</text>
+            <text class="i3">{{item.wear}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

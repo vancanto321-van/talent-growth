@@ -1,0 +1,49 @@
+<view class="page">
+  <view wx:if="{{!hasChild}}" class="empty" style="padding-top:200rpx">
+    <text class="empty-emoji">👶</text>
+    <view>先去「我的」设置宝贝档案，即可查看成长统计</view>
+    <button class="btn-primary" style="margin-top:32rpx; width:60%; margin-left:auto; margin-right:auto" bindtap="goBand">去设置</button>
+  </view>
+
+  <block wx:if="{{hasChild && band}}">
+    <!-- 当前关卡进度环 -->
+    <view class="card center">
+      <view class="section-h" style="text-align:center">当前关卡进度</view>
+      <view class="ring" style="background: conic-gradient(#FF5722 {{band.percent}}%, #FFE8DF {{band.percent}}%)">
+        <text class="ring-num">{{band.percent}}%</text>
+      </view>
+      <view class="muted" style="text-align:center; margin-top:16rpx">{{band.label}} · {{band.stage}} · 已达标 {{band.achieved}} / {{band.total}} 项</view>
+    </view>
+
+    <!-- 领域分布 -->
+    <view class="card">
+      <view class="section-h">领域达标分布（{{band.label}}）</view>
+      <view wx:for="{{domainStats}}" wx:key="name" class="dom-row">
+        <text class="dom-name">{{item.name}}</text>
+        <view class="dom-bar"><view class="dom-fill" style="width:{{item.percent}}%"></view></view>
+        <text class="dom-num">{{item.achieved}}/{{item.total}}</text>
+      </view>
+    </view>
+
+    <!-- 近12周记录趋势 -->
+    <view class="card">
+      <view class="section-h">近 12 周成长记录</view>
+      <view class="week-chart">
+        <view wx:for="{{weekData}}" wx:key="label" class="week-col">
+          <view class="week-bar-wrap">
+            <view class="week-bar" style="height:{{item.percent}}%"></view>
+            <text class="week-count">{{item.count || ''}}</text>
+          </view>
+          <text class="week-label">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 汇总 -->
+    <view class="row stats">
+      <view class="stat"><text class="stat-num">{{checkinStreak}}</text><text class="stat-label">连续打卡(天)</text></view>
+      <view class="stat"><text class="stat-num">{{level.xp}}</text><text class="stat-label">总经验</text></view>
+      <view class="stat"><text class="stat-num">{{badgeCount}}</text><text class="stat-label">领域徽章</text></view>
+    </view>
+  </block>
+</view>

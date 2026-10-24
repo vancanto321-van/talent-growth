@@ -1,0 +1,157 @@
+# 儿童版测评题库：8 个观察维度（多元智能）× 5 题 + 毅力 4 题 + 思维模式 4 题 = 48 题。
+#
+# 理论来源与授权声明（重要）：
+# - 八个观察维度参照哈佛大学加德纳教授的多元智能理论（Project Zero）。加德纳官网明确
+#   "不存在加德纳认证的 MI 测评"，故本题为自编中文观察题，不得宣传为"哈佛量表"；
+# - "毅力（grit）"概念来自宾夕法尼亚大学 Duckworth 的研究、"思维模式（growth mindset）"
+#   概念来自斯坦福大学 Dweck 的研究。两者原量表版权限制商用，此处为按公开维度自行改写
+#   的中文题，非原题照搬；正式商用前如需引用原题须获得授权（见 docs/compliance.md）。
+# - 儿童版不设反向题（低龄观察题设反向题会降低作答质量），信度检验列入上线前事项。
+
+forms:
+  parent:
+    label: 家长观察版
+    target: 3-6 岁（由最了解孩子的家长代答）
+    intro: 请回想孩子最近半年的日常表现作答，第一印象最准。
+  self:
+    label: 儿童自答版
+    target: 7-12 岁（建议家长在旁边陪同）
+    intro: 没有对错，凭第一感觉选就好。
+
+options:
+  - { value: 1, label: 很不像 }
+  - { value: 2, label: 不太像 }
+  - { value: 3, label: 说不好 }
+  - { value: 4, label: 比较像 }
+  - { value: 5, label: 非常像 }
+
+traits:
+  - { code: linguistic, name: 语言表达, type_name: 语言小达人, type_tagline: 爱听爱说爱编故事的小话匣子 }
+  - { code: logical, name: 逻辑数理, type_name: 逻辑小侦探, type_tagline: 爱问为什么、爱找规律的小脑子 }
+  - { code: spatial, name: 空间视觉, type_name: 空间建筑师, type_tagline: 拼搭画画样样行的小创作者 }
+  - { code: musical, name: 音乐律动, type_name: 音乐小精灵, type_tagline: 听两遍就会哼的小耳朵 }
+  - { code: bodily, name: 身体动觉, type_name: 身体小健将, type_tagline: 跑跳攀爬精力满满的小马达 }
+  - { code: interpersonal, name: 人际交往, type_name: 人际小领袖, type_tagline: 爱交朋友会调解的孩子王 }
+  - { code: intrapersonal, name: 内省自察, type_name: 内省小思想家, type_tagline: 安静却有主见的小大人 }
+  - { code: naturalist, name: 自然观察, type_name: 自然观察家, type_tagline: 花草虫鸟样样着迷的小探索家 }
+
+items:
+  parent:
+    # 语言表达
+    - { code: pl1, trait: linguistic, text: 孩子爱听故事，听完能复述出很多细节 }
+    - { code: pl2, trait: linguistic, text: 孩子的词汇量比同龄孩子丰富，爱用新词 }
+    - { code: pl3, trait: linguistic, text: 孩子喜欢自己编故事、给玩偶配音演戏 }
+    - { code: pl4, trait: linguistic, text: 孩子认字较早，或对文字符号特别敏感 }
+    - { code: pl5, trait: linguistic, text: 孩子能把自己的想法和经历讲清楚 }
+    # 逻辑数理
+    - { code: pq1, trait: logical, text: 孩子爱问"为什么"，还会追问到底 }
+    - { code: pq2, trait: logical, text: 拼图、棋类、找规律这类游戏孩子玩得好 }
+    - { code: pq3, trait: logical, text: 孩子对数字敏感，数数、比大小学得早 }
+    - { code: pq4, trait: logical, text: 孩子做事讲顺序，喜欢把东西分类摆放 }
+    - { code: pq5, trait: logical, text: 孩子能发现故事或大人说法里"不对劲"的地方 }
+    # 空间视觉
+    - { code: ps1, trait: spatial, text: 孩子拼积木、乐高时有自己的想法和结构 }
+    - { code: ps2, trait: spatial, text: 孩子画画有细节，布局和比例拿得准 }
+    - { code: ps3, trait: spatial, text: 孩子认路能力强，或喜欢看地图 }
+    - { code: ps4, trait: spatial, text: 孩子拼图速度快，对图案整体敏感 }
+    - { code: ps5, trait: spatial, text: 孩子对颜色和形状敏感，喜欢拆装东西 }
+    # 音乐律动
+    - { code: pm1, trait: musical, text: 孩子对旋律敏感，听两遍就能哼出来 }
+    - { code: pm2, trait: musical, text: 孩子唱歌音准不错，节奏踩得准 }
+    - { code: pm3, trait: musical, text: 听到音乐，孩子会不自觉地跟着节奏动 }
+    - { code: pm4, trait: musical, text: 孩子对乐器好奇，或喜欢节奏类游戏 }
+    - { code: pm5, trait: musical, text: 孩子能听出谁唱歌跑了调、哪里不对 }
+    # 身体动觉
+    - { code: pb1, trait: bodily, text: 孩子跑跳攀爬等大动作发展得好 }
+    - { code: pb2, trait: bodily, text: 孩子动作协调，学新的身体动作很快 }
+    - { code: pb3, trait: bodily, text: 孩子精力旺盛，坐一会儿就想去动 }
+    - { code: pb4, trait: bodily, text: 孩子精细动作好（用剪刀、串珠、扣扣子） }
+    - { code: pb5, trait: bodily, text: 孩子特别喜欢户外活动和体育游戏 }
+    # 人际交往
+    - { code: pi1, trait: interpersonal, text: 孩子会主动认识新朋友 }
+    - { code: pi2, trait: interpersonal, text: 孩子能察觉别人不高兴，并去安慰 }
+    - { code: pi3, trait: interpersonal, text: 小伙伴闹矛盾时，孩子能出面调解 }
+    - { code: pi4, trait: interpersonal, text: 孩子喜欢组织大家一起玩 }
+    - { code: pi5, trait: interpersonal, text: 大人们都喜欢孩子，说孩子"会来事" }
+    # 内省自察
+    - { code: pn1, trait: intrapersonal, text: 孩子独处时也能自得其乐 }
+    - { code: pn2, trait: intrapersonal, text: 孩子能说出自己的优点和不足 }
+    - { code: pn3, trait: intrapersonal, text: 孩子情绪过去后，能讲出自己为什么生气 }
+    - { code: pn4, trait: intrapersonal, text: 孩子有自己的主意，不轻易跟着别人跑 }
+    - { code: pn5, trait: intrapersonal, text: 孩子喜欢安静的活动（看书、琢磨事情） }
+    # 自然观察
+    - { code: pa1, trait: naturalist, text: 孩子喜欢动物植物，观察得很细 }
+    - { code: pa2, trait: naturalist, text: 孩子能记住各种名字（恐龙、车标、花草） }
+    - { code: pa3, trait: naturalist, text: 孩子对天气、季节的变化很敏感 }
+    - { code: pa4, trait: naturalist, text: 孩子喜欢收集石子、树叶、小玩意 }
+    - { code: pa5, trait: naturalist, text: 到了户外，孩子的专注和兴奋明显更强 }
+    # 毅力（概念来源：宾大 Duckworth "grit" 研究，自编题）
+    - { code: pg1, trait: grit, text: 遇到难的事，孩子会多试几次不轻易放弃 }
+    - { code: pg2, trait: grit, text: 孩子做事有始有终 }
+    - { code: pg3, trait: grit, text: 失败后孩子能再来一次，不哭闹着放弃 }
+    - { code: pg4, trait: grit, text: 为了想要的东西，孩子能等待和攒努力 }
+    # 思维模式（概念来源：斯坦福 Dweck "growth mindset" 研究，自编题）
+    - { code: pd1, trait: mindset, text: 孩子相信"练得多了就会变好" }
+    - { code: pd2, trait: mindset, text: 失败后孩子会说"我再试试别的办法" }
+    - { code: pd3, trait: mindset, text: 孩子愿意接有挑战的新任务 }
+    - { code: pd4, trait: mindset, text: 孩子不怕在别人面前出错 }
+
+  self:
+    # 语言表达
+    - { code: sl1, trait: linguistic, text: 我爱听故事，听完还能讲给别人听 }
+    - { code: sl2, trait: linguistic, text: 我知道的词比同学多 }
+    - { code: sl3, trait: linguistic, text: 我喜欢编故事、给角色配音 }
+    - { code: sl4, trait: linguistic, text: 我认字多，看到新词会想知道意思 }
+    - { code: sl5, trait: linguistic, text: 我能把事情讲得让别人明白 }
+    # 逻辑数理
+    - { code: sq1, trait: logical, text: 我爱问"为什么"，想知道到底 }
+    - { code: sq2, trait: logical, text: 拼图、棋类、找规律的游戏我玩得好 }
+    - { code: sq3, trait: logical, text: 我对数字敏感，心算比较快 }
+    - { code: sq4, trait: logical, text: 我喜欢把东西分类整理得整整齐齐 }
+    - { code: sq5, trait: logical, text: 我能发现别人说法里不对劲的地方 }
+    # 空间视觉
+    - { code: ss1, trait: spatial, text: 我拼积木、乐高会有自己的设计 }
+    - { code: ss2, trait: spatial, text: 我画画有细节，自己觉得布局不错 }
+    - { code: ss3, trait: spatial, text: 我认路很厉害，或喜欢看地图 }
+    - { code: ss4, trait: spatial, text: 我拼图速度快 }
+    - { code: ss5, trait: spatial, text: 我喜欢拆装东西，研究里面什么样 }
+    # 音乐律动
+    - { code: sm1, trait: musical, text: 歌我听两遍就能哼出来 }
+    - { code: sm2, trait: musical, text: 我唱歌不跑调，节奏也准 }
+    - { code: sm3, trait: musical, text: 听到好听的音乐，我会跟着动起来 }
+    - { code: sm4, trait: musical, text: 我想学乐器，或喜欢节奏游戏 }
+    - { code: sm5, trait: musical, text: 谁唱歌跑调我一下子就能听出来 }
+    # 身体动觉
+    - { code: sb1, trait: bodily, text: 跑步、跳高、爬杆这些我都行 }
+    - { code: sb2, trait: bodily, text: 新的体育动作我看一遍就会个大概 }
+    - { code: sb3, trait: bodily, text: 让我一直坐着不动很难受 }
+    - { code: sb4, trait: bodily, text: 我的手很巧（剪纸、串珠、拼小件） }
+    - { code: sb5, trait: bodily, text: 我最喜欢上体育课和出去玩 }
+    # 人际交往
+    - { code: si1, trait: interpersonal, text: 我会主动认识新朋友 }
+    - { code: si2, trait: interpersonal, text: 同学不开心时我能发现并安慰 }
+    - { code: si3, trait: interpersonal, text: 大家吵架时我常常能劝好 }
+    - { code: si4, trait: interpersonal, text: 玩什么、怎么玩，经常是我组织的 }
+    - { code: si5, trait: interpersonal, text: 老师和同学都愿意跟我打交道 }
+    # 内省自察
+    - { code: sn1, trait: intrapersonal, text: 我一个人待着也很有意思 }
+    - { code: sn2, trait: intrapersonal, text: 我说得出自己的优点和缺点 }
+    - { code: sn3, trait: intrapersonal, text: 发完脾气后，我能说清为什么生气 }
+    - { code: sn4, trait: intrapersonal, text: 我有自己的想法，不别人说什么就是什么 }
+    - { code: sn5, trait: intrapersonal, text: 我喜欢安安静静看书或想事情 }
+    # 自然观察
+    - { code: sa1, trait: naturalist, text: 我喜欢小动物和植物，看得特别细 }
+    - { code: sa2, trait: naturalist, text: 我能记住好多名字（恐龙、汽车、花草） }
+    - { code: sa3, trait: naturalist, text: 我对天气和季节的变化很敏感 }
+    - { code: sa4, trait: naturalist, text: 我喜欢收集石子、树叶和各种小东西 }
+    - { code: sa5, trait: naturalist, text: 一到户外我就特别来劲，观察很多细节 }
+    # 毅力
+    - { code: sg1, trait: grit, text: 遇到难题我会多试几次，不轻易放弃 }
+    - { code: sg2, trait: grit, text: 我做事有头有尾 }
+    - { code: sg3, trait: grit, text: 输了之后我能再来一次 }
+    - { code: sg4, trait: grit, text: 为了想要的东西，我可以慢慢攒、慢慢等 }
+    # 思维模式
+    - { code: sd1, trait: mindset, text: 我相信多练就会变好 }
+    - { code: sd2, trait: mindset, text: 做错时我会想"换别的办法试试" }
+    - { code: sd3, trait: mindset, text: 我喜欢挑战没做过的事 }
+    - { code: sd4, trait: mindset, text: 当众出错我不太怕 }

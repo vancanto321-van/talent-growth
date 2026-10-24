@@ -1,0 +1,39 @@
+.page { padding-bottom: 40rpx; }
+.empty-emoji { font-size: 88rpx; display: block; margin-bottom: 16rpx; }
+.center { text-align: center; }
+
+.ring {
+  width: 220rpx; height: 220rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 8rpx auto 0;
+  box-shadow: inset 0 0 0 12rpx #fff;
+}
+.ring-num {
+  font-size: 44rpx; font-weight: 700; color: #FF5722;
+  background: #fff; width: 160rpx; height: 160rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.dom-row { display: flex; align-items: center; padding: 12rpx 0; }
+.dom-name { width: 170rpx; font-size: 24rpx; color: #7A7670; flex-shrink: 0; }
+.dom-bar { flex: 1; height: 20rpx; background: #FFE8DF; border-radius: 10rpx; overflow: hidden; margin: 0 16rpx; }
+.dom-fill { height: 100%; background: linear-gradient(90deg, #FF8A65, #FF5722); border-radius: 10rpx; }
+.dom-num { width: 90rpx; text-align: right; font-size: 24rpx; color: #FF5722; flex-shrink: 0; }
+
+.week-chart { display: flex; align-items: flex-end; height: 240rpx; padding-top: 20rpx; }
+.week-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
+.week-bar-wrap {
+  flex: 1; width: 40rpx; display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end; position: relative;
+}
+.week-bar {
+  width: 100%; background: linear-gradient(180deg, #FF8A65, #FF5722);
+  border-radius: 8rpx 8rpx 0 0; min-height: 4rpx;
+}
+.week-count { position: absolute; top: -30rpx; font-size: 20rpx; color: #FF5722; }
+.week-label { font-size: 20rpx; color: #9AA0A6; margin-top: 10rpx; }
+
+.stats { margin: 24rpx; background: #fff; border-radius: 24rpx; padding: 28rpx 0; }
+.stat { flex: 1; text-align: center; }
+.stat-num { display: block; font-size: 40rpx; font-weight: 700; color: #FF5722; }
+.stat-label { font-size: 22rpx; color: #9AA0A6; }

@@ -1,0 +1,37 @@
+/* 全局样式 */
+page {
+  background: #FFF6F2;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  color: #2D2A26;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+view, text, button, input, textarea { box-sizing: border-box; }
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255,112,67,0.08);
+}
+.row { display: flex; align-items: center; }
+.row-between { display: flex; align-items: center; justify-content: space-between; }
+.col { display: flex; flex-direction: column; }
+.muted { color: #9AA0A6; font-size: 24rpx; }
+.title { font-size: 34rpx; font-weight: 700; color: #2D2A26; }
+.subtitle { font-size: 26rpx; color: #7A7670; }
+.tag { display: inline-block; padding: 4rpx 16rpx; border-radius: 20rpx; font-size: 22rpx; }
+.btn-primary {
+  background: linear-gradient(135deg, #FF8A65, #FF5722);
+  color: #fff; border: none; border-radius: 48rpx;
+  padding: 20rpx 0; font-size: 30rpx; font-weight: 600;
+}
+.btn-primary::after { border: none; }
+.btn-ghost {
+  background: #FFF1EC; color: #FF5722; border: none; border-radius: 48rpx;
+  padding: 18rpx 0; font-size: 28rpx;
+}
+.btn-ghost::after { border: none; }
+.section-h { font-size: 30rpx; font-weight: 700; margin: 24rpx 0 12rpx; color: #2D2A26; }
+.divider { height: 1rpx; background: #F0E6E0; margin: 20rpx 0; }
+.empty { text-align: center; color: #B5AFA8; padding: 60rpx 0; font-size: 26rpx; }

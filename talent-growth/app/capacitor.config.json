@@ -1,0 +1,9 @@
+{
+  "appId": "com.childgrowth.app",
+  "appName": "孩子成长",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "never",
+    "preferredContentMode": "mobile"
+  }
+}

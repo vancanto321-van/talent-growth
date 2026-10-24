@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">孩子成长</string>
+    <string name="title_activity_main">孩子成长</string>
+    <string name="package_name">com.childgrowth.app</string>
+    <string name="custom_url_scheme">com.childgrowth.app</string>
+</resources>

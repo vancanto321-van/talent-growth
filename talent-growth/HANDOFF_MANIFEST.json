@@ -1,0 +1,1672 @@
+{
+  "product": "天赋生长",
+  "snapshotDate": "2026-10-24",
+  "timezone": "Asia/Shanghai",
+  "startHere": "START_HERE_CODEX.md",
+  "lastPublishedRelease": "4c4aea843ff5b843",
+  "lastPublishedAt": "2026-10-23",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8503,
+      "sha256": "0025cd0bd51bde7c61b7327d50459541ef8ec6fd59236eb321baab9c715d801b"
+    },
+    {
+      "path": "START_HERE_CODEX.md",
+      "bytes": 11314,
+      "sha256": "5ada87185ef8449eebc9336aa2d2af657d0b6cac810ddaba6c8d934ae15c2384"
+    },
+    {
+      "path": "app.js",
+      "bytes": 2781,
+      "sha256": "c399f5664a952085250007843eb68a6283b2cdc7a4ead90c6c198fd9bcb416ab"
+    },
+    {
+      "path": "app.json",
+      "bytes": 761,
+      "sha256": "26e479058fb5a0129029eb18d46cdc5256c46ff15791f20216e004987e57ac2d"
+    },
+    {
+      "path": "app.wxss",
+      "bytes": 1435,
+      "sha256": "0bc08f9600f7d92ddc06a609287eee3ec0e056990430e3dc24a6898e9b4ef52b"
+    },
+    {
+      "path": "app/.gitignore",
+      "bytes": 91,
+      "sha256": "50d55cb65b78c3539e07b6b614476ce33141a40d119623901a6a772d95155fd0"
+    },
+    {
+      "path": "app/APP_STORE_RELEASE.md",
+      "bytes": 3522,
+      "sha256": "5bb176d1e7a7fca11d18bc3f62c7323ba4d801ef12f5f6e326c0301455f29e48"
+    },
+    {
+      "path": "app/android/.gitignore",
+      "bytes": 1824,
+      "sha256": "065e4a92a240fe11a0ea230491ad9dabef143f5fd5a3e6884ad6f0395666a971"
+    },
+    {
+      "path": "app/android/app/.gitignore",
+      "bytes": 26,
+      "sha256": "99c54e51ee601a60fbde8016b2cbf717483bc2e92773be86c9247d02a7fa6ea4"
+    },
+    {
+      "path": "app/android/app/build.gradle",
+      "bytes": 2130,
+      "sha256": "8e147a302d1afd1f32a6a9109585cdb1bf58a8e83cc9bfb49ce1cd0eca606b68"
+    },
+    {
+      "path": "app/android/app/capacitor.build.gradle",
+      "bytes": 516,
+      "sha256": "d6b4708125a32a7ff51f632a7ca9b6b96187486d4664463e206ae56e0cb46303"
+    },
+    {
+      "path": "app/android/app/proguard-rules.pro",
+      "bytes": 751,
+      "sha256": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2"
+    },
+    {
+      "path": "app/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "bytes": 774,
+      "sha256": "ff50b4c110a7434312f9af54171f9e8523b015836f707c9b387b76d4c38a97f8"
+    },
+    {
+      "path": "app/android/app/src/main/AndroidManifest.xml",
+      "bytes": 1529,
+      "sha256": "a65ff5c0812af201826190d1e183ea720cea07171a5eb1fc4435334a142f0b2b"
+    },
+    {
+      "path": "app/android/app/src/main/assets/capacitor.config.json",
+      "bytes": 216,
+      "sha256": "1c72104e03a20700b286c45ca1477631b449449fdb12d723a108dd1b79ed51c2"
+    },
+    {
+      "path": "app/android/app/src/main/assets/capacitor.plugins.json",
+      "bytes": 306,
+      "sha256": "ce288dee4e2bae47ad33b293b4311d0d6efe42d316f0e90d1374b2424b92ae20"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/cordova.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/cordova_plugins.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/data.json",
+      "bytes": 494242,
+      "sha256": "dbb426552f4b50426d238260b1da90f68122423edcc44e066bfefebb0e960824"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/index.html",
+      "bytes": 388,
+      "sha256": "f99266a177d1e8bda76b81cc274b04a41d869dc19a99efe9abec2698801b3229"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/main.js",
+      "bytes": 12756,
+      "sha256": "c2b1063a7289f810eaad884292c75476cc50ab60d39b6aa02d5865dc8556457a"
+    },
+    {
+      "path": "app/android/app/src/main/assets/public/style.css",
+      "bytes": 6028,
+      "sha256": "24ac30532d6db68083c75aed33d0a1c5eaf0112e41d38dc5dd4f33a273e5fd51"
+    },
+    {
+      "path": "app/android/app/src/main/java/com/childgrowth/app/MainActivity.java",
+      "bytes": 123,
+      "sha256": "a8e9159a8da1c79b045732f22938a1f9d005eaaac1d8b622ec977a6ddf1661d6"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-land-hdpi/splash.png",
+      "bytes": 7705,
+      "sha256": "08cc34ad7713fe7ed58bceaa37b2387b670c53cd60264b4bd6442db3098e75dc"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-land-mdpi/splash.png",
+      "bytes": 4040,
+      "sha256": "5cf98b4451bd99b20df26f9e608a46946118be6b0ae90762f9ca1786a30c76ff"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-land-xhdpi/splash.png",
+      "bytes": 9251,
+      "sha256": "22f87e1e3bc89aa01a7dbc39c9a4db058cd0bf4ad3fe9f55712bf69eb997f4bf"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+      "bytes": 13984,
+      "sha256": "42aa26392546fcdee1b8d3ac6d4b41bfcceb41dc6a4f3a3c30c24a8a8f4db862"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+      "bytes": 17683,
+      "sha256": "60393ce8636fd263e4e1fea3fd4ab2de948c6295e898fda9b50ac4e5283be809"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-port-hdpi/splash.png",
+      "bytes": 7934,
+      "sha256": "c5015f4ba3628392b538386c5e210f0b94f352a3160adab934fd0311972137ca"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-port-mdpi/splash.png",
+      "bytes": 4096,
+      "sha256": "07fa579e1c83e04ba7f9cbcbfcf41b68e15fe3638f2c44a04e58b809103e6b69"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-port-xhdpi/splash.png",
+      "bytes": 9875,
+      "sha256": "b73049cb37fe76d6c11b87a796766bf6af0c85483b31eb6a921657b0d764a4b9"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+      "bytes": 13346,
+      "sha256": "0c7f1212f25b7b90e9a6e1d320013e4ff3d3e03e634cbb07b7b7981cac51627f"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+      "bytes": 17489,
+      "sha256": "3db071a03b2f8ffe0dfd4170fc59842d53cd15bba5e88af59401d58efabf7827"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "bytes": 1880,
+      "sha256": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "bytes": 5606,
+      "sha256": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec"
+    },
+    {
+      "path": "app/android/app/src/main/res/drawable/splash.png",
+      "bytes": 4040,
+      "sha256": "5cf98b4451bd99b20df26f9e608a46946118be6b0ae90762f9ca1786a30c76ff"
+    },
+    {
+      "path": "app/android/app/src/main/res/layout/activity_main.xml",
+      "bytes": 535,
+      "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "bytes": 265,
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "bytes": 265,
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "bytes": 2786,
+      "sha256": "72b71c3581ca3b5a23b1c168d69b9d855b3f184fa079902a01f088eb4f0607d5"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "bytes": 3450,
+      "sha256": "32baa10d2632a4417454a579f992bd640e0a3cec79321423559b2c9940de58a9"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "bytes": 4341,
+      "sha256": "bfcc1b0fa931b14bb241372c76ab4f04374b67d02363c98d9cb12edfdacdf5f3"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "bytes": 1869,
+      "sha256": "27ed3603010ebc278f64f8645741ab132ff517abb5308eb9df6c8e42a48956b2"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "bytes": 2110,
+      "sha256": "58e78a618778926b1f6d9472a6468de878de8530970934e94aab5ba4ba08cc00"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "bytes": 2725,
+      "sha256": "0166fc333074c373fbd0ce6b5defd71552166165ac778121ca9c9dff6b83f0fc"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "bytes": 3981,
+      "sha256": "d35dbfff175b83c13ef59cf924abfc810f7b6a158595d7417c5498ea8c7c7ed1"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "bytes": 5036,
+      "sha256": "6f88083b8166cc559102f7044688de7525287632ebe09ac45d001ac8bf4b3eae"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "bytes": 6593,
+      "sha256": "40911a00922868686854a4804b93fd6e56b503664696de03f450bff690affb6d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "bytes": 6644,
+      "sha256": "ed346eb1e3f0280f15709393705899b3ff55c20b88f4e0308006b3c33cf5fe14"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "bytes": 9793,
+      "sha256": "4a82bc1e9923576275869998925ce0ae021a79aa18b24a0dd87ad6b61ca85053"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "bytes": 10455,
+      "sha256": "1ee4cd9ff371dcb2e3938097e434f6fb8731688ed7165e61fc63693ad5b2f455"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "bytes": 9441,
+      "sha256": "87cb2f2ffe992652bb4fa768c73719a37b5852ab17fbf8e170e888f7a42b0761"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "bytes": 15529,
+      "sha256": "bd24fd383253bf8d43f0a81f11c071d76d1d555114376dd647cd9fb38fa0a9da"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "bytes": 15916,
+      "sha256": "ab93096331e7cd8ec379f73f1e9adcaaa9ee1115c9f4ff10411a811fb9700174"
+    },
+    {
+      "path": "app/android/app/src/main/res/values/ic_launcher_background.xml",
+      "bytes": 120,
+      "sha256": "cd40bafe618ff506f4088778b135cb4faa15f25e0c9b475e22d730c74b7be115"
+    },
+    {
+      "path": "app/android/app/src/main/res/values/strings.xml",
+      "bytes": 302,
+      "sha256": "b50bd31734e9466e415b8ac1bd0bc9d048c2ef9d031e114636d718c60be9b793"
+    },
+    {
+      "path": "app/android/app/src/main/res/values/styles.xml",
+      "bytes": 823,
+      "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c"
+    },
+    {
+      "path": "app/android/app/src/main/res/xml/config.xml",
+      "bytes": 185,
+      "sha256": "e9dcda493e663c5c4db9e3cb3bd968477a6e90aa8840bcbba40d72ed54b767ce"
+    },
+    {
+      "path": "app/android/app/src/main/res/xml/file_paths.xml",
+      "bytes": 213,
+      "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa"
+    },
+    {
+      "path": "app/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "bytes": 402,
+      "sha256": "d4045ae8fac1f0807e6b24eb34e68409a9a235df9d1a3f896fb8c9a49424363d"
+    },
+    {
+      "path": "app/android/build.gradle",
+      "bytes": 636,
+      "sha256": "9c4d6e6418d24f903a6d8710a3d829acbf4dbd14959a6617643f5e03f5bd53ae"
+    },
+    {
+      "path": "app/android/capacitor-cordova-android-plugins/build.gradle",
+      "bytes": 1661,
+      "sha256": "8f5cea7b546643b388fc1f3a83633cc12657fea59fec8ae19d76253cb6c13cc1"
+    },
+    {
+      "path": "app/android/capacitor-cordova-android-plugins/cordova.variables.gradle",
+      "bytes": 312,
+      "sha256": "268844885a8d04cf34044ffbe362499ca14836fd1123d05e64f94b12798a8bb9"
+    },
+    {
+      "path": "app/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml",
+      "bytes": 210,
+      "sha256": "2e3e383475f0e6cb76f0a7b46017a546663fba8e5bd1ef2a537412afac2ee9b5"
+    },
+    {
+      "path": "app/android/capacitor-cordova-android-plugins/src/main/java/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/android/capacitor-cordova-android-plugins/src/main/res/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "app/android/capacitor.settings.gradle",
+      "bytes": 591,
+      "sha256": "89e214173701873d725bbcea30cfc074e2dc04983627ed3283758c5b85c7b926"
+    },
+    {
+      "path": "app/android/gradle.properties",
+      "bytes": 987,
+      "sha256": "3bab15c5b8bc4c2f4b6cf525497d15ad4abca53a460e6dd2eb0f0135817d31e6"
+    },
+    {
+      "path": "app/android/gradle/wrapper/gradle-wrapper.jar",
+      "bytes": 43583,
+      "sha256": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046"
+    },
+    {
+      "path": "app/android/gradle/wrapper/gradle-wrapper.properties",
+      "bytes": 253,
+      "sha256": "f7fafb1ddd0a2a1d2ef01ead773d9a88c1f889ef341e4e93c09c0724ade79b32"
+    },
+    {
+      "path": "app/android/gradlew",
+      "bytes": 8762,
+      "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+    },
+    {
+      "path": "app/android/gradlew.bat",
+      "bytes": 2966,
+      "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+    },
+    {
+      "path": "app/android/settings.gradle",
+      "bytes": 208,
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669"
+    },
+    {
+      "path": "app/android/variables.gradle",
+      "bytes": 497,
+      "sha256": "6b4439bc35170fbb602be71f5957102ce2eddcdd1165dedff663182da2f2f8ac"
+    },
+    {
+      "path": "app/capacitor.config.json",
+      "bytes": 167,
+      "sha256": "02df73c68a0212dc706ddd4e3771293d3b8fcaf6f9eb72b3ee3dd9945edc89c4"
+    },
+    {
+      "path": "app/ios/.gitignore",
+      "bytes": 206,
+      "sha256": "2b7132a9943d2622e51e656897ca5162f56b121b40b423dedce1fbc699dba88a"
+    },
+    {
+      "path": "app/ios/App/App.xcodeproj/project.pbxproj",
+      "bytes": 14967,
+      "sha256": "c2f462584cde068f61ce8c59e033c0b13f33fd73f8d91c02980b96b7af2d9001"
+    },
+    {
+      "path": "app/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "bytes": 238,
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542"
+    },
+    {
+      "path": "app/ios/App/App/AppDelegate.swift",
+      "bytes": 3031,
+      "sha256": "5963d47ceba89e0d5694376ebf0bca630284db3de794bdf8666ea3093fe38a2f"
+    },
+    {
+      "path": "app/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-Growth-1024.png",
+      "bytes": 1135760,
+      "sha256": "58175a90e3bd2ead3772e9f571b737c30d7cebbf9018c17f6ba0f132dc221ecc"
+    },
+    {
+      "path": "app/ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "bytes": 223,
+      "sha256": "e6595b3dc270becaf61cb4dec94aa40da757ca6b2e16500e68d1aa35adac94d6"
+    },
+    {
+      "path": "app/ios/App/App/Assets.xcassets/Contents.json",
+      "bytes": 62,
+      "sha256": "972ec1fd42325872438eb085ac29e94f51c10788ec18ec5549439950866c541d"
+    },
+    {
+      "path": "app/ios/App/App/Assets.xcassets/Splash.imageset/Contents.json",
+      "bytes": 190,
+      "sha256": "957f649cf31412d80f43e55427289191dbc0f7d2524ce87f72f8f8abd3f83720"
+    },
+    {
+      "path": "app/ios/App/App/Assets.xcassets/Splash.imageset/Splash-Growth-2732.jpg",
+      "bytes": 741474,
+      "sha256": "58a6144e1d609e29ecf2af079d4e42cca508741a03b114d8b7d71feb750ff409"
+    },
+    {
+      "path": "app/ios/App/App/Base.lproj/LaunchScreen.storyboard",
+      "bytes": 1994,
+      "sha256": "87a42e842164d75f39cca56a2cf743652f4d8e858f2eba12ae21a8ddcd9a21c6"
+    },
+    {
+      "path": "app/ios/App/App/Base.lproj/Main.storyboard",
+      "bytes": 1019,
+      "sha256": "7b7dc7acc67134bfaa80e5ce9c9068ba53db5369b9b70248aa7439fc2b09daae"
+    },
+    {
+      "path": "app/ios/App/App/Info.plist",
+      "bytes": 1812,
+      "sha256": "6fd33f2b14f4266225263598d156c9bdad231967def7596fe9a5a7bf8be9931f"
+    },
+    {
+      "path": "app/ios/App/App/PrivacyInfo.xcprivacy",
+      "bytes": 373,
+      "sha256": "74b0cd72fc23c1ef302f22ee2753f61817cdc5af0ff7a7f2d0632b524fb8acea"
+    },
+    {
+      "path": "app/ios/App/App/capacitor.config.json",
+      "bytes": 222,
+      "sha256": "66a45d5f5199f6ae62a44f2aceca457d057ac86e85626d894a064227c88286ed"
+    },
+    {
+      "path": "app/ios/App/App/config.xml",
+      "bytes": 185,
+      "sha256": "e9dcda493e663c5c4db9e3cb3bd968477a6e90aa8840bcbba40d72ed54b767ce"
+    },
+    {
+      "path": "app/ios/App/App/public/app-icon.png",
+      "bytes": 1135760,
+      "sha256": "58175a90e3bd2ead3772e9f571b737c30d7cebbf9018c17f6ba0f132dc221ecc"
+    },
+    {
+      "path": "app/ios/App/App/public/cordova.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/ios/App/App/public/cordova_plugins.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/ios/App/App/public/data.json",
+      "bytes": 494242,
+      "sha256": "dbb426552f4b50426d238260b1da90f68122423edcc44e066bfefebb0e960824"
+    },
+    {
+      "path": "app/ios/App/App/public/index.html",
+      "bytes": 677,
+      "sha256": "8ec8adb5c56a9f61a650ca35faf3ec1654078bbdff5ffd4e38db54bd26942b63"
+    },
+    {
+      "path": "app/ios/App/App/public/main.js",
+      "bytes": 55979,
+      "sha256": "fdd406013be432622dbb5c1cd01355b29e3f8841913350cb5915e0bac2ea2888"
+    },
+    {
+      "path": "app/ios/App/App/public/style.css",
+      "bytes": 20686,
+      "sha256": "d1f9a55d92e05999ad732483df6403c3801c7d9da3d4c5620a87843728f6c4f6"
+    },
+    {
+      "path": "app/ios/App/CapApp-SPM/.gitignore",
+      "bytes": 165,
+      "sha256": "4b958e2b4dd57319aadef2551153c74b9cb5ffe9f89d6e3e491122a94913f016"
+    },
+    {
+      "path": "app/ios/App/CapApp-SPM/Package.swift",
+      "bytes": 1036,
+      "sha256": "d74e90d68858aa8760fa6d03dc9559cc3b3287b21d37d964fc19faa7f06660d7"
+    },
+    {
+      "path": "app/ios/App/CapApp-SPM/README.md",
+      "bytes": 157,
+      "sha256": "57b818dc59b59e0a00887c6cca7ab2917dd056ee29b58dee314831b13fcd4f9f"
+    },
+    {
+      "path": "app/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "bytes": 33,
+      "sha256": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9"
+    },
+    {
+      "path": "app/ios/capacitor-cordova-ios-plugins/CordovaPluginsResources.podspec",
+      "bytes": 379,
+      "sha256": "6ace787f88f8c8da88526ed2ecdf0b9bd659cdb64f56bd5e73a684e0d26b7e06"
+    },
+    {
+      "path": "app/ios/capacitor-cordova-ios-plugins/resources/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "app/ios/capacitor-cordova-ios-plugins/sources/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "app/ios/debug.xcconfig",
+      "bytes": 23,
+      "sha256": "4838938a72b913b99cfda54a43bbe73f05893071dc6e3702b0adc44794b64272"
+    },
+    {
+      "path": "app/legacy-assets/Splash-Growth-source.png",
+      "bytes": 1534358,
+      "sha256": "11c0c5ae95d187c6a890748bb841d208af5fabc5eb263d79df524fe78865870c"
+    },
+    {
+      "path": "app/legacy-assets/capacitor-template/AppIcon-512@2x.png",
+      "bytes": 110522,
+      "sha256": "29e4777e319de3ee5a52c3a8004ec19d0568414004257e36d7c94a077d71c93b"
+    },
+    {
+      "path": "app/legacy-assets/capacitor-template/splash-2732x2732-1.png",
+      "bytes": 41273,
+      "sha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530"
+    },
+    {
+      "path": "app/legacy-assets/capacitor-template/splash-2732x2732-2.png",
+      "bytes": 41273,
+      "sha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530"
+    },
+    {
+      "path": "app/legacy-assets/capacitor-template/splash-2732x2732.png",
+      "bytes": 41273,
+      "sha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530"
+    },
+    {
+      "path": "app/package-lock.json",
+      "bytes": 76374,
+      "sha256": "7dc2f05885f0720351f34be97c108ac47a6ab7f4d1a04f5474f27c8e1b9844cb"
+    },
+    {
+      "path": "app/package.json",
+      "bytes": 839,
+      "sha256": "bac003fcce9e2e6685ed0e8c35cbee92ff9899ad2cb89b429db547d11670c9a8"
+    },
+    {
+      "path": "app/scripts/build-ios.sh",
+      "bytes": 667,
+      "sha256": "242829a6b3021d8e6a800144a5f88e0a70e470deb9423d303896bbbea6a9b0d6"
+    },
+    {
+      "path": "app/scripts/check-ios.mjs",
+      "bytes": 4987,
+      "sha256": "4ac48b5da68210cbb754279af118b814cb6552a54ae1593d0f83917154d70b7c"
+    },
+    {
+      "path": "app/scripts/sync-data.mjs",
+      "bytes": 2591,
+      "sha256": "90bd3cb146838080902c2073913d916bca86ada4007270b19a797823b007851e"
+    },
+    {
+      "path": "app/scripts/xcode-path.mjs",
+      "bytes": 2329,
+      "sha256": "d85057f8e25ac106a99e7f74b564609be9dc8f5344ee4a40bddc3d3858eb756d"
+    },
+    {
+      "path": "app/tests/app-resilience.test.mjs",
+      "bytes": 3676,
+      "sha256": "db34cf74fd74d960b04362496c5150e02225d0a899d5eb50cbd658d47c79ce74"
+    },
+    {
+      "path": "app/tests/app-smoke.test.mjs",
+      "bytes": 6392,
+      "sha256": "06243ab4b604737c3fa1464012ed875c26ebfcf45cee06df9606a85fed46e475"
+    },
+    {
+      "path": "app/tests/backup-roundtrip.test.mjs",
+      "bytes": 3660,
+      "sha256": "c8e32f55e4dc82ae6d5c0434e3a7bc0979d5ac6f12f60bd7418f76e036c4cc0b"
+    },
+    {
+      "path": "app/tests/data-integrity.test.mjs",
+      "bytes": 2603,
+      "sha256": "8861b6e7b54ad0e0241807fa8dec03dfa9613da2949d9e086ebaac29a4fa2cd1"
+    },
+    {
+      "path": "app/tests/growth-progress.test.mjs",
+      "bytes": 5140,
+      "sha256": "5cec402ea9a99fa7bdbf4ffa497ff9a7505641afa43c6769e33c3a64adbbc5c2"
+    },
+    {
+      "path": "app/tests/miniprogram-progress.test.mjs",
+      "bytes": 2311,
+      "sha256": "0a015e33f3e8a50718406e66815d7556cd35c3deb61134a2b30b7fd3ae71ad19"
+    },
+    {
+      "path": "app/tests/talent-content-integrity.test.mjs",
+      "bytes": 3240,
+      "sha256": "19669c8de8f2262c0bb24896a395347b10a64fd946e9525c24a7442df9476661"
+    },
+    {
+      "path": "app/tests/talent-experience.test.mjs",
+      "bytes": 10567,
+      "sha256": "04d17150320ae98b9296b0877c431f0c03a69ec7ed5d324c67b9f8c5277bd4a2"
+    },
+    {
+      "path": "app/www/app-icon.png",
+      "bytes": 1135760,
+      "sha256": "58175a90e3bd2ead3772e9f571b737c30d7cebbf9018c17f6ba0f132dc221ecc"
+    },
+    {
+      "path": "app/www/cultivation-data.js",
+      "bytes": 41410,
+      "sha256": "cc577da8e2cc8e5dad01bde763734fec0ebdb82c7699dac10f6e628afc621877"
+    },
+    {
+      "path": "app/www/cultivation-ui.js",
+      "bytes": 3502,
+      "sha256": "59b4f21592958289b2a23d5d23a7155d4361e80272f02e7af693a7eb855442ad"
+    },
+    {
+      "path": "app/www/data.json",
+      "bytes": 494242,
+      "sha256": "dbb426552f4b50426d238260b1da90f68122423edcc44e066bfefebb0e960824"
+    },
+    {
+      "path": "app/www/growth-progress.js",
+      "bytes": 2235,
+      "sha256": "d17c6d8ab7a819c9a52d7ef46502b45b6d5befa13f5d9524d9c90ab77762bda8"
+    },
+    {
+      "path": "app/www/index.html",
+      "bytes": 781,
+      "sha256": "3e0c0225d2327c9b0e2750705af05a044fdffc3537b744fb9b241ff24068dec5"
+    },
+    {
+      "path": "app/www/learning-data.js",
+      "bytes": 457722,
+      "sha256": "3282f0d634ae37cd2dd5d14100850168371396dfad4ca66a4f82ed31e4bec1b4"
+    },
+    {
+      "path": "app/www/learning-ui.js",
+      "bytes": 14709,
+      "sha256": "3e3e4e6189ded97e37da2bae981219dd8333801a3bfc1f82d92653dba54dd9f5"
+    },
+    {
+      "path": "app/www/main.js",
+      "bytes": 67903,
+      "sha256": "561166d6f35996616c9877b007c8adfb8fa77b379cd638d090d73d0fb7c08c4e"
+    },
+    {
+      "path": "app/www/style.css",
+      "bytes": 28692,
+      "sha256": "63f277771228d13b31314bfd5c911551347796d91ea536b21edfaf990c9fd825"
+    },
+    {
+      "path": "app/www/talent-cloud.js",
+      "bytes": 2184,
+      "sha256": "484474a0ffd1b0572cd24cb7b25c9988bf99afe592c5ce8ebc295489d7a0d544"
+    },
+    {
+      "path": "app/www/talent-data.js",
+      "bytes": 1309068,
+      "sha256": "48e93bbbe00546f285945b737490ebe97f06efe8d58329737bca653f10096ab6"
+    },
+    {
+      "path": "app/www/talent-insights.js",
+      "bytes": 26438,
+      "sha256": "6ac3654b20f44903f7b14fc5503ac0bce22936eeafaa65775bcfe2cc2df3e440"
+    },
+    {
+      "path": "app/www/talent-journey.js",
+      "bytes": 14899,
+      "sha256": "113aa6959fadf9f07bb8c8c82b3b2072f4abed9c2a5659e1c9f2480e96b5c687"
+    },
+    {
+      "path": "app/www/talent-mark.svg",
+      "bytes": 546,
+      "sha256": "061d32cdbed929d2045e89f4771524bc142ae54e5d309baef23020cd47ee9e4a"
+    },
+    {
+      "path": "app/www/talent-planets-ui.js",
+      "bytes": 7010,
+      "sha256": "305e1899d7048202166e9e53ebceec76b32fc84dcac26e73730146486af20ec6"
+    },
+    {
+      "path": "app/www/talent-planets.js",
+      "bytes": 13102,
+      "sha256": "2fd470f777c7dd07d38bd5f08cce7ee551a423b56cf75fbba59c7ba98489599c"
+    },
+    {
+      "path": "app/www/talent-store.js",
+      "bytes": 13152,
+      "sha256": "4642467c38ec689e5ae8f7d3571b3340f304284de7de3c06eaf2c2942bba3523"
+    },
+    {
+      "path": "app/www/talent-ui.js",
+      "bytes": 73010,
+      "sha256": "53a0a3aae9e6a90bcbcd612255725358edf7da272ad86954c5f65514471b7c6f"
+    },
+    {
+      "path": "app/www/talent.css",
+      "bytes": 59381,
+      "sha256": "4dad50fff0da8c56701cc3d5aa9cb6b0b970830afd7e5ea56ceaa09e926ed2e8"
+    },
+    {
+      "path": "data/cultivation-evidence.mjs",
+      "bytes": 9598,
+      "sha256": "0c322791b2c8a76d891f12211a3181ffb587d968292d5501e7a59c70d6f0e800"
+    },
+    {
+      "path": "data/domain-cultivation.mjs",
+      "bytes": 34293,
+      "sha256": "389825605b5bf3d86707aa8fe067748a90a1cac26158ade2b113d1bc0d2f4515"
+    },
+    {
+      "path": "data/guides.js",
+      "bytes": 28547,
+      "sha256": "014199b34d402c63ad241bdbc529af616cdfa56448393735b8856c3c8bf9de2e"
+    },
+    {
+      "path": "data/items.js",
+      "bytes": 14069,
+      "sha256": "a594dadf961f5c5bf817601f495451b18cea6b0c24a5c3705734a14e3e93a1fe"
+    },
+    {
+      "path": "data/learning-catalog.mjs",
+      "bytes": 6241,
+      "sha256": "dbf2ad9396778a5c6f9513dc2edd65a90c2f576270b0cb936cc8cf45fb290dc9"
+    },
+    {
+      "path": "data/learning-resources.mjs",
+      "bytes": 23249,
+      "sha256": "94ec5cbb1d44c0cd2c26715931ffeaa520e662a51992150ca6a7aaf21feb80c9"
+    },
+    {
+      "path": "data/learning-seeds.mjs",
+      "bytes": 71536,
+      "sha256": "00bc40decd22314bef3e2421c627e19090c5b21616fd23d3bd88189b76ef208c"
+    },
+    {
+      "path": "data/learning-stages.mjs",
+      "bytes": 13234,
+      "sha256": "7d3833f1c140fdb738db3cdc809d61dc099df9e365737e4eaec9127cbce2fafc"
+    },
+    {
+      "path": "data/milestones.js",
+      "bytes": 839935,
+      "sha256": "df853b37edf2c72099e15519abf7e7a7c106b515c57bf2764232ab43984612fe"
+    },
+    {
+      "path": "data/safety.js",
+      "bytes": 14313,
+      "sha256": "3655979ad2bb3daba9ddc58e248eb8719da47e90f30079aa5a5196cd68c3928f"
+    },
+    {
+      "path": "data/talent-catalog.js",
+      "bytes": 104122,
+      "sha256": "b91885d5656775b279231d24ba59ba641d222a243a17ac8e40587fd2cd82450c"
+    },
+    {
+      "path": "data/talent-expansion-adult.js",
+      "bytes": 69180,
+      "sha256": "2ee2170ef121daa746db99851f30160b656d21a649b121efa60b924c3faf17a8"
+    },
+    {
+      "path": "data/talent-expansion-early.js",
+      "bytes": 113577,
+      "sha256": "9cdffaf40ec84fbfe488cb40f7fa374fb0b43831041cd3a23d1652461c9abf14"
+    },
+    {
+      "path": "data/talent-expansion-school.js",
+      "bytes": 178287,
+      "sha256": "72d0fff8cfd6944c025655cbcfb87ed2ed97c301e71ff5368d60b874585d5203"
+    },
+    {
+      "path": "data/talent-pathways.js",
+      "bytes": 3633,
+      "sha256": "42a72959cebbc01028cfca1e0431489e26cceb5013648684d3a332c906af01a8"
+    },
+    {
+      "path": "docs/talent-content.md",
+      "bytes": 5257,
+      "sha256": "d1b2a91a4954dfd516cc95e60de491bdd044ef57c78c1daec5420b865f1fe899"
+    },
+    {
+      "path": "docs/产品完善-2026-10-21.md",
+      "bytes": 5446,
+      "sha256": "4e6bbb19af562bbe321750f2f201144ac553683ffd0e80f028a776e036c79562"
+    },
+    {
+      "path": "docs/内容扩充发布记录-2026-10-19.md",
+      "bytes": 2105,
+      "sha256": "9318303ac1c5d8efcb7cb02afc896b4de333e3cc82a7e108822bbe912061278f"
+    },
+    {
+      "path": "docs/探索地图-2026-10-22.md",
+      "bytes": 4084,
+      "sha256": "fe7e87e54dfd27dc54f5d8676dd0e20dc9ef8b38070a8c6884d350c3b520a11e"
+    },
+    {
+      "path": "docs/本机预览.md",
+      "bytes": 890,
+      "sha256": "1075f811d0a4c84577f292753792b81d8fbb88d4b5b7dfcee4b42c285eab642e"
+    },
+    {
+      "path": "docs/潜力培养证据-2026-10-23.md",
+      "bytes": 14508,
+      "sha256": "c966392cb10a569d724bf8f00ae7180a8ef60686ff5ca54e36a5e0b2d9f856a8"
+    },
+    {
+      "path": "docs/能力星球与培养入口-2026-10-23.md",
+      "bytes": 4572,
+      "sha256": "459a4c7de772c7de8ef1c8c34d8562ac9a1c5452f380606da4af4ea46fd4087e"
+    },
+    {
+      "path": "docs/腾讯云部署记录-2026-10-18.md",
+      "bytes": 1653,
+      "sha256": "783b6262b22bfdd1a17fcfb8ce2efbd84b5ee30bb8b4003431c239cc986a183a"
+    },
+    {
+      "path": "docs/腾讯云部署记录-2026-10-23.md",
+      "bytes": 3375,
+      "sha256": "75ce48cd3e6fe1be4f2b314fa9afe55c0bad8c27bbc02689c18b9ed4e848cb49"
+    },
+    {
+      "path": "outputs/tencent-cloud/4c4aea843ff5b843-files.json",
+      "bytes": 1808,
+      "sha256": "8ecd7d65ab30d01b2babeb1317d54178abe50507a22977eb83849d78bb49a9a0"
+    },
+    {
+      "path": "outputs/tencent-cloud/latest.json",
+      "bytes": 214,
+      "sha256": "7a1b3d59e5e87b7dc214c11c192d9351c1b4805997d368778de7605df43a649d"
+    },
+    {
+      "path": "outputs/tencent-cloud/talent-growth-4c4aea843ff5b843.tar.gz",
+      "bytes": 1658722,
+      "sha256": "d9b0ab0bc467dfeb0eb4ef27e8edc7a7a046cf6a7d6b8a15adb07dbf737f14ba"
+    },
+    {
+      "path": "pages/band/band.js",
+      "bytes": 3941,
+      "sha256": "c3ed5a0619bafecebddaeea07828a75a6c7ec71be623ad6ae0589e001f4ce9f9"
+    },
+    {
+      "path": "pages/band/band.wxml",
+      "bytes": 8411,
+      "sha256": "c7be9ce40aaf3820cbb39d972ebb8c3275f58056f958db615f5ad8666986dc3e"
+    },
+    {
+      "path": "pages/band/band.wxss",
+      "bytes": 7759,
+      "sha256": "25fe09d000854bcfe98cc4b0ba0def84580e2fbd3d48e802587fc0f4e8611c40"
+    },
+    {
+      "path": "pages/home/home.js",
+      "bytes": 4036,
+      "sha256": "9362307d7b697dc07a3b8abcf698eff3e5b19ad90798cdcb4e98f884c6e30af4"
+    },
+    {
+      "path": "pages/home/home.wxml",
+      "bytes": 5522,
+      "sha256": "bef40c32f43cbe571991d374d8c82e16271688ef761e6d354877d82dfbfd793d"
+    },
+    {
+      "path": "pages/home/home.wxss",
+      "bytes": 4381,
+      "sha256": "936b0dd95010ee996368456b32d27cd2b9b6da9ae8714ab22210860fa2539a2b"
+    },
+    {
+      "path": "pages/milestone/milestone.js",
+      "bytes": 4955,
+      "sha256": "3cbf0d6cb62b0e217d4496e8c899d6ea2339de49eff94071eb197b1105025c24"
+    },
+    {
+      "path": "pages/milestone/milestone.wxml",
+      "bytes": 4594,
+      "sha256": "2afdf05f4404ff0cc23695a28c3e0f71375ba29c1a69bc5491c683ed1540a4ec"
+    },
+    {
+      "path": "pages/milestone/milestone.wxss",
+      "bytes": 4293,
+      "sha256": "797d1c78fc0baa10a8f4a2a3419398806b9352b2fe943ef682c459a22e2407d2"
+    },
+    {
+      "path": "pages/profile/profile.js",
+      "bytes": 5755,
+      "sha256": "278e6ab03e3a295350aa4a5efdc0f55f8c6e0cc338f3ade362aee98d169c7713"
+    },
+    {
+      "path": "pages/profile/profile.wxml",
+      "bytes": 4903,
+      "sha256": "f75c83a61b7794ff26990f993737399ca63a4af9ad01c06ee4229ad707447e51"
+    },
+    {
+      "path": "pages/profile/profile.wxss",
+      "bytes": 2656,
+      "sha256": "0c80cbb7b9cd571742e722205f11cff73c56140c7f8dd58a250378ef7cfc9faf"
+    },
+    {
+      "path": "pages/record/record.js",
+      "bytes": 6869,
+      "sha256": "82173832dd7222c71af810cbda3e97d1e0064a2db4693b7d3df658d7ff8be95e"
+    },
+    {
+      "path": "pages/record/record.wxml",
+      "bytes": 3956,
+      "sha256": "baab4b084f50d566fad57a61039afb996b744c05c51d6d684594100036953f71"
+    },
+    {
+      "path": "pages/record/record.wxss",
+      "bytes": 2853,
+      "sha256": "e5a59e82c63b5dc5b205593a0735caa9760997097919e2a95cf6cf23f051732c"
+    },
+    {
+      "path": "pages/stats/stats.js",
+      "bytes": 2934,
+      "sha256": "63be32d3e8df2f3175f813298fa822babdaa4ca1f4561aca573cab819c28911b"
+    },
+    {
+      "path": "pages/stats/stats.json",
+      "bytes": 47,
+      "sha256": "261e0d4595f09120c82aa7f68d159cac0634f3ae31c6de5e656196b88537addf"
+    },
+    {
+      "path": "pages/stats/stats.wxml",
+      "bytes": 2320,
+      "sha256": "a44abb77deb828667555a08a63cc90811ca5ad2ae683e363fed1efd9f0d34ba3"
+    },
+    {
+      "path": "pages/stats/stats.wxss",
+      "bytes": 1873,
+      "sha256": "23ba7a41f07f0e16c024add942ae17121add3c22f08f0f79002ede8c5b8248db"
+    },
+    {
+      "path": "project.config.json",
+      "bytes": 1500,
+      "sha256": "68cbf4c402e30cf788f3ebc72e574175a152570508833b1bae7698caa004d1ce"
+    },
+    {
+      "path": "scripts/deploy-growth-sync.sh",
+      "bytes": 2219,
+      "sha256": "9065d50be772b1b065fcc4ef808eec0bac6b23f82ed506e9426eb8410ca01937"
+    },
+    {
+      "path": "scripts/deploy-tencent.sh",
+      "bytes": 5526,
+      "sha256": "847ea51460524dce2dee22da6c60f8bc92ac5e5763677e00ec700f8459bfb996"
+    },
+    {
+      "path": "scripts/export_data.js",
+      "bytes": 16353,
+      "sha256": "91d8246da5e3fcce7a9d1d903a2b7fa34d7f96149293bab5297a66e1aad9c2a2"
+    },
+    {
+      "path": "scripts/local-preview.sh",
+      "bytes": 2416,
+      "sha256": "163337fbf1be324508d79f805148b237707ad4dabf46fc4bc76a16a9db7e1ea1"
+    },
+    {
+      "path": "scripts/package-web.mjs",
+      "bytes": 5016,
+      "sha256": "bc71d43b8b7ab7e181b6b0d7f626d893149bd90d3aa225eae205b408c57c33d2"
+    },
+    {
+      "path": "scripts/preview-journey.mjs",
+      "bytes": 1668,
+      "sha256": "95dd3f2e42ace0309736c7b87896a06694486c5b53ee22566b55294929d19f2a"
+    },
+    {
+      "path": "server/README.md",
+      "bytes": 4699,
+      "sha256": "4f0a40bb052086b242b8ddec7fda760e94e8af7c12707f4399cb3750ceeb2e82"
+    },
+    {
+      "path": "server/growth-sync.mjs",
+      "bytes": 30365,
+      "sha256": "785cd41fd54a768102217859b925845367f824da81929ed5229cae90b74d15d1"
+    },
+    {
+      "path": "server/growth-sync.service",
+      "bytes": 899,
+      "sha256": "5da621c0d4d6bfab756fd1dccdb22e82f061d44adddbee48a9ad19e2717583ee"
+    },
+    {
+      "path": "sitemap.json",
+      "bytes": 93,
+      "sha256": "d2b1e5aa43c3abdf5a5c3af2a23a21c2cc3f90c2a34b0c5ef151da5f4704ee9a"
+    },
+    {
+      "path": "source-projects/potential-lab/.gitignore",
+      "bytes": 373,
+      "sha256": "c7db6c8c86b08398dadd546706e209a0010405456a860861ee7dbb283b658ca1"
+    },
+    {
+      "path": "source-projects/potential-lab/DELIVERY-2026-09-18.md",
+      "bytes": 7662,
+      "sha256": "ebde59e816f01e3f43fd299161ed9334fc8b6e9ba8a5c98071c217a5375747be"
+    },
+    {
+      "path": "source-projects/potential-lab/README.md",
+      "bytes": 5293,
+      "sha256": "ce29180e24d251f7d1220ae3d717af629b0a63065f319e3db39dde7306015b12"
+    },
+    {
+      "path": "source-projects/potential-lab/VERSION",
+      "bytes": 6,
+      "sha256": "40b8eb4000a913a7791090535f291d3d369874162a89ef3c9e3d4e887a1b9e79"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/.dockerignore",
+      "bytes": 162,
+      "sha256": "558938db01aa59553d6491ade3c6858217da7541c98bf87359a321fa3b357f1d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/.python-version",
+      "bytes": 5,
+      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/Dockerfile",
+      "bytes": 810,
+      "sha256": "b81848a8589bebaf807607ef1820c3e9050f230912fb0a2636d6d8bfef0df2b1"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/VERSION",
+      "bytes": 6,
+      "sha256": "40b8eb4000a913a7791090535f291d3d369874162a89ef3c9e3d4e887a1b9e79"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/config.py",
+      "bytes": 1836,
+      "sha256": "aba0fd774f04e6688013346b49a9b06bd6a5b72b54f4e412e6e106c8dbb094c1"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/content_loader.py",
+      "bytes": 7959,
+      "sha256": "076276dedb65c5c397ec631f1ea0c5de1402d7325ca6dd10dd38f9a52e008ffd"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/database.py",
+      "bytes": 1606,
+      "sha256": "410bbcf93edf54913b2cac29e45d4e3407498e61688df0d5a6d90c7b02d3cba6"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/deps.py",
+      "bytes": 2117,
+      "sha256": "7785335eada97a96df72e0c40fc1be581046f83434367a7f2cc60c7997fbf808"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/main.py",
+      "bytes": 2559,
+      "sha256": "2a5d6fb0d1313b91b58a693bd6f3ee13c69fcc3baf8dfd7d28ccd3aaa5901cec"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/models.py",
+      "bytes": 11350,
+      "sha256": "7421626007ea982f928df8989d4b8dda24d4c0789354857e2ce3fba1e14e5bdf"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/assessment.py",
+      "bytes": 7316,
+      "sha256": "66b5a6861612fd7d519264e9a1b9914703331f1ce21a0cc80abc8137216b0d3e"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/auth.py",
+      "bytes": 4511,
+      "sha256": "6b057fc3772494980962c73b95fc69b1285e5015f36e9131ca8d5b0f3c93b748"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/billing.py",
+      "bytes": 5150,
+      "sha256": "2e0ba71806e974d4b6389bd6093aa3d0a5186304ab30d724095daa17d99222a6"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/child.py",
+      "bytes": 8390,
+      "sha256": "0333c3c02f8dac38e0d017db117c79e586314185e4ca6e63c6bbfcc4061d71f8"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/cycles.py",
+      "bytes": 7665,
+      "sha256": "dfbdae13cab7498a06926bbc85b3a2d28e497a23a4a9acfee3a71df4edb25883"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/directions.py",
+      "bytes": 1083,
+      "sha256": "05ba51a65c9e0f5591ff5d26dce8240c9428530a59acc268802110282f657962"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/explore.py",
+      "bytes": 3440,
+      "sha256": "27c3d531ca1e516436bf8ef9ff2f0f872d36f771761ea185d52c94a47e2dc1ae"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/gamification.py",
+      "bytes": 523,
+      "sha256": "815904eaa79fa2ab4388a11c4871a5b8111deaf44e813e6b548e22340fabe281"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/me.py",
+      "bytes": 5505,
+      "sha256": "93f016f2e39e852ed79d303a643edf44e11bfb051758d757a13c10d590d4796d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/methodology.py",
+      "bytes": 593,
+      "sha256": "7797b31f987fa7ef9996b3e684cf5c789b9225844bdf9d9d501e7b18630ce9a5"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/plans.py",
+      "bytes": 3890,
+      "sha256": "0ccb5f9f515f5b3d8c0a2dc1e3b2caaac5ca61c3c82b49d413e4616e66788547"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/profile.py",
+      "bytes": 2212,
+      "sha256": "1b3e60c037bda97b4a211a6f4c2b4539754889074d2467000205562773228fb2"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/reminders.py",
+      "bytes": 2488,
+      "sha256": "966c4d53602e04e39762e1914cf752c2261e1fd7581c2e4c3fd68988e5b4a639"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/routers/tasks.py",
+      "bytes": 19701,
+      "sha256": "1b144f466eafc0170bc2da0e39c129427233ffb20913fa2cbac2d9e654b0a029"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/schemas.py",
+      "bytes": 11075,
+      "sha256": "e9cdcdd975f343b885c4a3cec35df7b60dd87e4546187c980391d1c2e6d102ea"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/ai/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/ai/base.py",
+      "bytes": 1814,
+      "sha256": "b56e4fc17949cd42f9b8bf74367e4a64fc5b45047b35615780926363be47e65d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/ai/glm.py",
+      "bytes": 8214,
+      "sha256": "ef3acb822411e44c463585f12207dcafafa45d8e47f5f5bce89ab7a258fe4dc0"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/ai/mock.py",
+      "bytes": 8890,
+      "sha256": "aca2fea0497eec51bb43e023e2bf58e8526d518149b74460f4d10a069fdf9d4b"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/assessment.py",
+      "bytes": 4654,
+      "sha256": "1ef962c94be44aa72b905076e5408c7545f65b3f6299e8373ec340183b266592"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/billing.py",
+      "bytes": 8764,
+      "sha256": "cf6d88a822984f5ca6da59f1e2744c432c2a5354b70355397cb52a23b4ffd969"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/child_assessment.py",
+      "bytes": 3259,
+      "sha256": "4d7a61ab8c3cc97057b3321bb16e8f2f45a6222245d205892468295da678c4ca"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/cycle_report.py",
+      "bytes": 8024,
+      "sha256": "949eb03ef03967f35b10b312b620d2c5bd40794b9977cd2b7250bec971f4548e"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/gamification.py",
+      "bytes": 8108,
+      "sha256": "bcf52ea6a8a8d4ee33eda21f02ba4c378f7fc1deadd5b9c1a0f6259f08bda75e"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/planning.py",
+      "bytes": 4794,
+      "sha256": "cf26930e7d65cb34bd1405c297cf008e69f83a1a266a572c43ea263ad7500b8d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/retention.py",
+      "bytes": 3922,
+      "sha256": "502468a6a0acdac8661754f482f622920ad0335952a7a68254391aca49cead07"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/safety.py",
+      "bytes": 3034,
+      "sha256": "3a56f0dcc83e18951eb6b3e91c3954e482613f6750a0d5ca2e8d41a5722b8603"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/scoring.py",
+      "bytes": 13194,
+      "sha256": "4a9a1791bd612206b06016b23764afb6c995790cb12f1968f022b76d3706de84"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/services/session.py",
+      "bytes": 2303,
+      "sha256": "29168a9ce9d7e9aa237efa5860f7b946eef29cbdd6885f372ba87d023b00f4c8"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/app/utils.py",
+      "bytes": 230,
+      "sha256": "7e4a4e13d19f9f8a479e1e11ac3a497ebd751b9e50b405902243ec4171478b66"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/assessment.yaml",
+      "bytes": 8105,
+      "sha256": "afa063dc91027390736741b5c576e5f2489536090d3805e4a06a22363d527082"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/child_assessment.yaml",
+      "bytes": 11401,
+      "sha256": "731cc2a9573d3377184c7024b3bd19a32157164cc115b7fba44457049d381bc4"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/child_types.yaml",
+      "bytes": 22299,
+      "sha256": "b8d2e133ed7fe4e39073430597be848d8e084fa465ca9b1e391c334eef697fe8"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/combinations.yaml",
+      "bytes": 6468,
+      "sha256": "93ca3bce7ca929eaa0585cb759860383b2a806d26809ad3ca86bd7a6f3644b9e"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/directions.yaml",
+      "bytes": 10215,
+      "sha256": "defbd4177bb914c591bb0e3e7bb17442805980760dc36afc56200cbe26d338a4"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/industries.yaml",
+      "bytes": 29979,
+      "sha256": "0c863978719645fb9ab0b0175e7154d871cffcb75c735380070dedb7b7d93d4c"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/interview.yaml",
+      "bytes": 2725,
+      "sha256": "0ea4fb9ba95805838cf73b99c579b4f2c5ea0c4a8db8495f39a7766d0e6db621"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/item_rationales.yaml",
+      "bytes": 14298,
+      "sha256": "1c11fcd85638dfc4777f579319a5d5cbcc20a006f149aa84b55809c1d67d152e"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/methodology.yaml",
+      "bytes": 19232,
+      "sha256": "7c0752493107da82a0922db3d1f42fea8041cf032ceb4cd1e33bcc2093bb584d"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/content/tasks.yaml",
+      "bytes": 37103,
+      "sha256": "d92d6431b94de3c7feaaa26121f716f155fc22b009e5d63013d9e8a4025224e8"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/docs/compliance.md",
+      "bytes": 6947,
+      "sha256": "89f40c26c6468dd3e7d702e56e0704065010b96d1beadaa16b95156da6f96b55"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/docs/night-report.md",
+      "bytes": 6935,
+      "sha256": "5a6776b078af5c8f56a7739707a6deba8261e9856020bfa80e109ff0bcc604ad"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/docs/product.md",
+      "bytes": 6529,
+      "sha256": "5470ee81058306604f211a14a30c94097b1ebdd712d5bfaab3659f187d60d2d9"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/evaluation/README.md",
+      "bytes": 8465,
+      "sha256": "ec389475abfb77d1c445b3cfb0eaf3bc857b4287adb316b352dec4c94d7fb1bd"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/evaluation/__init__.py",
+      "bytes": 614,
+      "sha256": "ec1d48047c2682b221272f60dc52fea9cab21419840f4d121f7d0d02818be972"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/evaluation/checks.py",
+      "bytes": 11046,
+      "sha256": "43eebaa4f02ed9a35e48d26b7f04689ba3f929f85d638e0510a6fff947d145aa"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/evaluation/run_eval.py",
+      "bytes": 12286,
+      "sha256": "e272ad26687d1f23d94c145f770d60beab82c5cf63454e3aaf963d8f53d06c28"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/evaluation/samples.py",
+      "bytes": 33490,
+      "sha256": "c3243aab76a166a7e00776b915bbb591ab3e68ea823552f6943063fd30e5c04f"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/pyproject.toml",
+      "bytes": 475,
+      "sha256": "b72cb0556fc8a0ad2da4fc9f5a6248f29c217e0f3fdd1ec758d5c444926deb05"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/conftest.py",
+      "bytes": 2617,
+      "sha256": "f76e3b22a8dda7519b1c80601c65b5a324f82ea35f0bbbdf81de4a40c66f5746"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_ai_eval_harness.py",
+      "bytes": 4058,
+      "sha256": "d44b1407800bdd5228fc04e06a65d72c141751d4b9354adf58c8ac8d330ce3e9"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_ai_quality.py",
+      "bytes": 15093,
+      "sha256": "27b239cbaa56854c8a062d2aa06ce62286aefd34a366a52ff387a9dd5397de41"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_assessment.py",
+      "bytes": 4964,
+      "sha256": "17f5153e80c7ee1b6b0f4293bbff49c1d5a51d96aac4e68d21eb66be4977d448"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_audit_fixes.py",
+      "bytes": 8727,
+      "sha256": "84a407612a8d981af845c3af42d562a01d777d0f2fedf17652c9e38422f483c5"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_billing_contract.py",
+      "bytes": 3294,
+      "sha256": "81690acad22852efa595a3900b23895a52ee61d39227b968eb7b076178b2f122"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_child.py",
+      "bytes": 5712,
+      "sha256": "74472213f1e665f57ef6b37ba5935597c43c179b7ac6181a7fc1fb7444a1b12c"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_compliance.py",
+      "bytes": 6403,
+      "sha256": "3715e72e98f90baa67ade663b1cb8010c659b545a2e75025b11d58beae3dd307"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_content.py",
+      "bytes": 2272,
+      "sha256": "5eff2c4d705ed2a2daf524cb4a701c9508b430643097c333c576f764c9a452c0"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_cycle_e2e.py",
+      "bytes": 10520,
+      "sha256": "010670925e966e2589bdc74cbf701c71b4d858b3fba967839ec349cc5f716946"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_cycle_report.py",
+      "bytes": 6720,
+      "sha256": "ec4b3baaf66cef5d1a12934ae0b89f39cd3da7d87731df1fed25958bd7f59776"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_cycle_time.py",
+      "bytes": 6106,
+      "sha256": "952f879fe456e454890a29aeaaaed89e2c4a4d4eceb795333403e033756791ef"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_flow.py",
+      "bytes": 6219,
+      "sha256": "f51aca4c0058ca67495fdd3a536cc9f46ab6d2656e70d52458df31cace7813a1"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_gamification.py",
+      "bytes": 4360,
+      "sha256": "6c0cad0fb87043ad53083c2f6d6cf34f93e792dabc9bcceb2de9d4fa3cdf5577"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_production_mode.py",
+      "bytes": 4996,
+      "sha256": "96e66bbf8e0a60e38b08c8950408e38d3723deaed0b3b8cc8bfbead304173c62"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/tests/test_upgrade.py",
+      "bytes": 4447,
+      "sha256": "87b2ca83559014b5a7a3c630d5805f795f5ab7ee620a95b7142d3dc9bc0395c2"
+    },
+    {
+      "path": "source-projects/potential-lab/backend/uv.lock",
+      "bytes": 159421,
+      "sha256": "dd28d8dfa45212ee00faed4f4d632c131f86d413f582865a6bcffbefb2026cd6"
+    },
+    {
+      "path": "source-projects/potential-lab/docker-compose.yml",
+      "bytes": 1070,
+      "sha256": "d2d42b8c41294d21eeb342a89723520798812a7ba16c6c81329b62744b5df5f2"
+    },
+    {
+      "path": "source-projects/potential-lab/docs/research-notes.md",
+      "bytes": 5285,
+      "sha256": "7f018a60b073d2dbe96b5f214c1e627803d5ba3fbc0471ddb1bd18fac92e2888"
+    },
+    {
+      "path": "source-projects/potential-lab/docs/verification-matrix.md",
+      "bytes": 2340,
+      "sha256": "9aab26b5ebfb0075c3e1cc656de5c51c7d4af8378f93f381a9d58cba0ced1808"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/.dockerignore",
+      "bytes": 56,
+      "sha256": "12dc04e19d912b6d929646798ef24953e5d4b0df2010dab90e5be446759dd56c"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/.gitignore",
+      "bytes": 208,
+      "sha256": "cca193d0074f3692f1373521057eff78f2889672e3bc80704834d91b75cbabe5"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/Dockerfile",
+      "bytes": 519,
+      "sha256": "3d23a2023b8ca789ba9859080d120376fcd63db98dbf61822db3cd5f6363b843"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/index.html",
+      "bytes": 666,
+      "sha256": "19b01b08739b798ea46b9ca6b4737f949e53f29c36eda10af8b3938e10ffb5b5"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/nginx.conf",
+      "bytes": 565,
+      "sha256": "18c17f305994186a689c4615dae802c2c47b3b780658cc425f7885ec9d1ad4a2"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/package-lock.json",
+      "bytes": 521290,
+      "sha256": "7bc0bc68f9073f12f27e6644c7d2b08243d8f4cc49a5049a37c8758e3662bdf4"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/package.json",
+      "bytes": 2988,
+      "sha256": "065068ea1507416fbff2a07fa4cf98bc6abf1c1396aadb829f444a8f04f836f7"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/shims-uni.d.ts",
+      "bytes": 204,
+      "sha256": "aa665d6a22c34ef3c84a0de28c7e3156c419d8bbcda2ddd24d85afbade06c7b4"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/App.vue",
+      "bytes": 13947,
+      "sha256": "353997b7b0062eb53785dfe541421dd32e6a26f4a7da8c3e7507de7858feb44b"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/api/client.ts",
+      "bytes": 8835,
+      "sha256": "a8ae6d962796dcf158670246e14f874a67c513f0628f98b5487e1e695ee9b7d2"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/components/ai-badge/ai-badge.vue",
+      "bytes": 1797,
+      "sha256": "e1f51c41b213204c071de1c89cacfacc3e73ad6d269b4a721333d86bbb6e6303"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/env.d.ts",
+      "bytes": 276,
+      "sha256": "6cffe84a6b162cf97d3a80dd4cc1999d2899f10e194fa052c743a704c63f9cd8"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/main.ts",
+      "bytes": 230,
+      "sha256": "7f672d02af37bc71ce078ae4b70c310767b16b4be4b4dd2c7b87c176be5123e4"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/manifest.json",
+      "bytes": 2772,
+      "sha256": "b241daa4f9880d0d02792f2fcdc1eb22833b086019abb05cf0dd19d33b0d246b"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages.json",
+      "bytes": 2671,
+      "sha256": "91fdad158e9b14551db73743d3ca7191afefa4ffcbd0d8f5621b20900b40b542"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/assessment-result/assessment-result.vue",
+      "bytes": 5169,
+      "sha256": "6d53010e1b038297566caee1a7374b37c0ce9e4aaff5500a00ce33da82c89857"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/assessment/assessment.vue",
+      "bytes": 4929,
+      "sha256": "fc0e506711ec2099e83669c13891d45507353f7c12bd407487301e8b39a37690"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/child-assessment/child-assessment.vue",
+      "bytes": 8571,
+      "sha256": "5f3696a8731275cf3ac685f714e134f436015f314903dd9ac2246d504d32967d"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/child-result/child-result.vue",
+      "bytes": 9893,
+      "sha256": "7e2363dabda0c59dafe333b2cbae60915f9e297fd052188a7166c5e158923598"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/cycle-report/cycle-report.vue",
+      "bytes": 6720,
+      "sha256": "9ea40bf7c2b2c7a1132fce2dbd3683c8a6ab69d5606a38250896812758d3cfe1"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/explore/explore.vue",
+      "bytes": 12700,
+      "sha256": "41158228c89eb2ed1ce0fbdb5a70c821b4da4ef3ebf305d5c8905cfc0023718f"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/index/index.vue",
+      "bytes": 9705,
+      "sha256": "bbccb2eef8b9761ffdc90d23bb0d08f55768a544abc670844a3a259859926f98"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/industry/industry.vue",
+      "bytes": 7589,
+      "sha256": "2a26903348a1c2ebfd4042ec4838fbe8d9d1e9a4a12a9f5a569bf4fb8c339c70"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/methodology/methodology.vue",
+      "bytes": 1969,
+      "sha256": "5648d4dcc917ff2513613ce5cfbb42c1985aa5cd4880fc835426fb34f486e4b6"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/plan/plan.vue",
+      "bytes": 9178,
+      "sha256": "1aef4012f104d8648b2eb73432af2512e40f871602882c8c8b1df8a6e720387c"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/profile/profile.vue",
+      "bytes": 23304,
+      "sha256": "03bfd9bd1cac89c277ed462b30c9681f38c3324cf094a65dd077eaceca578656"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/science-boundary/science-boundary.vue",
+      "bytes": 2734,
+      "sha256": "db3d240fcbc3cbd730ee955cb1c018e7d197662dd73dbe85ae485d4f3b28e7c1"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/task/task.vue",
+      "bytes": 16849,
+      "sha256": "4e11c08710c27c5b5281c68f7c9fd5227c8eb59cb8b8ee20e2fe7addbdf71573"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/pages/welcome/welcome.vue",
+      "bytes": 3784,
+      "sha256": "c26d26301b685d68a96145ca5bf653921170c968d8cf6e111ecf9d779dc0744f"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/shime-uni.d.ts",
+      "bytes": 139,
+      "sha256": "762f1710ff5f9351e4840d0e609277d603ca3ca620b49161d793f73ee0c46c46"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/static/logo.png",
+      "bytes": 4023,
+      "sha256": "46719607502ebe256abff3ee000121c761708258187fb2bd6dac8443845ef32e"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/stores/user.ts",
+      "bytes": 2859,
+      "sha256": "474a4e87c5931e3eda46ac93724373d07033d14d018820395757d85f5c64ef1a"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/src/uni.scss",
+      "bytes": 2311,
+      "sha256": "e55f937f6f6ecfdfea81f4f7676db80d8ace35ae20b7d12004e5469ec59fe867"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/tsconfig.json",
+      "bytes": 307,
+      "sha256": "45c19d945ebb6be37ff4cc3f9a0c7771f3fd1ab9fb7ba4434a754f96de46017a"
+    },
+    {
+      "path": "source-projects/potential-lab/frontend/vite.config.ts",
+      "bytes": 167,
+      "sha256": "32a9c7d9f5d0e4f9e26a271e68d36b36fb0fe3cc1987e6e0c8091c7f5446b58c"
+    },
+    {
+      "path": "source-projects/potential-lab/tools/backup.sh",
+      "bytes": 1074,
+      "sha256": "f7c77948e5b6644e429ceb6dd2071f6dbff1c63b104edf398cdddaca7a0bdd43"
+    },
+    {
+      "path": "source-projects/potential-lab/tools/mpdriver/package-lock.json",
+      "bytes": 33396,
+      "sha256": "d08f0d453eb7ed84526933875ffe5374b86e3f4bff515097b787fe7830116464"
+    },
+    {
+      "path": "source-projects/potential-lab/tools/mpdriver/package.json",
+      "bytes": 286,
+      "sha256": "51de88845ff8b681fee77e707e9132364745dd8f693be1214980a4259be75210"
+    },
+    {
+      "path": "source-projects/potential-lab/tools/mpdriver/walkthrough.js",
+      "bytes": 2590,
+      "sha256": "83c7bbfac2e1774c6cb3fde91d159958801ada48682be62ad5fb8f4aa11a3961"
+    },
+    {
+      "path": "utils/gamify.js",
+      "bytes": 3688,
+      "sha256": "9304278f98ce8d3aec10988dca09a2b1b91c0d55721f5acb9056a1d2ad2a9186"
+    },
+    {
+      "path": "utils/growth-progress.js",
+      "bytes": 2237,
+      "sha256": "04eb9fc0d9bcfb0dda06241f67df028a8d9dd6cc84a9eaab65cf8afd34371d00"
+    },
+    {
+      "path": "utils/storage.js",
+      "bytes": 12343,
+      "sha256": "5f00b4a92e931bc2b87162e7568b9104a9d986d8a9493f61b93c3d72c4a94c93"
+    }
+  ],
+  "excluded": [
+    "app/.toolchains/",
+    "app/android/app/build/",
+    "app/node_modules/",
+    "outputs/",
+    "project.private.config.json"
+  ],
+  "notes": [
+    "No node_modules, local toolchains, credentials, personal runtime data, or historical duplicate builds.",
+    "Included current release archive and manifest; latest.json archive path made relative for portability.",
+    "Archive validation is file integrity verification, not application testing."
+  ]
+}

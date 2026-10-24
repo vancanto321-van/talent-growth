@@ -1,0 +1,12 @@
+# 保持镜像最小：排除开发与敏感文件
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+potential_lab.db
+*.db
+.env
+tests
+.pytest_cache
+Dockerfile
+.dockerignore

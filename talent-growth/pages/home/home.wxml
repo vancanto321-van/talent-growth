@@ -1,0 +1,94 @@
+<view class="page">
+  <!-- 未设置孩子档案 -->
+  <view wx:if="{{!hasChild}}" class="card setup">
+    <view class="emoji-big">👶</view>
+    <view class="title">先设置宝贝档案</view>
+    <view class="muted">设置生日后，系统会自动定位当前年龄段，开启闯关之旅</view>
+    <button class="btn-primary" bindtap="goProfile" style="margin-top:24rpx">去设置</button>
+  </view>
+
+  <block wx:if="{{hasChild}}">
+    <!-- 等级 Hero -->
+    <view class="hero">
+      <view class="row-between">
+        <view class="row">
+          <view class="avatar">{{child.gender==='女' ? '👧' : '👦'}}</view>
+          <view class="col" style="margin-left:20rpx">
+            <view class="hero-name">{{child.name}}</view>
+            <view class="hero-age">{{ageText}}</view>
+          </view>
+        </view>
+        <view class="level-badge">
+          <text class="lv-emoji">{{level.emoji}}</text>
+          <text class="lv-title">{{level.title}}</text>
+          <text class="lv-num">Lv.{{level.level}}</text>
+        </view>
+      </view>
+      <view class="xp-bar"><view class="xp-fill" style="width:{{level.percent}}%"></view></view>
+      <view class="row-between" style="margin-top:10rpx">
+        <text class="muted">经验 {{level.xp}}</text>
+        <text class="muted">{{level.percent}}% · 还差 {{level.nextNeed}} 升级到「{{level.nextTitle}}」</text>
+      </view>
+    </view>
+
+    <view class="section-intro">
+      <view><view class="section-title">一起长大的小事</view><view class="section-sub">按年龄探索，也可以按兴趣慢慢逛</view></view>
+      <view class="all-progress">{{totalAchieved}} 项已点亮</view>
+    </view>
+    <scroll-view scroll-x class="age-rail" enhanced show-scrollbar="false">
+      <view wx:for="{{ageBands}}" wx:key="key" class="age-card {{item.key===currentBand.key?'age-current':''}} {{item.unlocked?'':'age-locked'}}" data-key="{{item.key}}" bindtap="openBand">
+        <view class="age-card-top"><text class="age-icon">{{item.icon}}</text><text class="age-count">{{item.achieved}} / {{item.total}}</text></view>
+        <view class="age-name">{{item.label}}</view><view class="age-stage">{{item.stage}}</view>
+        <view class="age-meter"><view style="width:{{item.percent}}%"></view></view>
+        <view class="age-foot"><text wx:if="{{item.unlocked}}">{{item.percent}}% 已探索</text><text wx:else>完成上一阶段解锁</text></view>
+      </view>
+    </scroll-view>
+    <view class="card domain-catalog"><view class="row-between"><view class="section-title">按兴趣逛一逛</view><text class="muted">{{currentBand.label}}</text></view><view class="domain-grid"><view wx:for="{{domainCatalog}}" wx:key="name" class="domain-entry" data-index="{{item.index}}" bindtap="openDomain"><text class="domain-entry-icon">{{item.icon}}</text><text>{{item.name}}</text><text class="muted">{{item.count}} 个小目标</text></view></view></view>
+    <view class="card stage" bindtap="goBand">
+      <view class="row-between"><view class="col"><view class="stage-tag">从这里继续 · 第 {{currentBand.order + 1}} 阶段</view><view class="stage-title">{{currentBand.label}} · {{currentBand.stage}}</view><view class="muted">挑一个今天想一起完成的小目标</view></view><view class="ring" style="background: conic-gradient(#FF5722 {{currentBand.percent}}%, #FFE8DF {{currentBand.percent}}%)"><text class="ring-num">{{currentBand.percent}}%</text></view></view>
+      <view class="xp-bar"><view class="xp-fill" style="width:{{currentBand.percent}}%"></view></view>
+      <view class="row-between" style="margin-top:10rpx"><text class="muted">已达标 {{currentBand.achieved}} / {{currentBand.total}} 项</text><text class="link">逛逛本阶段 ›</text></view>
+    </view>
+
+    <!-- 下一关（锁定） -->
+    <view wx:if="{{nextBand}}" class="card next" bindtap="goNextBand">
+      <view class="row-between">
+        <view class="col">
+          <view class="next-tag">🔒 下一关卡</view>
+          <view class="next-title">{{nextBand.label}} · {{nextBand.stage}}</view>
+          <view class="muted">完成当前关卡 {{unlockRatio}}% 里程碑即可解锁</view>
+        </view>
+        <text class="lock-emoji">🎁</text>
+      </view>
+    </view>
+    <view wx:else class="card next">
+      <view class="row-between">
+        <view class="col">
+          <view class="next-tag">👑 已是最终关卡</view>
+          <view class="muted">完成全部里程碑，成为传奇爸妈</view>
+        </view>
+        <text class="lock-emoji">🏆</text>
+      </view>
+    </view>
+
+    <!-- 快捷操作 -->
+    <view class="row quick">
+      <view class="quick-item" bindtap="goRecord">
+        <text class="quick-emoji">📝</text><text>随手记录</text>
+      </view>
+      <view class="quick-item" bindtap="goCheckin">
+        <text class="quick-emoji">📅</text><text>每日打卡</text>
+      </view>
+      <view class="quick-item" bindtap="goBand">
+        <text class="quick-emoji">🗺️</text><text>今日陪伴</text>
+      </view>
+    </view>
+
+    <!-- 统计 -->
+    <view class="row stats">
+      <view class="stat"><text class="stat-num">{{recordCount}}</text><text class="stat-label">成长记录</text></view>
+      <view class="stat"><text class="stat-num">{{badgeCount}}</text><text class="stat-label">获得徽章</text></view>
+      <view class="stat"><text class="stat-num">{{level.xp}}</text><text class="stat-label">总经验</text></view>
+    </view>
+  </block>
+</view>

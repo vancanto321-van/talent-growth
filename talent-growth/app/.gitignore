@@ -1,0 +1,7 @@
+node_modules/
+.capacitor/
+.toolchains/
+ios/App/Pods/
+android/.gradle/
+android/build/
+dist/
