@@ -22,7 +22,7 @@ const BAND_YEARS = {
 
 const state = {
   data: null,
-  tab: localStorage.getItem(STORAGE_KEY) ? 'talent' : 'landing',
+  tab: (window.location.hostname === 'localhost' && window.location.pathname === '/' && localStorage.getItem(STORAGE_KEY)) ? 'talent' : 'landing',
   bandKey: 'b0',
   bandSection: 'milestones',
   domainIndex: 0,
