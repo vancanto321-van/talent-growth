@@ -188,3 +188,50 @@ test('线索页按方向展示等待中的组合路线，不生成天赋分数',
   controller.destroy();
   window.close();
 });
+
+test('完成一次真实尝试后出现付费引导，并可查看服务确认单、样例交付和演示支付', () => {
+  const { window, root, controller } = setup();
+  click(window, '[data-talent-action="open-task"]');
+  const form = root.querySelector('[data-attempt-form]');
+  form.querySelector('[value="independent"]').checked = true;
+  form.querySelector('[name="enjoyment"]').value = '4';
+  form.querySelector('[name="energy"]').value = '3';
+  form.querySelector('[name="note"]').value = '第一次尝试，留下一条真实线索';
+  form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+
+  // 20% 体验进度 + 三档价格，全部为本地演示
+  assert.match(root.textContent, /这颗种子，值得继续照料/);
+  assert.match(root.textContent, /9\.9 元/);
+  assert.match(root.textContent, /29\.9 元/);
+  assert.match(root.textContent, /69\.9 元/);
+  assert.match(root.textContent, /不会收集银行卡/);
+
+  // 套餐 → 服务确认单
+  click(window, '[data-plan="standard"]');
+  assert.match(root.textContent, /服务确认单 · 标准培养/);
+  assert.match(root.textContent, /14 天完整交付/);
+  assert.match(root.textContent, /不测评、不诊断、不排名/);
+
+  // 样例交付预览：虚构案例，无分数
+  click(window, '[data-talent-action="view-sample"]');
+  assert.match(root.textContent, /样例交付 · 虚构案例/);
+  assert.match(root.textContent, /小芽/);
+  assert.doesNotMatch(root.textContent, /天赋分数[:：]\s*\d+/);
+
+  // 演示支付：明确不扣款、不创建订单
+  click(window, '[data-talent-action="back-to-confirm"]');
+  click(window, '[data-talent-action="demo-payment"]');
+  assert.match(root.textContent, /演示支付 · 不会扣款/);
+  assert.match(root.textContent, /本页不收集任何支付信息/);
+
+  // 完成演示后回到正常页面，且没有写入任何订单数据
+  click(window, '[data-talent-action="finish-demo"]');
+  assert.match(root.textContent, /演示流程已完成/);
+  const stored = JSON.parse(window.localStorage.getItem('talent-growth-v1'));
+  assert.equal(JSON.stringify(stored).includes('order'), false);
+  assert.equal(JSON.stringify(stored).includes('payment'), false);
+
+  controller.destroy();
+  window.close();
+});
+

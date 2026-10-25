@@ -44,6 +44,15 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-price-grid small { color: var(--tg-muted); line-height: 1.5; margin-top: 6px; }
 .tg-price-grid em { color: var(--tg-coral-dark); font-size: 11px; font-style: normal; position: absolute; right: 10px; top: 8px; }
 .tg-paywall-note { font-size: 12px; margin-bottom: 0; }
+.tg-confirm-list { display: grid; gap: 8px; margin: 18px 0; }
+.tg-confirm-list span { color: var(--tg-ink); font-size: 14px; line-height: 1.6; }
+.tg-confirm-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0 14px; }
+.tg-sample-sheet { max-height: 86vh; overflow-y: auto; }
+.tg-sample-list { display: grid; gap: 10px; margin: 18px 0; }
+.tg-sample-list > div { background: #f7f1ea; border-radius: 12px; padding: 12px 14px; }
+.tg-sample-list dt { color: var(--tg-coral-dark); font-size: 11px; font-weight: 750; letter-spacing: .1em; }
+.tg-sample-list dd { color: var(--tg-ink); line-height: 1.75; margin: 5px 0 0; }
+
 .tg-path-secondary { color: var(--tg-coral-dark); display: block; font-size: 13px; margin-top: 12px; text-decoration: underline; }
 @media (max-width: 600px) { .tg-price-grid { grid-template-columns: 1fr; } .tg-paywall { padding: 28px 20px; } }
 .tg-landing-family { background: transparent; border: 0; color: var(--tg-coral-dark); font-size: 13px; margin-top: 12px; padding: 0; }

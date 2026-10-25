@@ -64,7 +64,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
   if (!root) throw new Error('Talent root is required');
   root.__talentCleanup?.();
   const store = createTalentStore();
-  const state = { view: 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
+  const state = { view: 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, selectedPlan:'', serviceConfirm:false, samplePreview:false, demoPayment:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
   let data = catalog ? normalizeData(catalog) : null;
   let destroyed = false;
   let loadAttempt = 0;
@@ -239,6 +239,28 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const attempts = profile().attempts.length;
     return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-paywall-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-paywall" aria-label="关闭">×</button><span class="tg-kicker">你的体验进度 · ${Math.min(20, Math.max(8, attempts * 10))}%</span><h2 id="tg-paywall-title">这颗种子，值得继续照料</h2><p>你已经看见了一次真实尝试。接下来，我们可以把家庭的困惑整理成一套更适合孩子的探索路径。</p><div class="tg-paywall-value"><b>继续服务将获得</b><span>7/14 天探索方案 · 观察记录模板 · 阶段回顾 · 下一步建议</span></div><div class="tg-price-grid"><button data-talent-action="choose-plan" data-plan="seed"><strong>9.9 元</strong><small>种子体验 · 7天建议</small></button><button class="featured" data-talent-action="choose-plan" data-plan="standard"><em>推荐</em><strong>29.9 元</strong><small>标准培养 · 14天完整交付</small></button><button data-talent-action="choose-plan" data-plan="companion"><strong>69.9 元</strong><small>陪伴培养 · 30天调整</small></button></div><p class="tg-paywall-note">当前为本地演示支付界面，不会收集银行卡或发起真实扣款。选择套餐后可查看交付内容。</p></section></div>`;
   }
+  function renderServiceConfirm() {
+    const plan = state.selectedPlan || 'standard';
+    const plans = { seed: ['种子体验','9.9 元','7 天探索建议'], standard: ['标准培养','29.9 元','14 天完整交付'], companion: ['陪伴培养','69.9 元','30 天方案与两次调整'] };
+    const [title, price, detail] = plans[plan] || plans.standard;
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-service-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-confirm" aria-label="关闭">×</button><span class="tg-kicker">服务确认单 · ${esc(title)}</span><h2 id="tg-service-title">${esc(price)}，把下一步交给一套可执行的方案</h2><p>服务对象：3–12 岁孩子家庭。你将获得 <b>${esc(detail)}</b>，以及基于真实记录的观察回顾和下一步选项。</p><div class="tg-confirm-list"><span>✓ 家庭情况摘要：区分事实与推测</span><span>✓ 适龄任务：适配家庭时间与已有材料</span><span>✓ 观察记录：允许继续、调整或暂停</span><span>✓ 服务边界：不测评、不诊断、不排名</span></div><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="demo-payment">查看演示支付（不扣款）</button><button class="tg-inline-link" data-talent-action="view-sample">先看样例交付</button><button class="tg-inline-link" data-talent-action="close-confirm">返回选择</button></div><p class="tg-paywall-note">当前为本地演示：不会收集支付信息、不会创建真实订单。正式服务需另行确认授权和隐私边界。</p></section></div>`;
+  }
+  function renderSamplePreview() {
+    const rows = [
+      ['孩子', '小芽，4 岁，女孩'],
+      ['家庭困惑', '什么都想试，但常常三分钟就走开；家长不确定该坚持还是该换方向'],
+      ['观察到的线索', '喜欢把东西排成一排并按颜色分类；愿意重复同一个动作超过 5 分钟'],
+      ['14 天计划', '第 1 天：纸片分类小实验；第 4 天：把分类搬进厨房；第 7 天：一次让孩子当“小老师”的复盘；第 10 天：换一种材料重做；第 14 天：家庭回顾'],
+      ['一次真实记录', '孩子主动把袜子按颜色配对，并说“这个和这个是一家的”。'],
+      ['阶段回顾', '证据是“主动分类 + 主动命名关系”，还不能说明稳定偏好。'],
+      ['下一步三个选项', '① 继续分类类小实验 ② 加入“找规律”类玩法 ③ 先暂停两周，观察自发行为'],
+      ['本单交付', '家庭情况摘要 / 14 天计划表 / 观察模板 / 一次中期调整 / 阶段回顾 / 下一步选项']
+    ];
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-sample-title"><section class="tg-paywall tg-sample-sheet"><button class="tg-paywall-close" data-talent-action="close-sample" aria-label="关闭">×</button><span class="tg-kicker">样例交付 · 虚构案例</span><h2 id="tg-sample-title">一份 29.9 元标准培养，长什么样</h2><p>下面是虚构案例，用来说明交付结构与语气，不代表真实客户。</p><dl class="tg-sample-list">${rows.map(([term, desc]) => `<div><dt>${esc(term)}</dt><dd>${esc(desc)}</dd></div>`).join('')}</dl><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="back-to-confirm">回到服务确认单</button><button class="tg-inline-link" data-talent-action="close-sample">关闭</button></div><p class="tg-paywall-note">样例中不含任何测评分数、排名或诊断结论。</p></section></div>`;
+  }
+  function renderDemoPayment() {
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-demo-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-demo" aria-label="关闭">×</button><span class="tg-kicker">演示支付 · 不会扣款</span><h2 id="tg-demo-title">这里会出现真实的收款方式</h2><p>当前版本只演示流程：下单 → 确认服务内容 → 交付。真实的微信 / 支付宝收款页、退款规则和客服入口会在正式对外服务时接入。</p><div class="tg-confirm-list"><span>✓ 本页不收集任何支付信息</span><span>✓ 不创建真实订单</span><span>✓ 不发送任何数据到服务器</span></div><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="finish-demo">完成演示</button><button class="tg-inline-link" data-talent-action="view-sample">再看一次样例交付</button></div></section></div>`;
+  }
   function renderFamily() {
     return `<div class="tg-view"><section class="tg-section-head"><div><span class="tg-kicker">家人</span><h2>每个人都可以从小实验开始</h2></div></section><section class="tg-people-list">${store.data.people.map(person => `<button class="${person.id === activePerson().id ? 'active' : ''}" data-talent-action="switch-person" data-person-id="${esc(person.id)}"><strong>${esc(person.name)}</strong><small>${esc(AGE_LABELS[person.ageGroup])}</small></button>`).join('')}</section><form class="tg-person-form" data-person-form><h3>添加一个视角</h3><label>称呼<input name="name" maxlength="40" required placeholder="例如：小满、妈妈、爷爷" /></label><label>年龄阶段<select name="ageGroup">${data.ageGroups.map(item => `<option value="${esc(item.id)}" ${item.id === (state.requestedAge || 'adult') ? 'selected' : ''}>${esc(item.label)}</option>`).join('')}</select></label><button class="tg-button tg-button-primary">保存档案</button></form>${renderCloud({cloud:state.cloud,store})}<section class="tg-data-card"><h3>本地备份与恢复</h3><p>未上传的记录保存在当前浏览器。导出一份文件留在自己手中，也可以恢复上一次本地保存。</p><button class="tg-button tg-button-quiet" data-talent-action="export">导出方向备份</button><button class="tg-button tg-button-quiet" data-talent-action="import">恢复方向备份</button><button class="tg-button tg-button-quiet" data-talent-action="recover-previous">恢复上一次本地保存</button>${store.backupError ? `<p role="status">${esc(store.backupError)}</p>` : ''}<input id="tg-backup-picker" type="file" accept="application/json,.json" hidden /></section><button class="tg-grow-link" data-talent-action="open-growth">进入儿童成长档案 →</button></div>`;
   }
@@ -251,7 +273,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const formDrafts = ['[data-cloud-auth-form]','[data-person-form]'].map(selector=>({selector,values:[...root.querySelectorAll(`${selector} input, ${selector} select`)].map(field=>({name:field.name,value:field.value}))}));
     const choiceOffsets = Object.fromEntries([...root.querySelectorAll('[data-tg-choices]')].map(rail => [rail.dataset.tgChoices, rail.scrollLeft]));
     const view = state.view === 'atlas' ? renderLearningAtlas({learning,catalog:data,profile:profile(),person:activePerson(),selectedWorldId:state.learningWorldId}) : state.view === 'setup' ? renderSetup({person:activePerson(),preferences:profile().preferences,learningBase:normalizeExploration(profile().exploration,activePerson().ageGroup,learning,profile().preferences?.level).learningBase,options:preferenceOptions}) : state.view === 'journal' ? renderJournal({catalog:data,profile:profile(),person:activePerson(),learning}) : state.view === 'cultivate' ? renderCultivate() : state.view === 'clues' ? renderClues() : state.view === 'family' ? renderFamily() : renderDiscover();
-    root.innerHTML = `<div class="tg-app"><header class="tg-header"><a class="tg-brand" href="#" data-talent-action="home">天赋生长 <span>家庭成长培养</span></a>${renderProfileStrip()}</header>${state.view === 'discover' && !state.taskId ? renderHero() : ''}${renderNav()}${state.notice ? `<div class="tg-notice" role="status">${esc(state.notice)}<button data-talent-action="clear-notice">×</button></div>` : ''}<main class="tg-main">${view}</main><footer class="tg-footer">把一次陪伴，留给下一步。<button data-action="open-profile">进入孩子成长档案</button>${state.paywall ? renderPaywall() : ''}</div>`;
+    root.innerHTML = `<div class="tg-app"><header class="tg-header"><a class="tg-brand" href="#" data-talent-action="home">天赋生长 <span>家庭成长培养</span></a>${renderProfileStrip()}</header>${state.view === 'discover' && !state.taskId ? renderHero() : ''}${renderNav()}${state.notice ? `<div class="tg-notice" role="status">${esc(state.notice)}<button data-talent-action="clear-notice">×</button></div>` : ''}<main class="tg-main">${view}</main><footer class="tg-footer">把一次陪伴，留给下一步。<button data-action="open-profile">进入孩子成长档案</button>${state.paywall ? renderPaywall() : ''}${state.serviceConfirm ? renderServiceConfirm() : ''}${state.samplePreview ? renderSamplePreview() : ''}${state.demoPayment ? renderDemoPayment() : ''}</div>`;
     bindChoiceRails(choiceOffsets);
     bindRail();
     restoreAttemptDraft();
@@ -524,7 +546,14 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const action = event.target.closest('[data-talent-action]')?.dataset.talentAction;
     if (!action) return;
     if (action === 'close-paywall') { state.paywall = false; render(); return; }
-    if (action === 'choose-plan') { const plan = event.target.closest('[data-plan]')?.dataset.plan; const labels = { seed: '已选择 9.9 元种子体验：接下来查看7天探索建议。', standard: '已选择 29.9 元标准培养：接下来查看14天完整交付。', companion: '已选择 69.9 元陪伴培养：接下来查看30天陪伴方案。' }; state.paywall = false; state.notice = `${labels[plan] || '已选择服务方案。'}（当前为演示，不会扣款）`; render(); return; }
+    if (action === 'choose-plan') { state.selectedPlan = event.target.closest('[data-plan]')?.dataset.plan || 'standard'; state.paywall = false; state.serviceConfirm = true; render(); return; }
+    if (action === 'close-confirm') { state.serviceConfirm = false; state.selectedPlan = ''; render(); return; }
+    if (action === 'view-sample') { state.samplePreview = true; render(); return; }
+    if (action === 'close-sample') { state.samplePreview = false; render(); return; }
+    if (action === 'back-to-confirm') { state.samplePreview = false; state.serviceConfirm = true; render(); return; }
+    if (action === 'demo-payment') { state.serviceConfirm = false; state.demoPayment = true; render(); return; }
+    if (action === 'close-demo') { state.demoPayment = false; render(); return; }
+    if (action === 'finish-demo') { state.demoPayment = false; state.samplePreview = false; state.selectedPlan = ''; state.notice = '演示流程已完成：未扣款，也没有创建订单。'; render(); return; }
      if (action === 'clue-tab') { state.clueTab = event.target.closest('[data-clue-tab]').dataset.clueTab === 'weekly' ? 'weekly' : 'planets'; state.view = 'clues'; state.taskId = ''; render(); return; }
     if (action === 'planet-select') {state.planetId=event.target.closest('[data-planet-id]').dataset.planetId;state.view='clues';state.clueTab='planets';state.taskId='';render();root.querySelector('#tg-planet-detail')?.scrollIntoView({block:'start'});return;}
     if (action === 'planet-next') {
