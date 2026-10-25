@@ -139,7 +139,7 @@ class BodyReadGate {
   }
 }
 
-const configuredOrigin = process.env.GROWTH_SYNC_ORIGIN || 'https://43.159.60.166';
+const configuredOrigin = process.env.GROWTH_SYNC_ORIGIN || 'https://your-domain.example';
 const allowedOrigins = makeAllowedOrigins(configuredOrigin);
 const requestLimiter = new RateLimiter(240, 5 * 60 * 1000);
 const authLimiter = new RateLimiter(12, 15 * 60 * 1000);

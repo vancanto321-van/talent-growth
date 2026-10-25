@@ -8,7 +8,7 @@
 node server/growth-sync.mjs
 ```
 
-默认监听 `127.0.0.1:18129`，数据目录为 `/opt/child-growth-sync/data`。可使用 `GROWTH_SYNC_HOST`、`GROWTH_SYNC_PORT` 和 `GROWTH_SYNC_DIR` 调整。生产环境的来源固定为 `GROWTH_SYNC_ORIGIN`，默认是 `https://43.159.60.166`。开发环境设置 `GROWTH_SYNC_DEV=1` 或 `NODE_ENV=development`，再用 `GROWTH_SYNC_ALLOWED_ORIGIN`（逗号分隔）加入开发来源；开发模式也允许本机的 `http://127.0.0.1:<port>` 和 `http://localhost:<port>`。
+默认监听 `127.0.0.1:18129`，数据目录为 `/opt/child-growth-sync/data`。可使用 `GROWTH_SYNC_HOST`、`GROWTH_SYNC_PORT` 和 `GROWTH_SYNC_DIR` 调整。生产环境的来源固定为 `GROWTH_SYNC_ORIGIN`，默认是 `https://<服务器地址>`。开发环境设置 `GROWTH_SYNC_DEV=1` 或 `NODE_ENV=development`，再用 `GROWTH_SYNC_ALLOWED_ORIGIN`（逗号分隔）加入开发来源；开发模式也允许本机的 `http://127.0.0.1:<port>` 和 `http://localhost:<port>`。
 
 生产环境的会话 cookie 始终带 `Secure`。只有明确设置开发模式时，`COOKIE_SECURE=0` 才会被接受。cookie 名为 `growth_session`，属性是 `HttpOnly; SameSite=Strict; Path=/growth/api`，有效期七天。
 

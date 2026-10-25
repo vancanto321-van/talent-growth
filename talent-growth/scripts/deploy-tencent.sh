@@ -1,3 +1,4 @@
+# 用法：先 export SITE_ORIGIN=https://你的域名，再执行本脚本
 #!/usr/bin/env bash
 # Execute on the existing Tencent Lighthouse host after uploading the static archive.
 set -Eeuo pipefail
@@ -102,21 +103,21 @@ caddy fmt --overwrite "$site"
 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 systemctl reload caddy
 
-curl -fsS --max-time 20 https://43.159.60.166/growth/release.json > "$backup/online-release.json"
+curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/release.json > "$backup/online-release.json"
 python3 - "$backup/online-release.json" "$release_id" <<'PY'
 import json, sys
 if json.load(open(sys.argv[1]))['releaseId'] != sys.argv[2]:
     raise SystemExit('Online release ID mismatch')
 PY
-curl -fsS --max-time 20 https://43.159.60.166/growth/ > "$backup/online-index.html"
+curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/ > "$backup/online-index.html"
 cmp "$release/index.html" "$backup/online-index.html"
 for asset in main.js style.css growth-progress.js data.json app-icon.png talent-mark.svg talent-ui.js talent-store.js talent-insights.js talent-journey.js talent-cloud.js talent.css talent-data.js learning-data.js learning-ui.js cultivation-data.js cultivation-ui.js talent-planets.js talent-planets-ui.js; do
-    curl -fsS --max-time 20 "https://43.159.60.166/growth/$asset" > "$backup/verify-$asset"
+    curl -fsS --max-time 20 "${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/$asset" > "$backup/verify-$asset"
     cmp "$release/$asset" "$backup/verify-$asset"
 done
-curl -fsS --max-time 20 https://43.159.60.166/growth/api/health
+curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/api/health
 curl -fsS --max-time 20 http://127.0.0.1:18128/api/health
-curl -fsS --max-time 20 https://43.159.60.166/api/health
-curl -fsS --max-time 20 https://43.159.60.166/knowledge/ > "$backup/knowledge-index.html"
+curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/api/health
+curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/knowledge/ > "$backup/knowledge-index.html"
 trap - ERR
 printf '\nDEPLOY_OK release=%s backup=%s\n' "$release_id" "$backup"

@@ -15,7 +15,8 @@ Environment=NODE_ENV=production
 Environment=GROWTH_SYNC_HOST=127.0.0.1
 Environment=GROWTH_SYNC_PORT=18129
 Environment=GROWTH_SYNC_DIR=/opt/child-growth-sync/data
-Environment=GROWTH_SYNC_ORIGIN=https://43.159.60.166
+# 部署时改成自己的域名，例如 https://你的域名
+Environment=GROWTH_SYNC_ORIGIN=https://your-domain.example
 Environment=COOKIE_SECURE=1
 NoNewPrivileges=true
 PrivateTmp=true
