@@ -17,8 +17,11 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-shell button { cursor: pointer; }
 .tg-landing-shell { min-height: 100vh; }
 .tg-landing-header { align-items: center; border-bottom: 1px solid var(--tg-line); display: flex; justify-content: space-between; padding-bottom: 16px; }
+/* 旧儿童模块的全局规则（main/h1/p 等）会泄漏到新模块，这里显式复位容器约束 */
+.tg-shell main, .tg-app main { margin: 0; max-width: none; padding: 0; width: auto; }
+.tg-shell h1, .tg-shell h2, .tg-shell h3, .tg-shell p, .tg-app h1, .tg-app h2, .tg-app h3, .tg-app p { overflow-wrap: break-word; }
 .tg-landing-main { padding: 40px 0 20px; }
-.tg-landing-hero { max-width: 820px; padding: 0 0 34px; }
+.tg-landing-hero { max-width: 980px; padding: 0 0 30px; }
 .tg-landing-hero h1 { font-family: Georgia, "Songti SC", "STSong", serif; font-size: clamp(34px, 4.6vw, 60px); font-weight: 500; letter-spacing: -.055em; line-height: 1.08; margin: 14px 0 18px; }
 .tg-landing-hero h1 em { color: var(--tg-coral); font-style: normal; }
 .tg-landing-hero p { color: var(--tg-muted); font-size: 16px; line-height: 1.85; margin: 0; max-width: 44em; }
@@ -80,7 +83,10 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-shell h1, .tg-shell h2, .tg-shell h3, .tg-app h1, .tg-app h2, .tg-app h3,
 .tg-shell .tg-entry h2, .tg-app .tg-section-head h2 { text-wrap: balance; }
 .tg-shell p, .tg-shell li, .tg-shell dd, .tg-app p, .tg-app li, .tg-app dd,
-.tg-shell .tg-entry p, .tg-shell .tg-entry-points li { text-wrap: pretty; }
+.tg-shell .tg-entry p, .tg-shell .tg-entry-points li,
+.tg-app b, .tg-app strong, .tg-app small, .tg-app figcaption,
+.tg-app span, .tg-app em, .tg-app label, .tg-app summary, .tg-app dt, .tg-app dd,
+.tg-shell span, .tg-shell em, .tg-shell label, .tg-shell dt, .tg-shell dd { text-wrap: pretty; }
 .tg-kicker, .tg-brand, .tg-landing-family, .tg-entry-actions .tg-button,
 .tg-nav button, .tg-age-tabs button, .tg-grow-link, .tg-inline-link { white-space: nowrap; }
 .tg-entry h2 { white-space: nowrap; }
@@ -146,7 +152,8 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-overall-battery { align-items: center; background: #f7f1eb; border-radius: 13px; display: grid; gap: 14px; grid-template-columns: 160px 1fr auto; margin: 10px 0 28px; padding: 16px 20px; }.tg-overall-battery strong { display: block; font-size: 25px; margin-top: 5px; }.tg-overall-battery .tg-battery { height: 16px; width: 100%; }.tg-overall-battery small { color: var(--tg-muted); }
 .tg-intro { border-bottom: 1px solid var(--tg-line); border-top: 1px solid var(--tg-line); padding: 15px 0; }.tg-intro summary { cursor: pointer; font-weight: 700; }.tg-intro p { margin: 12px 0 0; }
 .tg-detail-grid { display: grid; gap: 40px; grid-template-columns: repeat(2, 1fr); padding: 27px 0; }.tg-detail-grid h3, .tg-criteria h3, .tg-attempt h3 { font-size: 15px; margin: 0 0 13px; }.tg-detail-grid ul, .tg-detail-grid ol { color: var(--tg-muted); line-height: 1.8; margin: 0 0 23px; padding-left: 20px; }
-.tg-criteria { border-top: 1px solid var(--tg-line); padding-top: 24px; }.tg-criteria > article { border-bottom: 1px solid var(--tg-line); display: grid; gap: 15px; grid-template-columns: minmax(130px, 1fr) 50px 1.8fr; padding: 15px 0; }.tg-criteria article small { color: var(--tg-muted); display: block; font-size: 12px; margin-top: 5px; }.tg-stages { display: flex; gap: 5px; }.tg-stages button { background: #f6eee7; border: 0; border-radius: 999px; color: var(--tg-muted); font-size: 11px; padding: 7px 9px; }.tg-stages button.active { background: var(--tg-coral); color: white; }
+.tg-criteria { border-top: 1px solid var(--tg-line); padding-top: 24px; }.tg-criteria > article { border-bottom: 1px solid var(--tg-line); display: grid; gap: 15px; grid-template-columns: minmax(240px, 1.15fr) 50px minmax(0, 1.55fr); padding: 15px 0; }.tg-criteria > article > div > b { text-wrap: pretty; }
+.tg-criteria article small { color: var(--tg-muted); display: block; font-size: 12px; margin-top: 5px; }.tg-stages { display: flex; gap: 5px; }.tg-stages button { background: #f6eee7; border: 0; border-radius: 999px; color: var(--tg-muted); font-size: 11px; padding: 7px 9px; }.tg-stages button.active { background: var(--tg-coral); color: white; }
 .tg-attempt, .tg-reflection { background: #fbf7f1; border-radius: 14px; margin-top: 28px; padding: 22px; }.tg-attempt label { color: var(--tg-muted); display: block; font-size: 13px; margin-top: 13px; }.tg-choice-row, .tg-rating-row { display: flex; flex-wrap: wrap; gap: 10px; }.tg-choice-row label { background: #fff; border: 1px solid var(--tg-line); border-radius: 8px; color: var(--tg-ink); padding: 9px 12px; }.tg-choice-row input { margin-left: 8px; }.tg-rating-row label { flex: 1; min-width: 180px; }.tg-attempt select, .tg-attempt textarea, .tg-person-form input, .tg-person-form select { background: #fff; border: 1px solid var(--tg-line); border-radius: 8px; box-sizing: border-box; color: var(--tg-ink); margin-top: 6px; padding: 10px; width: 100%; }.tg-attempt textarea { min-height: 76px; resize: vertical; }.tg-attempt > .tg-button { margin-top: 17px; }
 .tg-reflection-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 17px 0; }.tg-reflection-list span { background: #fff; border-radius: 999px; color: var(--tg-muted); font-size: 12px; padding: 8px 11px; }
 .tg-insight-grid { display: grid; gap: 10px; grid-template-columns: repeat(6, 1fr); margin: 28px 0; }.tg-insight-grid article { background: #fff; border: 1px solid var(--tg-line); border-radius: 12px; padding: 16px 12px; }.tg-insight-grid b { display: block; font-size: 28px; font-weight: 500; }.tg-insight-grid span { color: var(--tg-muted); font-size: 11px; }.tg-clue-result, .tg-data-card { background: #f4e9df; border-radius: 16px; padding: 27px; }.tg-clue-result.ready { background: #e7efe8; }.tg-clue-result h3 { font-family: Georgia, "Songti SC", serif; font-size: 28px; font-weight: 500; margin: 9px 0; }.tg-clue-result p, .tg-clue-result small, .tg-data-card p { color: var(--tg-muted); line-height: 1.7; }.tg-sources { display: grid; gap: 8px; margin-top: 28px; }.tg-sources a { border-bottom: 1px solid var(--tg-line); color: var(--tg-ink); padding: 10px 0; text-decoration: none; }.tg-sources small { color: var(--tg-muted); display: block; margin-top: 5px; }

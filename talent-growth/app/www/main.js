@@ -1009,7 +1009,7 @@ function renderLanding() {
         <section class="tg-landing-hero">
           <span class="tg-kicker">每个人都是自己天赋的园丁</span>
           <h1>为不同的花园，<em>找到合适的照料方式</em></h1>
-          <p>从一次真实的小实验开始，不评分、不比较，让孩子和大人都能在自己的节奏里发现下一步。</p>
+          <p>不评分、不比较，只记录真实发生的那一次尝试。</p>
         </section>
         <hr class="tg-landing-rule" />
         <section class="tg-entry-grid" aria-label="选择培养方向">
@@ -1017,7 +1017,7 @@ function renderLanding() {
             <span class="tg-entry-icon" aria-hidden="true">🌱</span>
             <span class="tg-kicker">给家长与家庭 · 3–12 岁</span>
             <h2 id="tg-entry-child-title">儿童档案</h2>
-            <p>把孩子的年龄、兴趣线索和每一次陪伴留下来，长成一份只属于这个孩子的成长档案。</p>
+            <p>把年龄、兴趣线索和每一次陪伴，留成这个孩子的成长档案。</p>
             <ul class="tg-entry-points">
               <li>从当下状态开始，不套模板</li>
               <li>记录愿意继续、想停下和作品变化</li>
@@ -1032,7 +1032,7 @@ function renderLanding() {
             <span class="tg-entry-icon" aria-hidden="true">🌿</span>
             <span class="tg-kicker">给每一个人</span>
             <h2 id="tg-entry-all-title">全年龄天赋培养</h2>
-            <p>从幼儿、青少年到成人和晚年，选择一件今天就能开始的小事，慢慢培育自己的方向。</p>
+            <p>从幼儿到晚年，选一件今天能开始的小事。</p>
             <ul class="tg-entry-points">
               <li>6 个年龄阶段，同一套培养逻辑</li>
               <li>每次 10–20 分钟，可以随时停</li>
