@@ -1,3 +1,9 @@
+> **内部构建说明（非产品文档）**
+>
+> 这个文件是开发过程中的开工笔记，写给 AI 助手和未来的自己看，用来快速恢复上下文。
+> 对外介绍请看 [README](../README.md) 与 `docs/OPC参赛作品介绍.md`。
+> 文中服务器地址已替换为占位符，真实地址保存在不公开的本地记录里。
+
 # 天赋生长：给接手 Codex 的交接说明
 
 整理日期：2026-10-24，Asia/Shanghai。
@@ -6,7 +12,7 @@
 
 用户希望做一个自己和孩子都能使用的全年龄探索产品：从轻松的「三件小事」开始，发现兴趣，持续练习，留下作品、变化和反馈，逐步把能力用于生活和工作。允许随意开始、逐渐深入，不要求先定方向或全面打卡。
 
-正式站点：<https://43.159.60.166/growth/>。
+正式站点：<https://<服务器地址>/growth/>。
 
 2026-10-23 已发布 v2.3.0，发布 ID `4c4aea843ff5b843`。这是最近一次发布时确认的状态，接手后如需判断实时线上情况，应重新读取 `/growth/release.json`。
 
@@ -118,14 +124,14 @@ node scripts/package-web.mjs
 
 ## 7. 腾讯云交接
 
-现有服务器为 `43.159.60.166`，实例 `lhins-2ccia5mt`（控制台 rid=9）。同机还有其他网站，发布时只改本项目目录与路由，不覆盖整站或重置服务器。
+现有服务器为 `<服务器地址>`，实例 `<实例ID>`（控制台 rid=<rid>）。同机还有其他网站，发布时只改本项目目录与路由，不覆盖整站或重置服务器。
 
 - 网页：`/opt/child-growth/current` 指向版本目录；旧版和回滚配置见最新发布记录。
 - 网页服务：既有 Caddy；项目路由 `/etc/caddy/child-growth.routes.caddy`。
 - 后端：`/opt/child-growth-sync/server/growth-sync.mjs`。
 - systemd：`child-growth-sync.service`；回环端口 18129。
 - 正式账号数据：`/opt/child-growth-sync/data`，不要当发布缓存删除。
-- 正式来源：`https://43.159.60.166`；账号 cookie 使用 Secure、HttpOnly、SameSite。
+- 正式来源：`https://<服务器地址>`；账号 cookie 使用 Secure、HttpOnly、SameSite。
 
 本次包不含服务器登录会话、SSH 私钥、真实账号库、云端个人记录或浏览器数据。当前没有授权接手 Codex 自动再发布；等用户提出后再操作。本人微信验证必须交给用户完成。
 
