@@ -8,7 +8,7 @@
 - Windows：目标为 NSIS `.exe` 安装包
 - Linux：目标为 AppImage，便于本地验证
 - 桌面壳不改变现有 Web 版的数据模型和备份逻辑
-- 当前只提供构建配置，不签名、不公证、不发布
+- 当前发布 Apple Silicon macOS DMG 技术预览包，未做 Apple Developer ID 签名或公证；Windows/Linux 暂无发布包
 
 ## 环境要求
 
@@ -64,31 +64,22 @@ cargo tauri build --bundles appimage  # Linux
 
 当前未完成 Windows 构建：本机是 Apple Silicon macOS，Windows NSIS 需要 Windows Runner 或 CI 构建机。
 
-## 家长服务版预览包
+## 当前预览包：0.7.7
 
-当前最新预览包（0.7.0）：
+下载：[GitHub Release v0.7.7](https://github.com/vancanto321-van/talent-growth/releases/tag/v0.7.7)
 
-```text
-天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
-```
-
-SHA-256：
-
-```text
-5166d2f9ad8b3d4efdd1ce4098d240983bbb2f577a26136b1af2cdf9f7c0125a
-```
+文件：`TalentGrowth_0.7.7_aarch64_unsigned.dmg`，适用于 Apple Silicon（arm64）Mac。
+校验值见 [SHA256SUMS-v077.txt](tauri/release/SHA256SUMS-v077.txt)。
 
 这一版包含：
 
-- 首页：大标题区 + 通栏横线下方 **左右各一半** 的双入口（左「儿童档案」/ 右「全年龄天赋培养」）；
-- 中文排版修正：标题两行均衡、正文不留单个尾字、短标签不换行；
-- 完成第一次真实尝试并保存后出现的 20% 体验付费引导；
-- 三档体验价格（9.9 / 29.9 / 69.9 元）、服务确认单、样例交付预览、演示支付页；
-- 演示支付不接真实收款、不收集支付信息、不创建订单。
+- 首页说明如何开始一次探索，家庭入口支持3–12岁探索档案，旧0–8岁成长档案单独标明；
+- 成人探索使用适合自身的文案；
+- 保存或修改观察后先回看记录与反馈，家庭方案由用户自愿打开；
+- 儿童不愿继续时优先尊重暂停，反馈围绕参与意愿、情境、材料与时长；
+- 三档服务、确认单、虚构样例和演示支付仍可使用。演示不创建订单或发起扣款。
 
-历史预览包已移到仓库外的 `../_旧预览包/`（0.1.0 ~ 0.6.0），不再挂在系统里，避免误开旧版。
-
-以上均为未签名、未公证的技术预览，不是正式商业发行版。
+本版为未签名、未公证的技术预览，不是正式商业发行版。未完成 Intel Mac、Windows 或跨版本升级的数据保留实测；更新前请导出备份。
 
 ## 打包路径的坑（务必看）
 
@@ -121,13 +112,14 @@ frontendDist       : ./dist                                   →  只从 dist �
 `cargo tauri build --bundles dmg` 在本机不稳定（HFS 布局步骤会卡住），因此改用固定流程：
 
 ```sh
-cargo tauri build --bundles app
-rm -rf target/release/bundle/dmg/stage && mkdir -p target/release/bundle/dmg/stage
-cp -R 'target/release/bundle/macos/天赋生长.app' target/release/bundle/dmg/stage/
-ln -s /Applications target/release/bundle/dmg/stage/Applications
-hdiutil create -volname '天赋生长·家庭培养' -srcfolder target/release/bundle/dmg/stage \
-  -ov -format UDZO release/天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
-shasum -a 256 release/天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
+TG_BUILD=v0.7.7 cargo tauri build --bundles app
+mkdir -p target/release/bundle/dmg release
+stage=$(mktemp -d target/release/bundle/dmg/stage-v077.XXXXXX)
+ditto 'target/release/bundle/macos/天赋生长.app' "$stage/天赋生长.app"
+ln -s /Applications "$stage/Applications"
+hdiutil create -volname 'TalentGrowth 0.7.7' -srcfolder "$stage" \
+  -format UDZO release/TalentGrowth_0.7.7_aarch64_unsigned.dmg
+shasum -a 256 release/TalentGrowth_0.7.7_aarch64_unsigned.dmg
 ```
 
 产物放入 `target/` 与 `release/`，不提交进仓库；只保留校验值文本。
