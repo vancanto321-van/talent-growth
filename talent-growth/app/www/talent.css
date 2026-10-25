@@ -16,19 +16,53 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-shell button, .tg-shell input, .tg-shell select, .tg-shell textarea { font: inherit; }
 .tg-shell button { cursor: pointer; }
 .tg-landing-shell { min-height: 100vh; }
-.tg-landing-header { border-bottom: 1px solid var(--tg-line); padding-bottom: 18px; }
-.tg-landing-main { padding: 48px 0 20px; }
-.tg-landing-hero { max-width: 780px; padding: 20px 0 40px; }
-.tg-landing-hero h1 { font-family: Georgia, "Songti SC", "STSong", serif; font-size: clamp(40px, 6vw, 72px); font-weight: 500; letter-spacing: -.06em; line-height: 1.08; margin: 16px 0 20px; }
+.tg-landing-header { align-items: center; border-bottom: 1px solid var(--tg-line); display: flex; justify-content: space-between; padding-bottom: 16px; }
+.tg-landing-switch { background: transparent; border: 1px solid var(--tg-line); border-radius: 999px; color: var(--tg-muted); font-size: 12px; padding: 8px 14px; }
+.tg-landing-switch:hover { border-color: var(--tg-coral); color: var(--tg-coral-dark); }
+.tg-landing-main { padding: 34px 0 20px; }
+.tg-landing-hero { max-width: 760px; padding: 6px 0 24px; }
+.tg-landing-hero h1 { font-family: Georgia, "Songti SC", "STSong", serif; font-size: clamp(34px, 4.4vw, 58px); font-weight: 500; letter-spacing: -.05em; line-height: 1.1; margin: 12px 0 0; }
 .tg-landing-hero h1 em { color: var(--tg-coral); font-style: normal; }
-.tg-landing-hero p { color: var(--tg-muted); font-size: 17px; line-height: 1.9; max-width: 600px; }
-.tg-path-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-.tg-path-card { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 26px; color: var(--tg-ink); padding: 30px; text-align: left; box-shadow: var(--tg-shadow); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-.tg-path-card:hover { border-color: var(--tg-coral); box-shadow: 0 24px 70px rgba(81,52,36,.15); transform: translateY(-3px); }
-.tg-path-icon { display: block; font-size: 38px; margin-bottom: 22px; }
-.tg-path-card h2 { font-family: Georgia, "Songti SC", "STSong", serif; font-size: 30px; font-weight: 500; margin: 12px 0; }
-.tg-path-card p { color: var(--tg-muted); line-height: 1.8; min-height: 58px; }
-.tg-path-card strong { color: var(--tg-coral-dark); display: block; margin-top: 24px; }
+.tg-landing-primary {
+  background: linear-gradient(150deg, #fffdf9 0%, #fdf3ea 62%, #f8e9dd 100%);
+  border: 1px solid var(--tg-line);
+  border-radius: 30px;
+  box-shadow: 0 26px 80px rgba(81, 52, 36, .13);
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1.55fr) minmax(240px, .85fr);
+  min-height: clamp(340px, 42vh, 460px);
+  padding: clamp(28px, 3.4vw, 46px);
+}
+.tg-landing-primary-body { display: flex; flex-direction: column; justify-content: center; }
+.tg-landing-primary .tg-path-icon { font-size: clamp(40px, 4vw, 54px); margin-bottom: 16px; }
+.tg-landing-primary h2 {
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: clamp(34px, 4.6vw, 60px);
+  font-weight: 500;
+  letter-spacing: -.05em;
+  line-height: 1.05;
+  margin: 10px 0 16px;
+}
+.tg-landing-primary-body > p { color: #6f635a; font-size: 16px; line-height: 1.85; margin: 0; max-width: 560px; }
+.tg-landing-points { color: #6f635a; display: grid; gap: 7px; font-size: 14px; line-height: 1.6; list-style: none; margin: 18px 0 0; padding: 0; }
+.tg-landing-points li { padding-left: 20px; position: relative; }
+.tg-landing-points li::before { color: var(--tg-coral); content: "✓"; font-weight: 800; left: 0; position: absolute; }
+.tg-landing-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.tg-landing-actions .tg-button { padding: 14px 24px; }
+.tg-landing-primary-aside { align-self: center; background: rgba(255, 253, 249, .82); border: 1px solid rgba(233, 223, 213, .9); border-radius: 22px; padding: 24px; }
+.tg-landing-primary-aside dl { display: grid; gap: 14px; margin: 16px 0 0; }
+.tg-landing-primary-aside dt { color: var(--tg-coral-dark); font-size: 11px; font-weight: 750; letter-spacing: .12em; }
+.tg-landing-primary-aside dd { color: var(--tg-ink); font-size: 13px; line-height: 1.6; margin: 3px 0 0; }
+.tg-landing-alt { align-items: center; background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 22px; display: flex; gap: 24px; justify-content: space-between; margin-top: 18px; padding: 22px 28px; }
+.tg-landing-alt h3 { font-size: 20px; margin: 8px 0 6px; }
+.tg-landing-alt p { color: var(--tg-muted); font-size: 13px; line-height: 1.7; margin: 0; max-width: 620px; }
+.tg-landing-alt .tg-button { flex-shrink: 0; }
+@media (max-width: 860px) {
+  .tg-landing-primary { grid-template-columns: 1fr; min-height: 0; }
+  .tg-landing-primary-aside { order: 2; }
+  .tg-landing-alt { align-items: flex-start; flex-direction: column; }
+}
 .tg-paywall-backdrop { align-items: center; background: rgba(37,34,31,.38); display: flex; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 100; }
 .tg-paywall { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 28px; box-shadow: 0 30px 100px rgba(37,34,31,.24); max-width: 620px; padding: 34px; position: relative; width: 100%; }
 .tg-paywall h2 { font-family: Georgia, "Songti SC", serif; font-size: 34px; font-weight: 500; margin: 12px 0; }

@@ -1002,28 +1002,48 @@ function renderLanding() {
   appRoot.className = 'talent-growth-shell';
   appRoot.innerHTML = `
     <div class="tg-shell tg-landing-shell">
-      <header class="tg-header tg-landing-header"><a class="tg-brand" href="#">天赋生长 <span>家庭成长培养</span></a></header>
+      <header class="tg-header tg-landing-header">
+        <a class="tg-brand" href="#">天赋生长 <span>家庭成长培养</span></a>
+        <button class="tg-landing-switch" data-action="open-all-growth">全年龄天赋培养 →</button>
+      </header>
       <main class="tg-landing-main">
         <section class="tg-landing-hero">
           <span class="tg-kicker">每个人都是自己天赋的园丁</span>
-          <h1>为不同的花园，<em>找到合适的照料方式</em></h1>
-          <p>从一次真实的小实验开始，不评分、不比较，让孩子和大人都能在自己的节奏里发现下一步。</p>
+          <h1>先为孩子，<em>找到照料的方式</em></h1>
         </section>
-        <section class="tg-path-grid" aria-label="选择培养方向">
-          <button class="tg-path-card tg-path-parent" data-action="open-parent-growth">
+        <section class="tg-landing-primary" aria-labelledby="tg-landing-primary-title">
+          <div class="tg-landing-primary-body">
             <span class="tg-path-icon" aria-hidden="true">🌱</span>
-            <span class="tg-kicker">给家长与家庭</span>
-            <h2>儿童成长天赋培养</h2>
-            <p>从孩子的年龄、兴趣线索和当下状态开始，记录愿意继续、想停下和作品变化。</p>
-            <strong>为孩子找到起点 →</strong><span class="tg-path-secondary" data-action="open-profile">创建孩子培养档案</span>
-          </button>
-          <button class="tg-path-card tg-path-all" data-action="open-all-growth">
-            <span class="tg-path-icon" aria-hidden="true">🌿</span>
+            <span class="tg-kicker">给家长与家庭 · 3–12 岁</span>
+            <h2 id="tg-landing-primary-title">儿童成长天赋培养</h2>
+            <p>孩子喜欢什么、愿意继续什么、什么时候想停下，往往藏在一次很小的陪伴里。这里帮家长把一次真实尝试留下来，长成属于这个孩子的成长档案。</p>
+            <ul class="tg-landing-points">
+              <li>从年龄、兴趣线索和当下状态开始，不套模板</li>
+              <li>记录愿意继续、想停下和作品变化，不评分</li>
+              <li>每一次陪伴都留在家庭档案里，可以随时暂停</li>
+            </ul>
+            <div class="tg-landing-actions">
+              <button class="tg-button tg-button-primary" data-action="open-parent-growth">为孩子找到起点 →</button>
+              <button class="tg-button tg-button-quiet" data-action="open-profile">创建孩子培养档案</button>
+            </div>
+          </div>
+          <aside class="tg-landing-primary-aside">
+            <span class="tg-kicker">家长服务</span>
+            <dl>
+              <div><dt>适合谁</dt><dd>3–12 岁孩子家庭</dd></div>
+              <div><dt>会拿到</dt><dd>7 / 14 天探索方案与阶段回顾</dd></div>
+              <div><dt>不做的事</dt><dd>不测评、不排名、不诊断</dd></div>
+              <div><dt>怎么开始</dt><dd>先免费完成一次真实尝试</dd></div>
+            </dl>
+          </aside>
+        </section>
+        <section class="tg-landing-alt" aria-label="全年龄天赋培养">
+          <div>
             <span class="tg-kicker">给每一个人</span>
-            <h2>全年龄天赋培养</h2>
+            <h3>全年龄天赋培养</h3>
             <p>从幼儿、青少年到成人和晚年，选择一件今天能开始的小事，培育自己的方向。</p>
-            <strong>进入全年龄探索 →</strong>
-          </button>
+          </div>
+          <button class="tg-button tg-button-quiet" data-action="open-all-growth">进入全年龄探索 →</button>
         </section>
         <p class="tg-landing-note">天赋没有固定答案，培养也不必一次完成。先选择一个适合当下的入口。</p>
         <button class="tg-landing-family" data-action="open-family-space">已有家庭档案？进入家庭空间 →</button>
@@ -1031,7 +1051,6 @@ function renderLanding() {
       <footer class="tg-footer">把一次真实尝试，留给下一步。</footer>
     </div>`;
 }
-
 function render() {
   if (state.tab === 'landing') return renderLanding();
   if (state.tab === 'talent') return renderTalent();
