@@ -53,7 +53,7 @@ for (const task of talent.tasks) {
 }
 const manifest = {
   product: '天赋生长',
-  version: '2.3.0',
+  version: '2.4.0',
   releaseId,
   builtAt: new Date().toISOString(),
   files,

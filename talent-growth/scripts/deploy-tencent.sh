@@ -49,7 +49,7 @@ trap rollback ERR
 # Restrict uploads to the reviewed static bundle, with no links or unexpected files.
 python3 - "$archive" <<'PY'
 import sys, tarfile
-required = {'index.html', 'main.js', 'style.css', 'data.json', 'growth-progress.js', 'app-icon.png', 'talent-mark.svg', 'release.json', 'talent-ui.js', 'talent-store.js', 'talent-insights.js', 'talent-journey.js', 'talent-cloud.js', 'talent.css', 'talent-data.js', 'learning-data.js', 'learning-ui.js', 'cultivation-data.js', 'cultivation-ui.js', 'talent-planets.js', 'talent-planets-ui.js'}
+required = {'index.html', 'manifest.webmanifest', 'sw.js', 'main.js', 'style.css', 'data.json', 'growth-progress.js', 'app-icon.png', 'talent-mark.svg', 'release.json', 'talent-ui.js', 'talent-store.js', 'talent-insights.js', 'talent-journey.js', 'talent-cloud.js', 'talent.css', 'talent-data.js', 'learning-data.js', 'learning-ui.js', 'cultivation-data.js', 'cultivation-ui.js', 'talent-planets.js', 'talent-planets-ui.js'}
 allowed = required
 with tarfile.open(sys.argv[1], 'r:gz') as bundle:
     names = []
@@ -111,7 +111,7 @@ if json.load(open(sys.argv[1]))['releaseId'] != sys.argv[2]:
 PY
 curl -fsS --max-time 20 ${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/ > "$backup/online-index.html"
 cmp "$release/index.html" "$backup/online-index.html"
-for asset in main.js style.css growth-progress.js data.json app-icon.png talent-mark.svg talent-ui.js talent-store.js talent-insights.js talent-journey.js talent-cloud.js talent.css talent-data.js learning-data.js learning-ui.js cultivation-data.js cultivation-ui.js talent-planets.js talent-planets-ui.js; do
+for asset in manifest.webmanifest sw.js main.js style.css growth-progress.js data.json app-icon.png talent-mark.svg talent-ui.js talent-store.js talent-insights.js talent-journey.js talent-cloud.js talent.css talent-data.js learning-data.js learning-ui.js cultivation-data.js cultivation-ui.js talent-planets.js talent-planets-ui.js; do
     curl -fsS --max-time 20 "${SITE_ORIGIN:?请设置 SITE_ORIGIN 环境变量，例如 export SITE_ORIGIN=https://你的域名}/growth/$asset" > "$backup/verify-$asset"
     cmp "$release/$asset" "$backup/verify-$asset"
 done
