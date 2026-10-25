@@ -4,7 +4,7 @@
 >
 > 我们不急着给一朵花命名，也不替它决定应该长成什么样；我们一起照料自己的花园，看它在一次次真实尝试里长出怎样的五彩缤纷。
 
-[![Web tests](https://img.shields.io/badge/tests-18%20passing-2f855a)](#开发与验证) [![Platform](https://img.shields.io/badge/platform-Web%20%7C%20PWA%20%7C%20macOS%20preview-457b9d)](#当前交付物) [![Privacy](https://img.shields.io/badge/data-local--first-e76f51)](#数据与隐私)
+[![Web tests](https://img.shields.io/badge/tests-19%20passing-2f855a)](#开发与验证) [![Platform](https://img.shields.io/badge/platform-Web%20%7C%20PWA%20%7C%20macOS%20preview-457b9d)](#当前交付物) [![Privacy](https://img.shields.io/badge/data-local--first-e76f51)](#数据与隐私)
 
 ## 为什么：我们需要一条不被统一模具定义的人生路径
 
