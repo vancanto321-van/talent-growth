@@ -43,6 +43,17 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .app-header > div { display: flex; align-items: center; gap: 9px; font-size: 18px; }
 .brand-mark { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(145deg, #ff8b65, var(--orange)); color: white; font-weight: 800; font-size: 14px; box-shadow: 0 5px 12px rgba(255, 104, 66, 0.26); }
 .child-pill { background: white; color: #655952; border-radius: 20px; padding: 8px 12px; box-shadow: 0 3px 12px rgba(69, 37, 24, 0.07); font-size: 13px; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.mode-switch {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 44px; padding: 11px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 750; letter-spacing: .01em; white-space: nowrap;
+  color: #ffffff; background: linear-gradient(135deg, #86a58c, #5d7f68);
+  box-shadow: 0 10px 22px rgba(93, 127, 104, 0.30);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.mode-switch:hover { transform: translateY(-1px); box-shadow: 0 13px 26px rgba(93, 127, 104, 0.34); }
+@media (max-width: 560px) { .mode-switch { padding: 10px 14px; font-size: 13px; } }
 
 main { width: 100%; max-width: 680px; margin: 0 auto; padding: 18px 16px calc(104px + env(safe-area-inset-bottom)); }
 main.wide { max-width: 760px; }

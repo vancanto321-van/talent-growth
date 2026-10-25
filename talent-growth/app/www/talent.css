@@ -95,6 +95,18 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .tg-brand { color: var(--tg-ink); font-weight: 750; letter-spacing: .08em; text-decoration: none; }
 .tg-brand span { color: var(--tg-muted); font-size: 12px; font-weight: 500; letter-spacing: .14em; margin-left: 8px; }
+.tg-mode-switch {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: auto;
+  min-height: 44px; padding: 11px 20px; border-radius: 999px;
+  font-size: 14px; font-weight: 750; white-space: nowrap;
+  color: #ffffff; background: linear-gradient(135deg, #ef8f6b, #cf6440);
+  box-shadow: 0 10px 22px rgba(207, 100, 64, 0.28);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.tg-mode-switch:hover { transform: translateY(-1px); box-shadow: 0 13px 26px rgba(207, 100, 64, 0.32); }
+@media (max-width: 860px) {
+  .tg-mode-switch { margin: 0 0 0 0; align-self: stretch; justify-content: center; }
+}
 .tg-profile-strip { display: flex; align-items: center; gap: 20px; }
 .tg-profile-strip > div:first-child { display: grid; grid-template-columns: auto auto; align-items: baseline; gap: 0 9px; }
 .tg-profile-strip strong { font-size: 15px; }

@@ -581,7 +581,7 @@ function layout(content, options = {}) {
   appRoot.innerHTML = `
     <header class="app-header">
       <div><img class="brand-mark talent-mark" src="talent-mark.svg" alt="" /><strong>天赋生长 · 家庭成长培养</strong></div>
-      <div class="header-actions"><button data-action="open-talent" class="text-button">全年龄天赋培养</button><button data-action="open-profile" class="child-pill">${baby ? `${baby.gender === '女' ? '👧' : '👦'} ${escapeHtml(baby.name)}` : '创建孩子档案'}</button></div>
+      <div class="header-actions"><button data-action="open-profile" class="child-pill">${baby ? `${baby.gender === '女' ? '👧' : '👦'} ${escapeHtml(baby.name)}` : '创建孩子档案'}</button><button data-action="switch-to-talent" class="mode-switch">切换到全年龄培养 →</button></div>
     </header>
     <main id="main-content" class="${options.wide ? 'wide' : ''}">${content}</main>
     ${options.hideNav ? '' : navigation()}
@@ -1443,6 +1443,7 @@ appRoot.addEventListener('click', async event => {
 
   const action = event.target.closest('[data-action]')?.dataset.action;
   if (!action) return;
+  if (action === 'switch-to-talent') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); scrollPageTop(); return; }
   if (action === 'open-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
   if (action === 'open-family-space') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); appRoot.querySelector('[data-talent-action="open-family"]')?.click(); return; }
   if (action === 'open-parent-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
