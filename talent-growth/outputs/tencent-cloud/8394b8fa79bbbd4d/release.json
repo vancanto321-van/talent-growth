@@ -1,0 +1,136 @@
+{
+  "product": "天赋生长",
+  "version": "2.4.0",
+  "releaseId": "8394b8fa79bbbd4d",
+  "builtAt": "2026-10-25T08:29:34.328Z",
+  "files": [
+    "index.html",
+    "manifest.webmanifest",
+    "sw.js",
+    "main.js",
+    "style.css",
+    "growth-progress.js",
+    "data.json",
+    "app-icon.png",
+    "talent-mark.svg",
+    "talent-ui.js",
+    "talent-store.js",
+    "talent-insights.js",
+    "talent-journey.js",
+    "talent-cloud.js",
+    "talent.css",
+    "talent-data.js",
+    "learning-data.js",
+    "learning-ui.js",
+    "cultivation-data.js",
+    "cultivation-ui.js",
+    "talent-planets.js",
+    "talent-planets-ui.js"
+  ],
+  "milestones": 434,
+  "talentTasks": 624,
+  "originalTasks": 540,
+  "learningWorlds": 14,
+  "learningStages": 13,
+  "learningResources": 30,
+  "cultivationDomains": 14,
+  "cultivationEvidence": 9,
+  "cultivationSources": 10,
+  "planetDisplay": "exploration evidence; not a validated talent or ability measure",
+  "talentDirections": 9,
+  "talentCoverage": [
+    {
+      "age": "early",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    },
+    {
+      "age": "preschool",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    },
+    {
+      "age": "child",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    },
+    {
+      "age": "teen",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    },
+    {
+      "age": "adult",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    },
+    {
+      "age": "later",
+      "directions": {
+        "expression": 11,
+        "analysis": 13,
+        "design": 12,
+        "coding": 11,
+        "organization": 12,
+        "interpersonal": 11,
+        "music": 11,
+        "movement": 11,
+        "nature": 12
+      }
+    }
+  ],
+  "ageGroups": [
+    "early",
+    "preschool",
+    "child",
+    "teen",
+    "adult",
+    "later"
+  ],
+  "dataLocation": "browser localStorage / IndexedDB; optional account backup API; no personal data in this static bundle"
+}

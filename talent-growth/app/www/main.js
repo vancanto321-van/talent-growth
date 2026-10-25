@@ -1008,16 +1008,16 @@ function renderLanding() {
       <main class="tg-landing-main">
         <section class="tg-landing-hero">
           <span class="tg-kicker">每个人都是自己天赋的园丁</span>
-          <h1>为不同的花园，<em>找到合适的照料方式</em></h1>
-          <p>不评分、不比较，只记录真实发生的那一次尝试。</p>
+          <h1>不知道适合什么，<em>就从一次小尝试开始</em></h1>
+          <p>选一件今天做得到的小事，留下观察，让下一次选择有这一次的依据。</p>
         </section>
         <hr class="tg-landing-rule" />
         <section class="tg-entry-grid" aria-label="选择培养方向">
           <article class="tg-entry tg-entry-child" aria-labelledby="tg-entry-child-title">
             <span class="tg-entry-icon" aria-hidden="true">🌱</span>
             <span class="tg-kicker">给家长与家庭 · 3–12 岁</span>
-            <h2 id="tg-entry-child-title">儿童档案</h2>
-            <p>把年龄、兴趣线索和每一次陪伴，留成这个孩子的成长档案。</p>
+            <h2 id="tg-entry-child-title">和孩子开始一次探索</h2>
+            <p>选择孩子的年龄，找到一次可以开始的活动，再回看愿意继续和想停下的时刻。</p>
             <ul class="tg-entry-points">
               <li>从当下状态开始，不套模板</li>
               <li>记录愿意继续、想停下和作品变化</li>
@@ -1025,14 +1025,14 @@ function renderLanding() {
             </ul>
             <div class="tg-entry-actions">
               <button class="tg-button tg-button-primary" data-action="open-parent-growth">为孩子找到起点 →</button>
-              <button class="tg-button tg-button-quiet" data-action="open-profile">创建孩子培养档案</button>
+              <button class="tg-button tg-button-quiet" data-action="open-profile">0–8 岁成长档案</button>
             </div>
           </article>
           <article class="tg-entry tg-entry-all" aria-labelledby="tg-entry-all-title">
             <span class="tg-entry-icon" aria-hidden="true">🌿</span>
             <span class="tg-kicker">给每一个人</span>
-            <h2 id="tg-entry-all-title">全年龄天赋培养</h2>
-            <p>从幼儿到晚年，选一件今天能开始的小事。</p>
+            <h2 id="tg-entry-all-title">为自己找一次新尝试</h2>
+            <p>从幼儿到晚年，都可以重新找到值得投入的方向。</p>
             <ul class="tg-entry-points">
               <li>6 个年龄阶段，同一套培养逻辑</li>
               <li>每次 10–20 分钟，可以随时停</li>
@@ -1043,7 +1043,7 @@ function renderLanding() {
             </div>
           </article>
         </section>
-        <p class="tg-landing-note">天赋没有固定答案，培养也不必一次完成。先选择一个适合当下的入口。</p>
+        <p class="tg-landing-note">选活动 · 做尝试 · 留观察 · 回看后再决定。可以继续、调整，也可以暂停。</p>
         <button class="tg-landing-family" data-action="open-family-space">已有家庭档案？进入家庭空间 →</button>
       </main>
       <footer class="tg-footer">把一次真实尝试，留给下一步。</footer>
@@ -1062,11 +1062,13 @@ function render() {
   return renderProfile();
 }
 
-function renderTalent() {
+function renderTalent({ initialView = 'discover', requestedAge = '' } = {}) {
   appRoot.className = 'talent-growth-shell';
   talentController?.destroy?.();
   talentController = mountTalent({
     root: appRoot,
+    initialView,
+    requestedAge,
     onOpenGrowth: () => { state.tab = 'profile'; state.detailId = ''; state.legalPage = ''; renderProfile(); scrollPageTop(); }
   });
 }
@@ -1446,7 +1448,7 @@ appRoot.addEventListener('click', async event => {
   if (action === 'switch-to-talent') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); scrollPageTop(); return; }
   if (action === 'open-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
   if (action === 'open-family-space') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); appRoot.querySelector('[data-talent-action="open-family"]')?.click(); return; }
-  if (action === 'open-parent-growth') { state.tab = 'home'; state.detailId = ''; state.legalPage = ''; renderHome(); scrollPageTop(); return; }
+  if (action === 'open-parent-growth') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent({ initialView: 'family', requestedAge: 'preschool' }); scrollPageTop(); return; }
   if (action === 'open-all-growth') { state.tab = 'talent'; state.detailId = ''; state.legalPage = ''; renderTalent(); scrollPageTop(); return; }
   if (action === 'open-band') {
     const key = event.target.closest('[data-band-key]')?.dataset.bandKey;

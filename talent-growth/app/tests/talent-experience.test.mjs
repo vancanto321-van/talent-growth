@@ -50,7 +50,8 @@ function click(window, selector) {
 
 test('成人默认进入方向探索，不需要先创建宝宝档案', () => {
   const { window, root, controller } = setup();
-  assert.match(root.textContent, /陪孩子把一颗种子，照料成自己的花园/);
+  assert.match(root.textContent, /从一个小目标开始，看见自己的变化/);
+  assert.doesNotMatch(root.textContent, /陪孩子把一颗种子|为孩子找到起点/);
   assert.match(root.textContent, /18–59 岁/);
   assert.ok(root.querySelector('[data-talent-view="discover"]'));
   controller.destroy();
@@ -117,6 +118,17 @@ test('尝试表单和电池阶段会保存，且点击阶段不会丢失未提�
   assert.equal(profile.attempts.length, 1);
   assert.equal(profile.attempts[0].enjoyment, 5);
   assert.ok(Object.keys(profile.progress['task-one'].directionLevels).length > 0);
+  assert.match(root.textContent, /✓ 记录已保存/);
+  assert.doesNotMatch(root.textContent, /这颗种子，值得继续照料/);
+  assert.ok(root.querySelector('[data-talent-view="journal"]'));
+  assert.ok(root.querySelector('[data-talent-view="clues"][data-clue-tab="weekly"]'));
+  click(window, '[data-talent-action="edit-attempt"]');
+  root.querySelector('[name="note"]').value = '更新后的真实尝试';
+  root.querySelector('[data-attempt-form]').dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  const editedSnapshot = JSON.parse(window.localStorage.getItem('talent-growth-v1'));
+  const edited = editedSnapshot.profiles[editedSnapshot.activeId];
+  assert.equal(edited.attempts.length, 1);
+  assert.doesNotMatch(root.textContent, /这颗种子，值得继续照料/);
   controller.destroy();
   window.close();
 });
@@ -189,8 +201,13 @@ test('线索页按方向展示等待中的组合路线，不生成天赋分数',
   window.close();
 });
 
-test('完成一次真实尝试后出现付费引导，并可查看服务确认单、样例交付和演示支付', () => {
+test('家庭保存后先看见记录，可选择服务演示并完成服务确认、样例与演示支付', () => {
   const { window, root, controller } = setup();
+  click(window, '[data-talent-view="family"]');
+  root.querySelector('[name="name"]').value = '小芽';
+  root.querySelector('[name="ageGroup"]').value = 'child';
+  root.querySelector('[data-person-form]').dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  click(window, '[data-talent-view="discover"]');
   click(window, '[data-talent-action="open-task"]');
   const form = root.querySelector('[data-attempt-form]');
   form.querySelector('[value="independent"]').checked = true;
@@ -199,7 +216,13 @@ test('完成一次真实尝试后出现付费引导，并可查看服务确认�
   form.querySelector('[name="note"]').value = '第一次尝试，留下一条真实线索';
   form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
 
-  // 20% 体验进度 + 三档价格，全部为本地演示
+  assert.match(root.textContent, /✓ 记录已保存/);
+  assert.match(root.textContent, /了解家庭探索方案（演示）/);
+  assert.doesNotMatch(root.textContent, /让一个人试用|把作品放进真实场景/);
+  assert.doesNotMatch(root.textContent, /这颗种子，值得继续照料/);
+
+  // 选择性打开服务入口后，显示 20% 体验进度 + 三档价格，全部为本地演示
+  click(window, '[data-talent-action="open-service"]');
   assert.match(root.textContent, /这颗种子，值得继续照料/);
   assert.match(root.textContent, /9\.9 元/);
   assert.match(root.textContent, /29\.9 元/);
@@ -241,6 +264,27 @@ test('完成一次真实尝试后出现付费引导，并可查看服务确认�
   assert.equal(JSON.stringify(stored).includes('order'), false);
   assert.equal(JSON.stringify(stored).includes('payment'), false);
 
+  controller.destroy();
+  window.close();
+});
+
+test('儿童参与意愿偏低时，保存反思尊重暂停和拒绝信号', () => {
+  const { window, root, controller } = setup();
+  click(window, '[data-talent-view="family"]');
+  root.querySelector('[name="name"]').value = '小芽';
+  root.querySelector('[name="ageGroup"]').value = 'child';
+  root.querySelector('[data-person-form]').dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  click(window, '[data-talent-view="discover"]');
+  click(window, '[data-talent-action="open-task"]');
+  const form = root.querySelector('[data-attempt-form]');
+  form.querySelector('[value="independent"]').checked = true;
+  form.querySelector('[name="enjoyment"]').value = '2';
+  form.querySelector('[name="energy"]').value = '3';
+  form.querySelector('[name="note"]').value = '孩子只看了一会儿，随后拒绝继续';
+  form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  assert.match(root.textContent, /先尊重不想继续的信号/);
+  assert.match(root.textContent, /只看、拒绝或随时停下/);
+  assert.doesNotMatch(root.textContent, /让一个人试用|把作品放进真实场景/);
   controller.destroy();
   window.close();
 });

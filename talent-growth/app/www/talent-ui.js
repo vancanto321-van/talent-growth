@@ -60,11 +60,11 @@ const SCENES = {
 const LEVELS = { start: '初次接触', practice: '已有基础', apply: '真实应用' };
 const CAREGIVER_LEVELS = { start: '先熟悉玩法', practice: '重复与变化', apply: '融入日常' };
 
-function mountTalent({ root, onOpenGrowth, catalog } = {}) {
+function mountTalent({ root, onOpenGrowth, catalog, initialView = 'discover', requestedAge = '' } = {}) {
   if (!root) throw new Error('Talent root is required');
   root.__talentCleanup?.();
   const store = createTalentStore();
-  const state = { view: 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, selectedPlan:'', serviceConfirm:false, samplePreview:false, demoPayment:false, terms:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
+  const state = { view: ['discover','family'].includes(initialView) ? initialView : 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: Object.hasOwn(AGE_LABELS, requestedAge) ? requestedAge : '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, selectedPlan:'', serviceConfirm:false, samplePreview:false, demoPayment:false, terms:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
   let data = catalog ? normalizeData(catalog) : null;
   let destroyed = false;
   let loadAttempt = 0;
@@ -103,8 +103,13 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     return `<div class="tg-profile-strip"><div><span class="tg-kicker">当前视角</span><strong>${esc(person.name)}</strong><small>${esc(AGE_LABELS[person.ageGroup] || person.ageGroup)}</small></div><div class="tg-profile-people">${store.data.people.map(item => `<button class="${item.id === person.id ? 'active' : ''}" data-talent-action="switch-person" data-person-id="${esc(item.id)}">${esc(item.name)}</button>`).join('')}<button data-talent-action="toggle-family">＋ 档案</button></div></div>`;
   }
   function renderHero() {
-    if (profile().preferences) { const p=profile().preferences; const goal=preferenceOptions.goals.find(x=>x.id===p.goal)?.label || '方向探索'; return `<section class="tg-hero tg-hero-personal"><div class="tg-hero-copy"><span class="tg-kicker">${esc(activePerson().name)} · ${esc(goal)} · ${p.minutes} 分钟</span><h1>每次陪伴，<em>都有新的生长</em></h1><button class="tg-inline-link" data-talent-action="open-setup">调整陪伴目标与起点 →</button></div></section>`; }
-    return `<section class="tg-hero"><div class="tg-hero-copy"><span class="tg-kicker">家庭成长培养 · ${esc(AGE_LABELS[activePerson().ageGroup])}</span><h1>陪孩子把一颗种子，<em>照料成自己的花园</em></h1><p>从一次具体的小实验开始，记录孩子愿意继续、想停下和作品变化，再决定下一步怎样陪伴。</p><div class="tg-hero-actions"><button class="tg-button tg-button-primary" data-talent-action="open-family">为孩子找到起点</button><button class="tg-button tg-button-quiet" data-talent-action="open-setup">先看看探索</button></div></div><div class="tg-orbit" aria-hidden="true"><span class="tg-seed">✦</span><i></i><b></b><small></small></div></section>`;
+    if (profile().preferences) { const p=profile().preferences; const goal=preferenceOptions.goals.find(x=>x.id===p.goal)?.label || '方向探索'; return `<section class="tg-hero tg-hero-personal"><div class="tg-hero-copy"><span class="tg-kicker">${esc(activePerson().name)} · ${esc(goal)} · ${p.minutes} 分钟</span><h1>每次尝试，<em>都有新的生长</em></h1><button class="tg-inline-link" data-talent-action="open-setup">调整探索目标与起点 →</button></div></section>`; }
+    const family = ['early','preschool','child'].includes(activePerson().ageGroup);
+    const adult = ['adult','teen','later'].includes(activePerson().ageGroup);
+    const title = family ? '陪孩子把一颗种子，<em>照料成自己的花园</em>' : adult ? '从一个小目标开始，<em>看见自己的变化</em>' : '从一个小目标开始，<em>留下真实的线索</em>';
+    const description = family ? '从一次具体的小实验开始，记录孩子愿意继续、想停下和作品变化，再决定下一步怎样陪伴。' : adult ? '从一次具体的小实验开始，记录自己的感受、作品和实际变化，再决定下一步怎样继续。' : '从一次具体的小实验开始，记录愿意继续、想停下和作品变化，再决定下一步怎样继续。';
+    const action = family ? '<button class="tg-button tg-button-primary" data-talent-action="open-family">为孩子找到起点</button>' : '<button class="tg-button tg-button-primary" data-talent-action="open-setup">为自己找到起点</button>';
+    return `<section class="tg-hero"><div class="tg-hero-copy"><span class="tg-kicker">家庭成长培养 · ${esc(AGE_LABELS[activePerson().ageGroup])}</span><h1>${title}</h1><p>${description}</p><div class="tg-hero-actions">${action}<button class="tg-button tg-button-quiet" data-talent-action="open-setup">先看看探索</button></div></div><div class="tg-orbit" aria-hidden="true"><span class="tg-seed">✦</span><i></i><b></b><small></small></div></section>`;
   }
   function renderNav() {
     return `<nav class="tg-nav" aria-label="方向导航">${[['discover', '发现'], ['cultivate', '培养'], ['clues', '星球'], ['family', '家人']].map(([key, label]) => `<button class="${(state.view === key || (key === 'discover' && state.view === 'atlas') || (key === 'clues' && state.view === 'journal')) ? 'active' : ''}" data-talent-view="${key}"><span>${label}</span></button>`).join('')}</nav>`;
@@ -172,10 +177,31 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     if (!attempts.length) return '';
     const latest = attempts.find(a => a.id === state.savedAttemptId) || attempts[attempts.length - 1];
     const early = activePerson().ageGroup === 'early';
+    const family = ['early','preschool','child'].includes(activePerson().ageGroup);
     let title = '有了一条观察，再找一个具体结果';
     let advice = early ? '下次留意孩子愿意继续或想停下的信号，记录当时的情境。' : '下一次可以让一个人试用，或把作品放进真实场景，看看具体发生了什么。';
     let action = 'edit-attempt', label = '补充这次的结果与反馈';
-    if (latest.energy <= 2) {
+    if (family) {
+      title = '留住这次观察，再决定怎样陪伴';
+      advice = early ? '记录孩子愿意继续、想停下或只想旁观的信号，以及当时的情境。' : '记下孩子愿意继续、想停下或只想旁观的信号，以及当时的材料和时长。';
+      label = '补充当时的情境';
+      if (latest.enjoyment <= 2) {
+        title = '先尊重不想继续的信号';
+        advice = '这次参与意愿偏低，可以先暂停，或只记录当时的材料、环境和回应；孩子可以只看、拒绝或随时停下。';
+      } else if (latest.energy <= 2) {
+        title = '先让陪伴轻一点';
+        advice = early ? '这次照护者余力偏低。可以先休息，之后缩短陪伴片段；孩子愿意时再邀请，也可以只看或不参与。' : '这次记录的能量偏低。可以先休息，之后缩短片段或减少一种材料；孩子愿意时再继续。';
+      } else if (latest.outcome === 'needs-work') {
+        title = '留住这次线索，慢慢调整';
+        advice = '记录当时哪种材料、时间或陪伴方式需要调整；下一次有意愿时只改一处，不要求完成。';
+      } else if (latest.outcome === 'useful') {
+        title = '记下当时合适的条件';
+        advice = '把这次舒服的材料、时长和情境留下；之后有意愿时，可以在相近片段再观察一次。';
+      } else if (latest.changeNote) {
+        title = '留住这次观察的变化';
+        advice = '你已经写下具体变化。把当时的材料、时长和回应一起保留，帮助自己理解什么条件更合适。';
+      }
+    } else if (latest.energy <= 2) {
       title = '下次，先把范围缩小一点';
       advice = early ? '这次记录的照护者余力偏低。下次缩短陪伴片段，顺着孩子的停止信号结束。' : '这次能量记录偏低。下次只重复第一步，或少做一个部分，再比较感受。';
       action = 'repeat-step'; label = '回到步骤，选一个更小的开始';
@@ -191,7 +217,8 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
       title = '保留这次变化，继续看它怎样被使用';
       advice = '你已经写下具体差异。把前后版本一起保留，再记录一次实际使用结果，帮助自己判断哪些改动值得继续。';
     }
-    return `<section class="tg-reflection ${saved ? 'tg-saved-reflection' : ''}" id="tg-reflection"><span class="tg-kicker">${saved ? '✓ 记录已保存 · ' : '最近一次记录 · '}${attempts.length} 次尝试</span><h3>${esc(title)}</h3><p>${esc(advice)}</p>${latest.outcomeNote || latest.changeNote || latest.note ? `<blockquote><small>你留下的线索</small><p>${esc(latest.outcomeNote || latest.changeNote || latest.note)}</p></blockquote>` : ''}<div class="tg-result-actions"><button class="tg-button tg-button-primary" data-talent-action="${action}" data-attempt-id="${esc(latest.id)}">${label}</button><button class="tg-inline-link" data-talent-action="edit-attempt" data-attempt-id="${esc(latest.id)}">修改这条记录</button></div><div class="tg-reflection-links"><button data-talent-view="journal">回看作品与变化 →</button><button data-talent-view="clues" data-clue-tab="weekly">本周线索 →</button>${task.learningDomainId ? `<button data-talent-action="planet-select" data-planet-id="${esc(task.learningDomainId)}">去看这颗星球 →</button>` : ''}<button data-talent-action="next-experiment" data-task-id="${esc(task.id)}">同一能力的其他实验 →</button></div></section>`;
+    const service = ['preschool','child'].includes(activePerson().ageGroup) ? '<button class="tg-inline-link" data-talent-action="open-service">了解家庭探索方案（演示）</button><small class="tg-fine-print">可选，不影响查看和导出已有记录。</small>' : '';
+    return `<section class="tg-reflection ${saved ? 'tg-saved-reflection' : ''}" id="tg-reflection"><span class="tg-kicker">${saved ? '✓ 记录已保存 · ' : '最近一次记录 · '}${attempts.length} 次尝试</span><h3>${esc(title)}</h3><p>${esc(advice)}</p>${latest.outcomeNote || latest.changeNote || latest.note ? `<blockquote><small>你留下的线索</small><p>${esc(latest.outcomeNote || latest.changeNote || latest.note)}</p></blockquote>` : ''}<div class="tg-result-actions"><button class="tg-button tg-button-primary" data-talent-action="${action}" data-attempt-id="${esc(latest.id)}">${label}</button><button class="tg-inline-link" data-talent-action="edit-attempt" data-attempt-id="${esc(latest.id)}">修改这条记录</button></div><div class="tg-reflection-links"><button data-talent-view="journal">回看作品与变化 →</button><button data-talent-view="clues" data-clue-tab="weekly">本周线索 →</button>${task.learningDomainId ? `<button data-talent-action="planet-select" data-planet-id="${esc(task.learningDomainId)}">去看这颗星球 →</button>` : ''}<button data-talent-action="next-experiment" data-task-id="${esc(task.id)}">同一能力的其他实验 →</button>${service}</div></section>`;
   }
   function planProgress(plan) {
     if (!plan) return { steps: [], completed: 0 };
@@ -236,8 +263,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     return `<div class="tg-view">${tabs}${renderReport({report,person:activePerson()})}<details class="tg-combination-details"><summary>继续看看：能力怎样组合使用</summary><div class="tg-combinations">${data.combinations.map(combo=>`<article><b>${esc(combo.title)}</b><p>${esc(combo.firstStep)}</p><small>${esc(array(combo.uses).join('、'))}</small></article>`).join('')}</div></details></div>`;
   }
   function renderPaywall() {
-    const attempts = profile().attempts.length;
-    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-paywall-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-paywall" aria-label="关闭">×</button><span class="tg-kicker">你的体验进度 · ${Math.min(20, Math.max(8, attempts * 10))}%</span><h2 id="tg-paywall-title">这颗种子，值得继续照料</h2><p>你已经看见了一次真实尝试。接下来，我们可以把家庭的困惑整理成一套更适合孩子的探索路径。</p><div class="tg-paywall-value"><b>继续服务将获得</b><span>7/14 天探索方案 · 观察记录模板 · 阶段回顾 · 下一步建议</span></div><div class="tg-price-grid"><button data-talent-action="choose-plan" data-plan="seed"><strong>9.9 元</strong><small>种子体验 · 7天建议</small></button><button class="featured" data-talent-action="choose-plan" data-plan="standard"><em>推荐</em><strong>29.9 元</strong><small>标准培养 · 14天完整交付</small></button><button data-talent-action="choose-plan" data-plan="companion"><strong>69.9 元</strong><small>陪伴培养 · 30天调整</small></button></div><p class="tg-paywall-note">当前为本地演示支付界面，不会收集银行卡或发起真实扣款。选择套餐后可查看交付内容。</p></section></div>`;
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-paywall-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-paywall" aria-label="关闭">×</button><span class="tg-kicker">家庭探索方案 · 自愿了解</span><h2 id="tg-paywall-title">这颗种子，值得继续照料</h2><p>你已经看见了一次真实尝试。接下来，我们可以把家庭的困惑整理成一套更适合孩子的探索路径。</p><div class="tg-paywall-value"><b>继续服务将获得</b><span>7/14 天探索方案 · 观察记录模板 · 阶段回顾 · 下一步建议</span></div><div class="tg-price-grid"><button data-talent-action="choose-plan" data-plan="seed"><strong>9.9 元</strong><small>种子体验 · 7天建议</small></button><button class="featured" data-talent-action="choose-plan" data-plan="standard"><em>推荐</em><strong>29.9 元</strong><small>标准培养 · 14天完整交付</small></button><button data-talent-action="choose-plan" data-plan="companion"><strong>69.9 元</strong><small>陪伴培养 · 30天调整</small></button></div><p class="tg-paywall-note">当前为本地演示支付界面，不会收集银行卡或发起真实扣款。选择套餐后可查看交付内容。</p></section></div>`;
   }
   function renderServiceConfirm() {
     const plan = state.selectedPlan || 'standard';
@@ -514,7 +540,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     if (existingId && !existing) { notify('原记录已变化，请重新打开后再修改'); return; }
     const attempt = { ...(existing || {}), artifactTitle:text(values.get('artifactTitle'),120), changeNote:text(values.get('changeNote')), outcomeNote:text(values.get('outcomeNote')), outcome:['untried','needs-work','useful'].includes(values.get('outcome')) ? values.get('outcome') : 'untried', durationMinutes:Math.min(240,Math.max(0,Math.round(Number(values.get('durationMinutes'))||0))), id: existing?.id || `attempt_${Date.now()}`, taskId, date: existing?.date || Date.now(), note, artifact, feedback: text(values.get('feedback')), mode, enjoyment, energy, exploration: existing ? existing.exploration : attemptExploration(taskId) };
     captureAttemptDraft();
-    if (persist(draft => { const personProfile = draft.profiles[draft.activeId] || { progress: {}, attempts: [], plan: null }; personProfile.attempts = existing ? personProfile.attempts.map(a => a.id === existing.id ? attempt : a) : [...(personProfile.attempts || []), attempt].slice(-5000); if (personProfile.plan?.taskIds?.includes(taskId)) personProfile.plan.completedTaskIds = [...new Set([...(personProfile.plan.completedTaskIds || []), taskId])]; draft.profiles[draft.activeId] = personProfile; }, existing ? '这条记录已更新，未增加尝试次数' : '这次尝试已留下')) { state.attemptDraft = null; state.savedAttemptId = attempt.id; state.paywall = true; render(); root.querySelector('#tg-reflection')?.scrollIntoView({block:'start',behavior:'auto'}); }
+    if (persist(draft => { const personProfile = draft.profiles[draft.activeId] || { progress: {}, attempts: [], plan: null }; personProfile.attempts = existing ? personProfile.attempts.map(a => a.id === existing.id ? attempt : a) : [...(personProfile.attempts || []), attempt].slice(-5000); if (personProfile.plan?.taskIds?.includes(taskId)) personProfile.plan.completedTaskIds = [...new Set([...(personProfile.plan.completedTaskIds || []), taskId])]; draft.profiles[draft.activeId] = personProfile; }, existing ? '这条记录已更新，未增加尝试次数' : '这次尝试已留下')) { state.attemptDraft = null; state.savedAttemptId = attempt.id; state.paywall = false; render(); root.querySelector('#tg-reflection')?.scrollIntoView({block:'start',behavior:'auto'}); }
   }
   function setTaskLevel(taskId, directionId, level) {
     captureAttemptDraft();
@@ -558,6 +584,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const action = event.target.closest('[data-talent-action]')?.dataset.talentAction;
     if (!action) return;
     if (action === 'close-paywall') { state.paywall = false; render(); return; }
+    if (action === 'open-service') { state.paywall = true; render(); return; }
     if (action === 'choose-plan') { state.selectedPlan = event.target.closest('[data-plan]')?.dataset.plan || 'standard'; state.paywall = false; state.serviceConfirm = true; render(); return; }
     if (action === 'close-confirm') { state.serviceConfirm = false; state.selectedPlan = ''; render(); return; }
     if (action === 'view-sample') { state.samplePreview = true; render(); return; }
