@@ -22,7 +22,7 @@ const BAND_YEARS = {
 
 const state = {
   data: null,
-  tab: (window.location.hostname === 'localhost' && window.location.pathname === '/' && localStorage.getItem(STORAGE_KEY)) ? 'talent' : 'landing',
+  tab: window.__TAURI_INTERNALS__ ? 'landing' : (window.location.hostname === 'localhost' && window.location.pathname === '/' && localStorage.getItem(STORAGE_KEY)) ? 'talent' : 'landing',
   bandKey: 'b0',
   bandSection: 'milestones',
   domainIndex: 0,
