@@ -64,7 +64,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
   if (!root) throw new Error('Talent root is required');
   root.__talentCleanup?.();
   const store = createTalentStore();
-  const state = { view: 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, selectedPlan:'', serviceConfirm:false, samplePreview:false, demoPayment:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
+  const state = { view: 'discover', ageFilter: store.activePerson()?.ageGroup || 'adult', scene: '', levelFilter: '', directionId: '', taskId: '', cardIndex: 0, notice: store.lastError || '', attemptDraft: null, savedAttemptId: '', taskSuggestion: null, catalogError: false, requestedAge: '', feed: store.profile()?.preferences ? 'for-you' : 'roam', learningWorldId:'', wanderingRound:0, taskOrigin:'', clueTab:'planets', planetId:'', paywall:false, selectedPlan:'', serviceConfirm:false, samplePreview:false, demoPayment:false, terms:false, cloud: { authenticated:false, username:'', meta:null, loading:false, busy:false, error:'', register:false, checked:false } };
   let data = catalog ? normalizeData(catalog) : null;
   let destroyed = false;
   let loadAttempt = 0;
@@ -243,7 +243,19 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const plan = state.selectedPlan || 'standard';
     const plans = { seed: ['种子体验','9.9 元','7 天探索建议'], standard: ['标准培养','29.9 元','14 天完整交付'], companion: ['陪伴培养','69.9 元','30 天方案与两次调整'] };
     const [title, price, detail] = plans[plan] || plans.standard;
-    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-service-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-confirm" aria-label="关闭">×</button><span class="tg-kicker">服务确认单 · ${esc(title)}</span><h2 id="tg-service-title">${esc(price)}，把下一步交给一套可执行的方案</h2><p>服务对象：3–12 岁孩子家庭。你将获得 <b>${esc(detail)}</b>，以及基于真实记录的观察回顾和下一步选项。</p><div class="tg-confirm-list"><span>✓ 家庭情况摘要：区分事实与推测</span><span>✓ 适龄任务：适配家庭时间与已有材料</span><span>✓ 观察记录：允许继续、调整或暂停</span><span>✓ 服务边界：不测评、不诊断、不排名</span></div><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="demo-payment">查看演示支付（不扣款）</button><button class="tg-inline-link" data-talent-action="view-sample">先看样例交付</button><button class="tg-inline-link" data-talent-action="close-confirm">返回选择</button></div><p class="tg-paywall-note">当前为本地演示：不会收集支付信息、不会创建真实订单。正式服务需另行确认授权和隐私边界。</p></section></div>`;
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-service-title"><section class="tg-paywall"><button class="tg-paywall-close" data-talent-action="close-confirm" aria-label="关闭">×</button><span class="tg-kicker">服务确认单 · ${esc(title)}</span><h2 id="tg-service-title">${esc(price)}，把下一步交给一套可执行的方案</h2><p>服务对象：3–12 岁孩子家庭。你将获得 <b>${esc(detail)}</b>，以及基于真实记录的观察回顾和下一步选项。</p><div class="tg-confirm-list"><span>✓ 家庭情况摘要：区分事实与推测</span><span>✓ 适龄任务：适配家庭时间与已有材料</span><span>✓ 观察记录：允许继续、调整或暂停</span><span>✓ 服务边界：不测评、不诊断、不排名</span></div><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="demo-payment">查看演示支付（不扣款）</button><button class="tg-inline-link" data-talent-action="view-sample">先看样例交付</button><button class="tg-inline-link" data-talent-action="open-terms">服务条款：时效 · 退款 · 支持 · 适龄边界</button><button class="tg-inline-link" data-talent-action="close-confirm">返回选择</button></div><p class="tg-paywall-note">当前为本地演示：不会收集支付信息、不会创建真实订单。正式服务需另行确认授权和隐私边界。</p></section></div>`;
+  }
+  function renderTerms() {
+    const rows = [
+      ['适龄边界', '服务 3–12 岁孩子的家庭。0–2 岁以照护者为主，孩子可以只看、只听或停止；不测评、不诊断、不排名，也不预测职业方向。'],
+      ['交付内容', '家庭情况摘要（区分事实与推测）、分龄任务清单、观察记录模板、阶段回顾、下一步三个选项。'],
+      ['交付时效', '9.9 元：24 小时内；29.9 元：48 小时内；69.9 元：72 小时内交付首版，并在 30 天内提供两次调整。按工作日计算。'],
+      ['退款规则', '开始交付前 24 小时内可全额退款；已交付首版后 7 天内不满意可退 50%；已使用调整次数后不再退款。'],
+      ['支持通道', '交付邮件内附一个直接联系入口；工作日 24 小时内回复，遇到孩子状态变化可随时暂停服务。'],
+      ['数据与隐私', '记录默认保存在本机，导出文件由家长自行保管；不使用孩子的记录训练模型，也不对外分享。'],
+      ['当前阶段说明', '这是 OPC 参赛阶段的演示条款：产品内不收集支付信息、不创建真实订单；正式收费前会再确认一次授权与隐私边界。']
+    ];
+    return `<div class="tg-paywall-backdrop" role="dialog" aria-modal="true" aria-labelledby="tg-terms-title"><section class="tg-paywall tg-sample-sheet"><button class="tg-paywall-close" data-talent-action="close-terms" aria-label="关闭">×</button><span class="tg-kicker">服务条款 · 演示版</span><h2 id="tg-terms-title">先讲清楚，再收钱</h2><p>下面这些是购买前应当知道的事，写在这里而不是藏在角落。</p><dl class="tg-sample-list">${rows.map(([term, desc]) => `<div><dt>${esc(term)}</dt><dd>${esc(desc)}</dd></div>`).join('')}</dl><div class="tg-confirm-actions"><button class="tg-button tg-button-primary" data-talent-action="close-terms">知道了，回到确认单</button></div><p class="tg-paywall-note">条款文字与 docs/OPC服务条款.md 保持一致。</p></section></div>`;
   }
   function renderSamplePreview() {
     const rows = [
@@ -273,7 +285,7 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     const formDrafts = ['[data-cloud-auth-form]','[data-person-form]'].map(selector=>({selector,values:[...root.querySelectorAll(`${selector} input, ${selector} select`)].map(field=>({name:field.name,value:field.value}))}));
     const choiceOffsets = Object.fromEntries([...root.querySelectorAll('[data-tg-choices]')].map(rail => [rail.dataset.tgChoices, rail.scrollLeft]));
     const view = state.view === 'atlas' ? renderLearningAtlas({learning,catalog:data,profile:profile(),person:activePerson(),selectedWorldId:state.learningWorldId}) : state.view === 'setup' ? renderSetup({person:activePerson(),preferences:profile().preferences,learningBase:normalizeExploration(profile().exploration,activePerson().ageGroup,learning,profile().preferences?.level).learningBase,options:preferenceOptions}) : state.view === 'journal' ? renderJournal({catalog:data,profile:profile(),person:activePerson(),learning}) : state.view === 'cultivate' ? renderCultivate() : state.view === 'clues' ? renderClues() : state.view === 'family' ? renderFamily() : renderDiscover();
-    root.innerHTML = `<div class="tg-app"><header class="tg-header"><a class="tg-brand" href="#" data-talent-action="home">天赋生长 <span>家庭成长培养</span></a>${renderProfileStrip()}<button class="tg-mode-switch" data-talent-action="switch-to-child">切换到儿童培养 →</button></header>${state.view === 'discover' && !state.taskId ? renderHero() : ''}${renderNav()}${state.notice ? `<div class="tg-notice" role="status">${esc(state.notice)}<button data-talent-action="clear-notice">×</button></div>` : ''}<main class="tg-main">${view}</main><footer class="tg-footer">把一次陪伴，留给下一步。<button data-action="open-profile">进入孩子成长档案</button>${state.paywall ? renderPaywall() : ''}${state.serviceConfirm ? renderServiceConfirm() : ''}${state.samplePreview ? renderSamplePreview() : ''}${state.demoPayment ? renderDemoPayment() : ''}</div>`;
+    root.innerHTML = `<div class="tg-app"><header class="tg-header"><a class="tg-brand" href="#" data-talent-action="home">天赋生长 <span>家庭成长培养</span></a>${renderProfileStrip()}<button class="tg-mode-switch" data-talent-action="switch-to-child">切换到儿童培养 →</button></header>${state.view === 'discover' && !state.taskId ? renderHero() : ''}${renderNav()}${state.notice ? `<div class="tg-notice" role="status">${esc(state.notice)}<button data-talent-action="clear-notice">×</button></div>` : ''}<main class="tg-main">${view}</main><footer class="tg-footer">把一次陪伴，留给下一步。<button data-action="open-profile">进入孩子成长档案</button>${state.paywall ? renderPaywall() : ''}${state.serviceConfirm ? renderServiceConfirm() : ''}${state.samplePreview ? renderSamplePreview() : ''}${state.demoPayment ? renderDemoPayment() : ''}${state.terms ? renderTerms() : ''}</div>`;
     bindChoiceRails(choiceOffsets);
     bindRail();
     restoreAttemptDraft();
@@ -550,6 +562,8 @@ function mountTalent({ root, onOpenGrowth, catalog } = {}) {
     if (action === 'close-confirm') { state.serviceConfirm = false; state.selectedPlan = ''; render(); return; }
     if (action === 'view-sample') { state.samplePreview = true; render(); return; }
     if (action === 'close-sample') { state.samplePreview = false; render(); return; }
+    if (action === 'open-terms') { state.terms = true; render(); return; }
+    if (action === 'close-terms') { state.terms = false; render(); return; }
     if (action === 'back-to-confirm') { state.samplePreview = false; state.serviceConfirm = true; render(); return; }
     if (action === 'demo-payment') { state.serviceConfirm = false; state.demoPayment = true; render(); return; }
     if (action === 'close-demo') { state.demoPayment = false; render(); return; }

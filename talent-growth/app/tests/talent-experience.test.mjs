@@ -212,6 +212,16 @@ test('完成一次真实尝试后出现付费引导，并可查看服务确认�
   assert.match(root.textContent, /14 天完整交付/);
   assert.match(root.textContent, /不测评、不诊断、不排名/);
 
+  // 服务条款：从确认单可直接打开，含时效、退款、支持与适龄边界
+  click(window, '[data-talent-action="open-terms"]');
+  assert.match(root.textContent, /服务条款 · 演示版/);
+  assert.match(root.textContent, /24 小时内/);
+  assert.match(root.textContent, /全额退款/);
+  assert.match(root.textContent, /工作日 24 小时内回复/);
+  assert.match(root.textContent, /0–2 岁以照护者为主/);
+  click(window, '[data-talent-action="close-terms"]');
+  assert.match(root.textContent, /服务确认单 · 标准培养/);
+
   // 样例交付预览：虚构案例，无分数
   click(window, '[data-talent-action="view-sample"]');
   assert.match(root.textContent, /样例交付 · 虚构案例/);

@@ -38,6 +38,9 @@ AI 在这里不是裁判，也不是替你规划人生的权威。它辅助内�
 - **看数据边界**：[Web 展示版、备份与隐私说明](talent-growth/docs/Web展示版说明.md)。
 - **看桌面路线**：[Tauri 构建说明](desktop/README.md)。
 - **看 OPC 作品材料**：[作品介绍](talent-growth/docs/OPC参赛作品介绍.md)、[服务说明](talent-growth/docs/OPC服务说明-天赋花园.md)、[样例交付](talent-growth/docs/OPC样例交付-小芽14天探索报告.md)、[AI 使用说明](talent-growth/docs/AI使用与开发过程说明.md)、[三分钟接单演示](talent-growth/docs/OPC三分钟演示脚本.md)、[虚构演示案例](talent-growth/docs/OPC虚构演示案例.md)。
+- **看服务条款**：[交付时效、退款规则、支持通道、适龄边界](talent-growth/docs/OPC服务条款.md)（产品内付费确认单可直接打开）。
+- **看成本结构**：[9.9 / 29.9 / 69.9 单均成本与毛利测算](talent-growth/docs/OPC单均成本测算.md)。
+- **打不开 DMG**：[三步打开指引（含系统拦截说明）](talent-growth/docs/DMG首次打开指引.md)。
 
 ## 当前交付物
 
