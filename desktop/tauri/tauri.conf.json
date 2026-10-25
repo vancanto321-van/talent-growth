@@ -1,12 +1,12 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "天赋生长",
-  "version": "0.1.0",
+  "version": "0.7.0",
   "identifier": "com.childgrowth.desktop",
   "build": {
-    "frontendDist": "../../talent-growth/app/www",
+    "frontendDist": "./dist",
     "devUrl": "http://127.0.0.1:4184/growth/",
-    "beforeBuildCommand": "node ../../talent-growth/app/scripts/sync-data.mjs"
+    "beforeBuildCommand": "node ./tauri/scripts/prepare-dist.mjs"
   },
   "app": {
     "windows": [
@@ -25,7 +25,11 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["dmg", "nsis", "appimage"],
+    "targets": [
+      "dmg",
+      "nsis",
+      "appimage"
+    ],
     "createUpdaterArtifacts": false,
     "macOS": {
       "minimumSystemVersion": "11.0"

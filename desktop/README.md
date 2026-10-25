@@ -60,40 +60,61 @@ cargo tauri build --bundles appimage  # Linux
 - macOS `.app` bundle 生成
 - 产物架构检查为 `arm64`
 
-本次 DMG bundler 已生成临时磁盘映像，但在当前环境中未正常结束，因此没有把临时 DMG 当作正式交付物。需要后续在完整 Xcode/稳定磁盘映像环境中重新执行 `cargo tauri build --bundles dmg`。
+`cargo tauri build --bundles dmg` 在本机不稳定（HFS 布局步骤会卡住），因此 DMG 用 `hdiutil` 手工封装，见下文「本地打包 DMG 的方式」。
 
 当前未完成 Windows 构建：本机是 Apple Silicon macOS，Windows NSIS 需要 Windows Runner 或 CI 构建机。
 
 ## 家长服务版预览包
 
-当前最新预览包（0.3.0）：
+当前最新预览包（0.7.0）：
 
 ```text
-天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
+天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
 ```
 
 SHA-256：
 
 ```text
-05f315301767198375456c585a7924cfa6d08d7d4298def092191f09ac9622fd
+5166d2f9ad8b3d4efdd1ce4098d240983bbb2f577a26136b1af2cdf9f7c0125a
 ```
 
 这一版包含：
 
-- 首屏双方向入口：儿童成长天赋培养 / 全年龄天赋培养；
-- 统一的品牌、字体、色彩和卡片语言；
+- 首页：大标题区 + 通栏横线下方 **左右各一半** 的双入口（左「儿童档案」/ 右「全年龄天赋培养」）；
+- 中文排版修正：标题两行均衡、正文不留单个尾字、短标签不换行；
 - 完成第一次真实尝试并保存后出现的 20% 体验付费引导；
 - 三档体验价格（9.9 / 29.9 / 69.9 元）、服务确认单、样例交付预览、演示支付页；
 - 演示支付不接真实收款、不收集支付信息、不创建订单。
 
-历史预览包（保留用于对照）：
-
-```text
-天赋花园_0.1.0_macos_aarch64_parent_preview_unsigned.dmg
-天赋生长_0.2.0_unified_parent_allage_aarch64_unsigned.dmg
-```
+历史预览包已移到仓库外的 `../_旧预览包/`（0.1.0 ~ 0.6.0），不再挂在系统里，避免误开旧版。
 
 以上均为未签名、未公证的技术预览，不是正式商业发行版。
+
+## 打包路径的坑（务必看）
+
+`tauri.conf.json` 里的两类路径解析基准不同：
+
+| 配置项 | 相对谁解析 |
+| --- | --- |
+| `build.frontendDist` | `tauri.conf.json` 所在目录（`desktop/tauri/`） |
+| `build.beforeBuildCommand` 的工作目录 | `tauri.conf.json` 的上一级（`desktop/`） |
+
+曾经因为 `frontendDist` 写成 `../../talent-growth/app/www`，从 `desktop/` 往上两级解析到了仓库外的同名旧副本，导致打出来的 DMG 一直是旧界面。
+
+现在改为显式两步：
+
+```text
+beforeBuildCommand : node ./tauri/scripts/prepare-dist.mjs   →  生成 desktop/tauri/dist
+frontendDist       : ./dist                                   →  只从 dist 打包
+```
+
+`prepare-dist.mjs` 会：
+
+1. 运行 `sync-data.mjs` 生成最新数据文件；
+2. 校验源目录确实含有首页双入口样式（`tg-entry-grid`），否则直接报错终止；
+3. 清空并重建 `dist`，追加一行构建标记 `/* build=… at=… source=… */`。
+
+因此只要校验构建产物里有没有这条标记，就能确认 DMG 里嵌的是不是当前代码。
 
 ## 本地打包 DMG 的方式
 
@@ -105,8 +126,8 @@ rm -rf target/release/bundle/dmg/stage && mkdir -p target/release/bundle/dmg/sta
 cp -R 'target/release/bundle/macos/天赋生长.app' target/release/bundle/dmg/stage/
 ln -s /Applications target/release/bundle/dmg/stage/Applications
 hdiutil create -volname '天赋生长·家庭培养' -srcfolder target/release/bundle/dmg/stage \
-  -ov -format UDZO target/release/bundle/dmg/天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
-shasum -a 256 target/release/bundle/dmg/天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
+  -ov -format UDZO release/天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
+shasum -a 256 release/天赋生长_0.7.0_halfhalf_aarch64_unsigned.dmg
 ```
 
 产物放入 `target/` 与 `release/`，不提交进仓库；只保留校验值文本。

@@ -46,7 +46,7 @@ AI 在这里不是裁判，也不是替你规划人生的权威。它辅助内�
 | Web 本地版 | 可运行、19 项测试通过 | 评委现场体验和源码审查 |
 | PWA | 可安装；首次在线打开后支持基础离线访问 | 个人试用和演示 |
 | macOS App | Apple Silicon `.app` 已构建 | 本机预览 |
-| macOS DMG | 未签名预览包已生成（双方向入口 + 20% 体验后付费引导） | 仅技术评审，不是正式发行版 |
+| macOS DMG | 0.7.0 未签名预览包（首页左右各半双入口 + 20% 体验后付费引导 + 中文排版修正） | 仅技术评审，不是正式发行版 |
 | Windows 安装包 | 尚未构建 | 需要 Windows Runner 或 CI |
 
 > macOS DMG 未签名、未公证；首次打开可能需要在系统设置中允许。当前不提供正式商业发行承诺。
@@ -70,7 +70,7 @@ AI 在这里不是裁判，也不是替你规划人生的权威。它辅助内�
 3. 等终端显示启动成功，在浏览器打开 **<http://127.0.0.1:4184/growth/>**。
 4. 从「发现」选择一件小事开始；在「家人」添加自己或家人的独立档案。
 
-展示版与参赛准备：见 [`talent-growth/docs/Web展示版说明.md`](talent-growth/docs/Web展示版说明.md) 和 [`talent-growth/docs/参赛演示流程.md`](talent-growth/docs/参赛演示流程.md)。网页支持安装为 PWA；首次在线打开并缓存后，基础页面可离线使用。当前阶段不提供 DMG 或 Windows 安装包。
+展示版与参赛准备：见 [`talent-growth/docs/Web展示版说明.md`](talent-growth/docs/Web展示版说明.md) 和 [`talent-growth/docs/参赛演示流程.md`](talent-growth/docs/参赛演示流程.md)。网页支持安装为 PWA；首次在线打开并缓存后，基础页面可离线使用。当前阶段 macOS 只提供未签名预览 DMG，Windows 安装包尚未构建。
 
 桌面版已开始准备，采用 Tauri 2 复用 Web 前端；构建配置和平台发布前检查见 [`desktop/README.md`](desktop/README.md)。当前不签名、不公证、不发布桌面安装包。
 
