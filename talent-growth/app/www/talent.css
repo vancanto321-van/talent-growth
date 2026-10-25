@@ -553,3 +553,169 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
   font-size: 14px;
   font-weight: 750;
 }
+
+/* ==========================================================================
+   儿童培养美术统一层
+   目标：把儿童模块的「表面语言」（背景、描边、圆角、阴影、留白、分隔）对齐到
+   全年龄模块——同一张纸色、同一种面板、同一档圆角与阴影，只保留儿童页自己的
+   暖色强调与图标性格。
+   ========================================================================== */
+body:has(.legacy-growth-shell) { background: var(--tg-paper); }
+
+/* 页头 */
+.legacy-growth-shell .app-header { background: rgba(251, 247, 241, .92); border-bottom: 1px solid var(--tg-line); }
+.legacy-growth-shell .child-pill { background: var(--tg-panel); border: 1px solid var(--tg-line); box-shadow: none; color: var(--tg-ink); font-weight: 600; }
+
+/* 顶部信息卡：由高饱和渐变块改为与首页儿童卡片同源的暖色面板 */
+.legacy-growth-shell .hero {
+  background: linear-gradient(155deg, #fffdf9 0%, #fdf3ea 58%, #f8e9dd 100%);
+  border: 1px solid var(--tg-line);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(81, 52, 36, .09);
+  color: var(--tg-ink);
+  gap: 18px 20px;
+  padding: 30px 32px;
+}
+.legacy-growth-shell .avatar { background: #ffffff; border: 1px solid var(--tg-line); border-radius: 20px; box-shadow: 0 8px 20px rgba(81, 52, 36, .08); font-size: 34px; height: 64px; width: 64px; }
+.legacy-growth-shell .hero-kicker { color: #b4634a; font-size: 11px; font-weight: 750; letter-spacing: .14em; opacity: 1; text-transform: uppercase; }
+.legacy-growth-shell .hero h1 { color: var(--tg-ink); }
+.legacy-growth-shell .hero > small { color: var(--tg-muted); font-size: 12.5px; opacity: 1; }
+.legacy-growth-shell .xp-bar { background: #ece2d6; border-radius: 999px; height: 6px; margin-top: 12px; }
+.legacy-growth-shell .xp-bar i { background: linear-gradient(90deg, #f0a184, var(--tg-coral)); border-radius: 999px; }
+
+/* 面板卡片 */
+.legacy-growth-shell .card,
+.legacy-growth-shell .directions-card,
+.legacy-growth-shell .metric-grid article,
+.legacy-growth-shell .baby-card {
+  background: var(--tg-panel);
+  border: 1px solid var(--tg-line);
+  border-radius: 20px;
+  box-shadow: 0 16px 44px rgba(81, 52, 36, .06);
+  margin-top: 18px;
+  padding: 26px;
+}
+.legacy-growth-shell .metric-grid article { border-radius: 16px; margin-top: 0; padding: 20px 10px; text-align: center; }
+.legacy-growth-shell .baby-card { border-radius: 16px; margin-top: 0; padding: 14px; }
+
+/* 区块节奏 */
+.legacy-growth-shell .catalog-section { margin-top: 28px; }
+.legacy-growth-shell .page-heading { align-items: flex-end; padding: 18px 2px 12px; }
+.legacy-growth-shell .page-heading p { font-size: 13px; line-height: 1.8; }
+.legacy-growth-shell .soft-tag { background: #f2ece3; border-radius: 999px; color: var(--tg-muted); font-size: 11px; letter-spacing: .02em; padding: 6px 12px; }
+
+/* 年龄目录卡：去掉渐变与重阴影，改为统一面板 + 悬停描边 */
+.legacy-growth-shell .age-directory-card {
+  background: var(--tg-panel);
+  border: 1px solid var(--tg-line);
+  border-radius: 16px;
+  box-shadow: none;
+  min-height: 158px;
+  padding: 16px 15px;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.legacy-growth-shell .age-directory-card:hover { border-color: var(--tg-coral); box-shadow: 0 12px 26px rgba(81, 52, 36, .08); transform: translateY(-2px); }
+.legacy-growth-shell .age-directory-card.active { background: #fdf3ea; border-color: var(--tg-coral); box-shadow: 0 12px 26px rgba(231, 120, 94, .14); }
+.legacy-growth-shell .age-directory-card small { color: var(--tg-muted); font-size: 11px; }
+.legacy-growth-shell .age-directory-card em { color: var(--tg-muted); font-size: 10px; }
+.legacy-growth-shell .age-directory-meter { background: #ece2d6; border-radius: 999px; height: 5px; }
+.legacy-growth-shell .age-directory-meter i { background: linear-gradient(90deg, #f0a184, var(--tg-coral)); border-radius: 999px; }
+
+/* 快捷入口 */
+.legacy-growth-shell .quick-grid { gap: 12px; margin-top: 18px; }
+.legacy-growth-shell .quick-grid button {
+  background: var(--tg-panel);
+  border: 1px solid var(--tg-line);
+  border-radius: 16px;
+  box-shadow: none;
+  min-height: 124px;
+  padding: 18px 10px;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.legacy-growth-shell .quick-grid button:hover { border-color: var(--tg-coral); box-shadow: 0 12px 26px rgba(81, 52, 36, .08); transform: translateY(-2px); }
+.legacy-growth-shell .quick-grid button.done { background: #eef3e9; border-color: #d7e3d3; color: #52704a; }
+
+/* 分段控件、筛选 chips、搜索框 */
+.legacy-growth-shell .segment-control { background: #f2ece3; border-radius: 14px; }
+.legacy-growth-shell .segment-control button.active { background: var(--tg-panel); border-radius: 11px; box-shadow: 0 4px 12px rgba(81, 52, 36, .07); color: var(--tg-coral-dark); }
+.legacy-growth-shell .band-switcher button,
+.legacy-growth-shell .chips button { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 999px; color: var(--tg-muted); font-size: 12.5px; }
+.legacy-growth-shell .chips button.active { background: #fdf3ea; border-color: var(--tg-coral); color: var(--tg-coral-dark); }
+.legacy-growth-shell .search-box { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 14px; box-shadow: none; }
+
+/* 列表行 */
+.legacy-growth-shell .milestone {
+  background: var(--tg-panel);
+  border: 1px solid var(--tg-line);
+  border-radius: 14px;
+  min-height: 72px;
+  padding: 16px 18px;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.legacy-growth-shell .milestone:hover { border-color: var(--tg-coral); box-shadow: 0 10px 24px rgba(81, 52, 36, .07); }
+.legacy-growth-shell .detail-intro { background: #faf5ee; border: 1px solid var(--tg-line); border-radius: 14px; padding: 4px 18px; }
+.legacy-growth-shell .check-panel { background: #faf5ee; border-radius: 14px; padding: 16px 18px; }
+.legacy-growth-shell .performance-list article { background: #faf5ee; border-radius: 12px; padding: 16px; }
+
+/* 里程碑卡 */
+.legacy-growth-shell .milestone-card {
+  background: var(--tg-panel);
+  border: 1px solid var(--tg-line);
+  border-radius: 22px;
+  box-shadow: 0 18px 44px rgba(81, 52, 36, .08);
+}
+.legacy-growth-shell .milestone-card:nth-child(3n+2),
+.legacy-growth-shell .milestone-card:nth-child(3n) { background: #fbf6ef; }
+.legacy-growth-shell .milestone-card.is-active { background: #ffffff; border-color: var(--tg-coral); box-shadow: 0 22px 52px rgba(81, 52, 36, .12); }
+.legacy-growth-shell .milestone-card.achieved { background: linear-gradient(155deg, #fffdf4, #fdf1d8); border-color: #ecdcb8; }
+.legacy-growth-shell .rail-control { background: rgba(255, 253, 249, .94); border: 1px solid var(--tg-line); border-radius: 14px; box-shadow: 0 8px 20px rgba(81, 52, 36, .1); color: var(--tg-coral-dark); }
+
+/* 进度条 */
+.legacy-growth-shell .progress { background: #ece2d6; border-radius: 999px; height: 6px; }
+.legacy-growth-shell .progress i,
+.legacy-growth-shell .mini-progress i { background: linear-gradient(90deg, #f0a184, var(--tg-coral)); border-radius: 999px; }
+.legacy-growth-shell .progress-ring { background: radial-gradient(circle at center, var(--tg-panel) 54%, transparent 56%), conic-gradient(var(--tg-coral) var(--value), #ece2d6 0); color: var(--tg-coral-dark); }
+
+/* 底部导航：改为悬浮胶囊条，与全年龄移动端导航同语言 */
+.legacy-growth-shell .tabbar {
+  background: rgba(255, 253, 249, .96);
+  border: 1px solid var(--tg-line);
+  border-radius: 20px;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  box-shadow: 0 14px 36px rgba(81, 52, 36, .12);
+  left: 12px;
+  min-height: 58px;
+  padding: 6px;
+  right: 12px;
+}
+.legacy-growth-shell .tabbar button { border-radius: 14px; color: var(--tg-muted); }
+.legacy-growth-shell .tabbar button.active { background: #fdf3ea; color: var(--tg-coral-dark); }
+.legacy-growth-shell .tabbar b { font-size: 20px; }
+
+/* 表单与输入 */
+.legacy-growth-shell .composer,
+.legacy-growth-shell .note-label textarea,
+.legacy-growth-shell .composer textarea,
+.legacy-growth-shell .composer input,
+.legacy-growth-shell .composer select,
+.legacy-growth-shell .profile-form input,
+.legacy-growth-shell .profile-form select { background: var(--tg-panel); border: 1px solid var(--tg-line); border-radius: 13px; }
+.legacy-growth-shell .composer { border-radius: 24px 24px 0 0; }
+.legacy-growth-shell .add-photo { background: #faf5ee; border: 1px dashed #ddcec0; border-radius: 14px; color: var(--tg-coral-dark); }
+
+/* 提示类卡片保留语义色，但描边统一 */
+.legacy-growth-shell .gentle-note { background: linear-gradient(155deg, #fffdf6, #fdf4e0); border-color: #ecdcb8; }
+.legacy-growth-shell .warning-card { background: #fdf7ea; border-color: #ecdcb8; }
+.legacy-growth-shell .danger-card { background: #fdf1ef; border-color: #efd3cd; }
+.legacy-growth-shell .recommendation { border-color: #f0d9cc; }
+
+/* 儿童模块窄屏：收窄外边距，保证卡片有足够点击面积 */
+@media (max-width: 760px) {
+  .legacy-growth-shell main { padding-left: 16px; padding-right: 16px; }
+  .legacy-growth-shell .app-header { padding-left: 16px; padding-right: 16px; }
+  .legacy-growth-shell .hero { padding: 24px 22px; }
+}
+@media (max-width: 520px) {
+  .legacy-growth-shell .age-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .legacy-growth-shell .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
