@@ -17,3 +17,4 @@ desktop/tauri/release/*.dmg
 desktop/tauri/release/SHA256SUMS-parent.txt
 desktop/tauri/release/SHA256SUMS-unified.txt
 desktop/tauri/release/SHA256SUMS-v030.txt
+desktop/tauri/release/SHA256SUMS-v040.txt
