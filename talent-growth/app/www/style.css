@@ -46,7 +46,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 
 main { width: 100%; max-width: 680px; margin: 0 auto; padding: 18px 16px calc(104px + env(safe-area-inset-bottom)); }
 main.wide { max-width: 760px; }
-h1, h2, h3, p { overflow-wrap: anywhere; }
+h1, h2, h3, p { overflow-wrap: break-word; }
+h1, h2, h3, .section-title, .eyebrow { text-wrap: balance; }
+p, li, .muted, .accent { text-wrap: pretty; }
 h1 { margin: 5px 0 8px; font-size: clamp(23px, 6vw, 30px); line-height: 1.22; letter-spacing: -0.02em; }
 h2 { margin: 5px 0 12px; font-size: 20px; line-height: 1.35; }
 h3 { margin: 5px 0 8px; font-size: 17px; }
