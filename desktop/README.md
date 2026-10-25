@@ -66,13 +66,50 @@ cargo tauri build --bundles appimage  # Linux
 
 ## 家长服务版预览包
 
-当前已生成面向 OPC 家庭服务演示的 Apple Silicon macOS 预览包：
+当前最新预览包（0.3.0）：
+
+```text
+天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
+```
+
+SHA-256：
+
+```text
+05f315301767198375456c585a7924cfa6d08d7d4298def092191f09ac9622fd
+```
+
+这一版包含：
+
+- 首屏双方向入口：儿童成长天赋培养 / 全年龄天赋培养；
+- 统一的品牌、字体、色彩和卡片语言；
+- 完成第一次真实尝试并保存后出现的 20% 体验付费引导；
+- 三档体验价格（9.9 / 29.9 / 69.9 元）、服务确认单、样例交付预览、演示支付页；
+- 演示支付不接真实收款、不收集支付信息、不创建订单。
+
+历史预览包（保留用于对照）：
 
 ```text
 天赋花园_0.1.0_macos_aarch64_parent_preview_unsigned.dmg
+天赋生长_0.2.0_unified_parent_allage_aarch64_unsigned.dmg
 ```
 
-该包包含家长服务入口文案、孩子档案入口、年龄分层探索和本地记录能力。它是未签名、未公证的技术预览，不是正式商业发行版。
+以上均为未签名、未公证的技术预览，不是正式商业发行版。
+
+## 本地打包 DMG 的方式
+
+`cargo tauri build --bundles dmg` 在本机不稳定（HFS 布局步骤会卡住），因此改用固定流程：
+
+```sh
+cargo tauri build --bundles app
+rm -rf target/release/bundle/dmg/stage && mkdir -p target/release/bundle/dmg/stage
+cp -R 'target/release/bundle/macos/天赋生长.app' target/release/bundle/dmg/stage/
+ln -s /Applications target/release/bundle/dmg/stage/Applications
+hdiutil create -volname '天赋生长·家庭培养' -srcfolder target/release/bundle/dmg/stage \
+  -ov -format UDZO target/release/bundle/dmg/天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
+shasum -a 256 target/release/bundle/dmg/天赋生长_0.3.0_parent_flow_aarch64_unsigned.dmg
+```
+
+产物放入 `target/` 与 `release/`，不提交进仓库；只保留校验值文本。
 
 ## 发布前还需要完成
 - Windows 代码签名与 SmartScreen 验证
