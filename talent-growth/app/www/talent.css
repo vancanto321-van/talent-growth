@@ -441,3 +441,115 @@ body:has(.tg-shell) { background: var(--tg-paper); color: var(--tg-ink); }
 .tg-method-source { padding: 18px 0; border-top: 1px dashed var(--tg-line); }.tg-method-source > small { display: block; font-size: 10px; line-height: 1.9; color: var(--tg-muted); margin-bottom: 6px; }.tg-method-source > a { display: block; color: var(--tg-ink); font-size: 13px; line-height: 1.8; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }.tg-method-source > p { font-size: 12px; color: var(--tg-muted); line-height: 1.95; }
 @media(max-width:760px) { .tg-evidence-tabs { width: auto; }.tg-evidence-tabs button { flex: 1; padding: 9px 10px; }.tg-planets-heading { align-items: start; flex-direction: column; gap: 3px; }.tg-planets-heading h2 { font-size: 34px; }.tg-universe { padding: 20px 12px; border-radius: 18px; }.tg-universe-top { padding: 0 6px; gap: 8px; }.tg-planet-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px 3px; }.tg-planet-node { padding: 11px 2px; gap: 6px; }.tg-orb { width: 47px; height: 47px; margin-bottom: 6px; }.tg-orb > b { font-size: 22px; }.tg-planet-node > strong { font-size: 11px; }.tg-planet-node > small { font-size: 9px; }.tg-planet-legend { gap: 13px; margin-top: 14px; padding-top: 18px; }.tg-planet-legend span { font-size: 9px; }.tg-planet-detail { padding: 20px; }.tg-planet-detail h3 { font-size: 29px; }.tg-planet-evidence { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px; }.tg-planet-evidence article { padding: 14px 10px; }.tg-planet-columns { grid-template-columns: 1fr; gap: 12px; }.tg-planet-next { padding: 18px; }.tg-entry-principles { grid-template-columns: repeat(2,minmax(0,1fr)); }.tg-cultivation-hook { padding: 18px; }.tg-cultivation-hook h3 { font-size: 22px; } }
 .tg-planet-records { margin: 22px 0; border-top: 1px solid var(--tg-line); padding-top: 16px; }.tg-planet-records > summary { cursor: pointer; font-size: 12px; line-height: 1.9; }.tg-planet-records article { padding: 17px; margin-top: 12px; background: #f7f1e8; border-radius: 10px; }.tg-planet-records small { color: var(--tg-coral-dark); font-size: 10px; line-height: 1.8; }.tg-planet-records p { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--tg-muted); font-size: 12px; line-height: 1.9; }
+
+/* ==========================================================================
+   统一排版层
+   儿童培养（.legacy-growth-shell）与全年龄培养（.tg-app）共用同一套字体族、
+   字号阶梯、行高、容器宽度与中性色。只统一「骨架」层级（标题、正文段落、
+   kicker、品牌、按钮），卡片内的密集小字号仍由各自组件控制，避免破坏信息密度。
+   ========================================================================== */
+:root {
+  --tg-font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  --tg-font-display: Georgia, "Songti SC", "STSong", "Times New Roman", serif;
+  --tg-container: 1040px;
+  --tg-h1: clamp(30px, 3.4vw, 42px);
+  --tg-h2: 26px;
+  --tg-h3: 17px;
+  --tg-body: 15px;
+  --tg-muted-ink: #7a7169;
+  --muted: #7a7169;
+  --tg-muted: #7a7169;
+}
+
+/* 容器与边距：两边同宽、同左右留白 */
+.tg-app,
+.tg-shell:not(.tg-landing-shell) { width: min(var(--tg-container), calc(100% - 36px)); }
+.legacy-growth-shell main {
+  width: min(var(--tg-container), calc(100% - 36px));
+  max-width: none;
+  margin: 0 auto;
+  padding: 26px 42px calc(112px + env(safe-area-inset-bottom));
+}
+.legacy-growth-shell .app-header {
+  padding-left: max(18px, calc((100% - var(--tg-container)) / 2));
+  padding-right: max(18px, calc((100% - var(--tg-container)) / 2));
+}
+
+/* 字体族与主色 */
+.legacy-growth-shell,
+.legacy-growth-shell button,
+.legacy-growth-shell input,
+.legacy-growth-shell select,
+.legacy-growth-shell textarea { font-family: var(--tg-font-sans); }
+.legacy-growth-shell { color: #25221f; }
+.tg-app { color: #25221f; font-family: var(--tg-font-sans); }
+
+/* 品牌区：字号、字重、字距一致 */
+.legacy-growth-shell .app-header > div { font-size: 16px; gap: 9px; }
+.legacy-growth-shell .app-header strong,
+.tg-app .tg-brand { color: #25221f; font-size: 16px; font-weight: 750; letter-spacing: .08em; }
+
+/* H1：展示级标题统一衬线体与字号阶梯 */
+.legacy-growth-shell h1,
+.tg-app .tg-hero h1,
+.tg-app .tg-world-detail > h3 {
+  font-family: var(--tg-font-display);
+  font-size: var(--tg-h1);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.14;
+  margin: 12px 0 14px;
+}
+
+/* H2：章节标题统一衬线体 */
+.legacy-growth-shell h2,
+.tg-app .tg-section-head h2,
+.tg-app .tg-filter h2 {
+  font-family: var(--tg-font-display);
+  font-size: var(--tg-h2);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.3;
+  margin: 8px 0 12px;
+}
+
+/* H3：小标题统一无衬线，字号与字重一致 */
+.legacy-growth-shell h3,
+.tg-app h3 {
+  font-family: var(--tg-font-sans);
+  font-size: var(--tg-h3);
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.45;
+  margin: 6px 0 8px;
+}
+
+/* 正文段落：同一字号与行高 */
+.legacy-growth-shell p { font-size: var(--tg-body); line-height: 1.85; }
+.tg-app .tg-hero-copy p,
+.tg-app .tg-section-head p,
+.tg-app .tg-view > p { font-size: var(--tg-body); line-height: 1.85; color: var(--tg-muted); }
+
+/* 小字与辅助信息 */
+.legacy-growth-shell small { font-size: 12.5px; color: var(--tg-muted-ink); }
+
+/* 眉标 / kicker：同一字号、字距与颜色 */
+.legacy-growth-shell .eyebrow,
+.tg-app .tg-kicker {
+  color: #b4634a;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+/* 按钮：同一高度、圆角与字重 */
+.legacy-growth-shell .primary,
+.legacy-growth-shell .secondary,
+.legacy-growth-shell .danger,
+.tg-app .tg-button {
+  border-radius: 14px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 750;
+}
